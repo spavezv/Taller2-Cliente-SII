@@ -8,12 +8,12 @@
 			<div class="panel panel-default">
 				<div class="panel-heading clearfix">
 					<div class="pull-left">
-						<i class="fa fa-lock fa-lg"></i> Login
+						<i class="fa fa-lock fa-lg"></i> Iniciar Sesión
 					</div>
 
 					<div class="pull-right">
-						<span style="font-size:11px;">Don't have any account?</span>
-						<a class="btn btn-default btn-xs login-link" href="register.html" style="margin-top:-2px;"><i class="fa fa-plus-circle"></i> Sign up</a>
+						<span style="font-size:11px;">¿Todavía no tienes cuenta?</span>
+						<a class="btn btn-default btn-xs login-link" href="<%= new_user_registration_path %>" style="margin-top:-2px;"><i class="fa fa-plus-circle"></i> Registrate</a>
 					</div>
 				</div>
 				<div class="panel-body">
@@ -23,15 +23,13 @@
 							<%= f.email_field :email, autofocus: true,class: "form-control input-sm bounceIn animation-delay2" %>
 						</div>
 						<div class="form-group">
-							<%= f.label :password , "contraseña"%><br />
+							<%= f.label :password , "Contraseña"%><br />
 							<%= f.password_field :password, autocomplete: "off" ,class: "form-control input-sm bounceIn animation-delay3"%>						
 						</div>							
 						<div class="seperator"></div>
 						<div><%= f.submit "Iniciar Sesión", class: "btn btn-success btn-sm bounceIn animation-delay5 login-link pull-right" %>
 						</div>
-						<% end %>
-						<%= render "devise/shared/links" %>
-					</form>
+					<% end %>
 				</div>
 			</div><!-- /panel -->
 		</div><!-- /login-widget -->

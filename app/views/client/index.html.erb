@@ -290,8 +290,7 @@
 
 				</ul>
 			</div><!-- breadcrumb -->
-				<p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
+
        <%if user_signed_in? %>
        	Bienvenido <%= current_user.email %>
        	<p><%= link_to "cerrar sesion",destroy_user_session_path, method: :delete %></p>
@@ -305,4 +304,4 @@
 	<a href="" id="scroll-to-top" class="hidden-print"><i class="fa fa-chevron-up"></i></a>
 	
 
-</html>
+
