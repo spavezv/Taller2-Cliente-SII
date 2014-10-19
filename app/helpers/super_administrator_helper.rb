@@ -1,0 +1,2 @@
+module SuperAdministratorHelper
+end
