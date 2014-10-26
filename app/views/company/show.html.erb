@@ -286,14 +286,44 @@
 			<div id="breadcrumb">
 				<ul class="breadcrumb">
 					 <li><i class="fa fa-home"></i><a href="index.html"> Home</a></li>
-					 <li class="active">Blank page</li>	 
+					 <li class="active">Empresa</li>	 
 
 				</ul>
 			</div><!-- breadcrumb -->
 			<div class="panel-body">
-				<%if user_signed_in? %>
-					Bienvenido <%= current_user.email %>
-					<p><%= link_to "cerrar sesion",destroy_user_session_path, method: :delete %></p>
+				<%if user_signed_in? %>	
+				<h4>Empresa:</h4>				
+						<p>
+							<b> Nombre de fantasía: </b>
+							<%= @company.name_fantasy %>
+						</p>
+						<p>
+							<b> Email: </b>
+							<%= @company.email %>
+						</p>
+						<p>
+							<b> Página web: </b>
+							<%= @company.webpage %>
+						</p>
+						<p>
+							<b> Sector: </b>
+							<%= @company.sector %>
+						</p>
+						<p>
+							<b> Dirección: </b>
+							<%= @company.address %>
+						</p>
+						<p>
+							<b> Representante legal: </b>
+							<%= @company.representative %>
+						</p>
+						<p>
+							<b> Giro: </b>
+							<%= @company.giro %>
+						</p>
+						<h4>Servicios contratados</h4>
+						aqui los servicios listados por cliente <br/>
+						<%= link_to 'Editar', edit_company_path(@company) %> | <%= link_to 'Atrás', company_path %>
 				<%else%>
 				   	<p><%=link_to "crea una cuenta", new_user_registration_path %></p>
 				   	<p><%= link_to "logeate",new_user_session_path %></p>
@@ -303,3 +333,5 @@
 	</div><!-- /wrapper -->
 
 	<a href="" id="scroll-to-top" class="hidden-print"><i class="fa fa-chevron-up"></i></a>
+
+

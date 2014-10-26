@@ -292,8 +292,17 @@
 			</div><!-- breadcrumb -->
 			<div class="panel-body">
 				<%if user_signed_in? %>
-					Bienvenido <%= current_user.email %>
-					<p><%= link_to "cerrar sesion",destroy_user_session_path, method: :delete %></p>
+					<% if @companies.blank? %>
+<p>There are not any books currently in the system.</p>
+<% else %>
+<p>These are the current books in our system</p>
+<ul id="companies">
+<% @companies.each do |c| %>
+<li><%= link_to c.fantasy_name, {:action => 'show', :id => c.id} -%></li>
+<% end %>
+</ul>
+<% end %>
+<p><%= link_to "Add new Book", {:action => 'new' }%></p>
 				<%else%>
 				   	<p><%=link_to "crea una cuenta", new_user_registration_path %></p>
 				   	<p><%= link_to "logeate",new_user_session_path %></p>
@@ -303,3 +312,5 @@
 	</div><!-- /wrapper -->
 
 	<a href="" id="scroll-to-top" class="hidden-print"><i class="fa fa-chevron-up"></i></a>
+
+

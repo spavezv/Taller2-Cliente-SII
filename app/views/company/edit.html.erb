@@ -286,14 +286,15 @@
 			<div id="breadcrumb">
 				<ul class="breadcrumb">
 					 <li><i class="fa fa-home"></i><a href="index.html"> Home</a></li>
-					 <li class="active">Blank page</li>	 
+					 <li class="active">Empresa</li>	 
 
 				</ul>
 			</div><!-- breadcrumb -->
 			<div class="panel-body">
-				<%if user_signed_in? %>
-					Bienvenido <%= current_user.email %>
-					<p><%= link_to "cerrar sesion",destroy_user_session_path, method: :delete %></p>
+				<%if user_signed_in? %>					
+				<%= render 'form'%>
+				<%= link_to 'Ver', @company %>
+				<%= link_to 'Atrás', company_path %>
 				<%else%>
 				   	<p><%=link_to "crea una cuenta", new_user_registration_path %></p>
 				   	<p><%= link_to "logeate",new_user_session_path %></p>
@@ -303,3 +304,5 @@
 	</div><!-- /wrapper -->
 
 	<a href="" id="scroll-to-top" class="hidden-print"><i class="fa fa-chevron-up"></i></a>
+
+

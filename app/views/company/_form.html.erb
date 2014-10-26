@@ -1,0 +1,20 @@
+<%= form_for(@company) do |c| %>
+	<% if @company.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralizr(@company.errors.count, "error")%> no se puede guardar </h2>
+			<ul>
+				<% @company.errors.full_messages.each do |msg| %>
+				<li> <%= msg %> </li>
+				<% end %>
+			</ul>
+		</div>
+		<% end %>
+
+	<div class="field">
+		<%= c.label :Nombredefantasia %> 
+		<%= c.text_field :name_fantasy %>
+	</div>
+	<div class="actions">
+		<%= c.submit %>
+	</div>
+	<%end%>

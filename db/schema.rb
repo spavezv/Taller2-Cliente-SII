@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141009022448) do
+ActiveRecord::Schema.define(version: 20141026015515) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,17 @@ ActiveRecord::Schema.define(version: 20141009022448) do
     t.text    "text"
     t.date    "date"
     t.integer "task"
+  end
+
+  create_table "companies", force: true do |t|
+    t.string "name_fantasy",    limit: 32, null: false
+    t.string "name_commercial", limit: 32, null: false
+    t.text   "email"
+    t.text   "webpage"
+    t.text   "sector"
+    t.text   "address"
+    t.text   "representative"
+    t.text   "giro"
   end
 
   create_table "company", force: true do |t|
@@ -35,15 +46,13 @@ ActiveRecord::Schema.define(version: 20141009022448) do
     t.text    "giro"
   end
 
-  create_table "service", force: true do |t|
-    t.text    "name"
-    t.date    "created"
-    t.date    "edited"
-    t.integer "fare"
-    t.integer "client"
-    t.integer "company"
-    t.integer "maker"
-    t.boolean "paid"
+  create_table "services", force: true do |t|
+    t.string   "name",    limit: 32, null: false
+    t.integer  "company"
+    t.integer  "user"
+    t.datetime "date"
+    t.integer  "rate"
+    t.boolean  "paid"
   end
 
   create_table "task", force: true do |t|
@@ -57,6 +66,10 @@ ActiveRecord::Schema.define(version: 20141009022448) do
     t.integer "employee"
     t.integer "state"
     t.integer "service"
+  end
+
+  create_table "task_state", force: true do |t|
+    t.text "state"
   end
 
   create_table "users", force: true do |t|
@@ -73,10 +86,10 @@ ActiveRecord::Schema.define(version: 20141009022448) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "name"
-    t.boolean  "super_administrator",    default: false, null: false
-    t.boolean  "administrator",          default: false, null: false
-    t.boolean  "employee",               default: false, null: false
-    t.boolean  "client",                 default: true,  null: false
+    t.boolean  "super_administrator",    default: false
+    t.boolean  "administrator",          default: false
+    t.boolean  "employee",               default: false
+    t.boolean  "client",                 default: true
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
