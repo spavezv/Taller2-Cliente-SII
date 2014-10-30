@@ -125,6 +125,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
   devise
+  execjs
   jbuilder (~> 2.0)
   jquery-rails
   pg
@@ -132,6 +133,7 @@ DEPENDENCIES
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   sqlite3
+  therubyracer
   turbolinks
   tzinfo-data
   uglifier (>= 1.3.0)

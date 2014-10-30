@@ -1,0 +1,104 @@
+
+
+
+
+
+<%= form_for(@servicio) do |f| %>
+  <% if @servicio.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@servicio.errors.count, "error") %> prohibited this servicio from being saved:</h2>
+
+      <ul>
+      <% @servicio.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+ <div class="col-lg-6 ">
+            <div class="well bs-component">
+              <form class="form-horizontal">
+                <fieldset>
+                  <legend>Servicio</legend>
+                  <div class="form-group">                                            
+                    <label for="inputName" class="col-lg-2 control-label ">Nombre</label>
+                    <div class="col-lg-10">
+                    
+                      <input type="text" class="form-control" id="inputNombre" placeholder="Nombre">
+                    </div>
+                  </div>
+                  <div class="form-group">                                            
+                    <label for="inputPropietario" class="col-lg-2 control-label">Propietario</label>
+                    <div class="col-lg-10">
+                    
+                      <input type="text" class="form-control" id="inputPropietario" placeholder="Propietario">
+                    </div>
+                  </div>                  
+
+                  <div class="form-group">
+                    <label for="textArea" class="col-lg-2 control-label">Descripcion</label>
+                    <div class="col-lg-10">
+                      <textarea class="form-control" rows="3" id="textArea"></textarea>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="select" class="col-lg-2 control-label">Estado de pago</label>
+                    <div class="col-lg-10">
+                      <select class="form-control" id="select">
+                        <option>Pendiente</option>
+                        <option>Cancelado</option>
+
+                      </select>
+                      <br>
+
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                      <button class="btn btn-default"><%= link_to 'Cancelar', servicios_path %></button>
+                      <button type="submit" class="btn btn-primary">Crear Servicio</button>
+                    </div>
+                  </div>
+                </fieldset>
+              </form>
+            <div id="source-button" class="btn btn-primary btn-xs" style="display: none;">&lt; &gt;</div></div>
+          </div>
+
+
+ <!--   <div class="field">
+      <%= f.label :nombre %><br>
+      <%= f.text_field :nombre %>
+    </div>
+    <div class="field">
+      <%= f.label :id_servicio %><br>
+      <%= f.number_field :id_servicio %>
+    </div>
+    <div class="field">
+      <%= f.label :tareas_usuarios_id %><br>
+      <%= f.number_field :tareas_usuarios_id %>
+    </div>
+    <div class="field">
+      <%= f.label :propietario_id %><br>
+      <%= f.number_field :propietario_id %>
+    </div>
+    <div class="field">
+      <%= f.label :fecha_de_creacion %><br>
+      <%= f.date_select :fecha_de_creacion %>
+    </div>
+    <div class="field">
+      <%= f.label :tarifa %><br>
+      <%= f.text_field :tarifa %>
+    </div>
+    <div class="field">
+      <%= f.label :estado_de_pago %><br>
+      <%= f.text_field :estado_de_pago %>
+    </div>
+    
+    <div class="actions">
+      <%= f.submit %>
+    </div>-->
+
+  </div>  
+<% end %>

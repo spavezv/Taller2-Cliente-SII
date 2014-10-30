@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :servicios
+
   devise_for :users #, controllers: {registrations: "registrations"}
    #get 'administrator/users' => 'administrator#mostrarUsuarios'
 
