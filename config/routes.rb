@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :companies
+
   get 'ejecutante/Administrador'
 
   get 'ejecutante/Super_Administrador'
