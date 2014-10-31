@@ -1,17 +1,14 @@
 class WelcomeController < ApplicationController
 	def index
-		if user_signed_in?
-			if current_user.super_administrator?
-				redirect_to :controller=> "super_administrator", :action => "index"
-			end
-			if current_user.administrator?
-				redirect_to :controller=> "administrator", :action => "index"
-			end
-			if current_user.employee?
-				redirect_to :controller=> "employee", :action => "index"
-			end
-			if current_user.client?
-				redirect_to :controller=> "client", :action => "index"
+		if usuario_signed_in?
+			if current_usuario.tipo_de_usuario == 4
+				redirect_to :controller=>"cliente", :action => "index"
+			elsif current_usuario.tipo_de_usuario == 3
+				redirect_to :controller=>"ejecutante", :action => "index"
+			elsif current_usuario.tipo_de_usuario == 2
+				redirect_to :controller=>"administrador", :action => "index"
+			elsif current_usuario.tipo_de_usuario == 1
+				redirect_to :controller=>"super_administrador", :action => "index"
 			end
 		end
 	end

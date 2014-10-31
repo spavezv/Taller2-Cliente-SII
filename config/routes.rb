@@ -1,24 +1,19 @@
 Rails.application.routes.draw do
-  resources :servicios
+  get 'ejecutante/Administrador'
 
-  devise_for :users #, controllers: {registrations: "registrations"}
-   #get 'administrator/users' => 'administrator#mostrarUsuarios'
+  get 'ejecutante/Super_Administrador'
 
-  resources :client
-  resources :employee
-  resources :administrator
-  get 'administrator/' => 'administrator#index2'
-  resources :super_administrator
-  root "welcome#index"
-
-  resources :company
-  resources :service
+  devise_for :usuarios
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'welcome#index'
 
+  get "cliente/index" => "cliente#index"
+  get "ejecutante/index" => "ejecutante#index"
+  get "administrador/index" => "administrador#index"
+  get "super_administrador/index" => "super_administrador#index"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
