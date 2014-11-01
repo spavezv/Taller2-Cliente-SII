@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :empresas
+
   resources :companies
 
   get 'ejecutante/Administrador'

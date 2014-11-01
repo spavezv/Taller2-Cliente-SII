@@ -1,0 +1,165 @@
+<!--Super administrador-->
+<% if current_usuario.tipo_de_usuario == 1 %>
+
+  <div class="panel panel-default">
+        <div class="panel-heading">
+          Compañias
+        </div>
+        <div class="panel-body">
+          Total de compañias registradas en el sistema.
+        </div>
+        <table class="table table-hover table-striped">
+          <thead>
+            <tr>
+              <th>Nombre fantasia</th>
+              <th>Nombre comercial</th>
+              <th>Correo</th>
+              <th>Web</th>
+              <th>Telefono</th>
+              <th>Duracion</th>
+              <th>Region</th>
+              <th>Representante</th>
+              <th>Giro</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @empresas.each do |empresa| %>
+        <tr>
+          <td><%= empresa.nombre_fantasia %></td>
+          <td><%= empresa.nombre_comercial %></td>
+          <td><%= empresa.correo %></td>
+          <td><%= empresa.web %></td>
+          <td><%= empresa.telefono %></td>
+          <td><%= empresa.direccion %></td>
+          <td><%= empresa.region %></td>
+          <td><%= empresa.representante %></td>
+          <td><%= empresa.giro %></td>
+          <td><%= link_to 'Detalles', empresa %></td>
+          <td><%= link_to 'Editar', edit_empresa_path(empresa) %></td>
+          <td><%= link_to 'Eliminar', empresa, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <br>
+        <%= link_to 'Nueva empresa', new_empresa_path %>
+  </div>
+
+<!--administrador-->
+<% elsif current_usuario.tipo_de_usuario == 2 %>
+  <div class="panel panel-default">
+        <div class="panel-heading">
+          Compañias
+        </div>
+        <div class="panel-body">
+          Total de compañias registradas en el sistema.
+        </div>
+        <table class="table table-hover table-striped">
+          <thead>
+            <tr>
+             <th>Nombre fantasia</th>
+            <th>Nombre comercial</th>
+            <th>Correo</th>
+            <th>Web</th>
+            <th>Telefono</th>
+            <th>Duracion</th>
+            <th>Region</th>
+            <th>Representante</th>
+            <th>Giro</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @empresas.each do |empresa| %>
+            <tr>
+              <td><%= empresa.nombre_fantasia %></td>
+              <td><%= empresa.nombre_comercial %></td>
+              <td><%= empresa.correo %></td>
+              <td><%= empresa.web %></td>
+              <td><%= empresa.telefono %></td>
+              <td><%= empresa.duracion %></td>
+              <td><%= empresa.region %></td>
+              <td><%= empresa.representante %></td>
+              <td><%= empresa.giro %></td>
+              <td><%= link_to 'Detalles', empresa %></td>
+              <td><%= link_to 'Editar', edit_empresa_path(empresa) %></td>          
+            </tr>
+      <% end %>
+          </tbody>
+        </table>
+  </div>
+  
+<!--Ejecutante-->
+<% elsif current_usuario.tipo_de_usuario == 3 %>
+  <div class="panel panel-default">
+        <div class="panel-heading">
+          Compañias
+        </div>
+        <div class="panel-body">
+          Total de compañias registradas en el sistema.
+        </div>
+        <table class="table table-hover table-striped">
+          <thead>
+            <tr>
+            <th>Nombre fantasia</th>
+            <th>Nombre comercial</th>
+            <th>Correo</th>
+            <th>Web</th>
+            <th>Telefono</th>
+            <th>Duracion</th>
+            <th>Region</th>
+            <th>Representante</th>
+            <th>Giro</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @empresas.each do |empresa| %>
+              <tr>
+                <td><%= empresa.nombre_fantasia %></td>
+                <td><%= empresa.nombre_comercial %></td>
+                <td><%= empresa.correo %></td>
+                <td><%= empresa.web %></td>
+                <td><%= empresa.telefono %></td>
+                <td><%= empresa.duracion %></td>
+                <td><%= empresa.region %></td>
+                <td><%= empresa.representante %></td>
+                <td><%= empresa.giro %></td>
+                <td><%= link_to 'Detalles', empresa %></td>
+              </tr> 
+          </tbody>
+        </table>
+</div>
+<%end%>
+<!--Cliente-->
+<% elsif current_usuario.tipo_de_usuario == 4 %>
+  <div class="panel panel-default">
+        <div class="panel-heading">
+          Compañias
+        </div>
+        <div class="panel-body">
+          Total de compañias registradas en el sistema.
+        </div>
+        <table class="table table-hover table-striped">
+          <thead>
+            <tr>
+              <th>Nombre fantasia</th>
+              <th>Dirección</th>
+              <th>Region</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @empresas.each do |empresa| %>
+              <tr>
+                <td><%= empresa.nombre_fantasia %></td>
+                <td><%= empresa.direccion %></td>
+                <td><%= empresa.region %></td>
+                <td><%= link_to 'Detalles', empresa %></td>
+                <td><%= link_to 'Editar', edit_empresa_path(empresa) %></td> 
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+  </div>
+
+<%end%>
+
+
