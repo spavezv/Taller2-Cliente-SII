@@ -8,26 +8,10 @@
 </head>
 <% if usuario_signed_in? %>
 
-<body class="overflow-hidden">
-	<!-- Overlay Div -->
-	<div id="overlay" class="transparent"></div>
-
-	<a href="" id="theme-setting-icon"><i class="fa fa-cog fa-lg"></i></a>
-	<div id="theme-setting">
-		<div class="title">
-			<strong class="no-margin">Color del Template</strong>
-		</div>
-		<div class="theme-box">
-			<a class="theme-color" style="background:#323447" id="default"></a>
-			<a class="theme-color" style="background:#efefef" id="skin-1"></a>
-			<a class="theme-color" style="background:#a93922" id="skin-2"></a>
-			<a class="theme-color" style="background:#3e6b96" id="skin-3"></a>
-			<a class="theme-color" style="background:#635247" id="skin-4"></a>
-		</div>
-	</div>
+<body>
 
 	<div id="wrapper" class="preload">
-		<div id="top-nav" class="fixed skin-6">           
+		<div id="top-nav" class="fixed skin-6 default">           
             <button type="button" class="navbar-toggle pull-left" id="sidebarToggle">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -152,7 +136,7 @@
 				</li>
 			</ul>
         </div>
-        <aside class="fixed skin-6">
+        <aside class="fixed skin-6 default">
         	<div class="brand">
             	<span>MI</span>
                 <span class="text-toggle">MEMO!</span>
