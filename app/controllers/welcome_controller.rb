@@ -10,6 +10,8 @@ class WelcomeController < ApplicationController
 			elsif current_usuario.tipo_de_usuario == 1
 				redirect_to :controller=>"super_administrador", :action => "index"
 			end
+		else
+			redirect_to new_usuario_session_path
 		end
 	end
 end

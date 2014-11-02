@@ -1,17 +1,36 @@
-<h2>Log in</h2>
+	<div class="login-wrapper">
+		<div class="text-center">
+			<h2 class="fadeInUp animation-delay8" style="font-weight:bold">
+				<span class="text-success">Endless</span> <span style="color:#ccc; text-shadow:0 1px #fff">Admin</span>
+			</h2>
+		</div>
+		<div class="login-widget animation-delay1">	
+			<div class="panel panel-default">
+				<div class="panel-heading clearfix">
+					<div class="pull-left">
+						<i class="fa fa-lock fa-lg"></i> Iniciar Sesión
+					</div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
-
-  <div><%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
-
-  <div><%= f.submit "Log in" %></div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+					<div class="pull-right">
+						<span style="font-size:11px;">¿Todavía no tienes cuenta?</span>
+						<a class="btn btn-default btn-xs login-link" href="<%= new_usuario_registration_path %>" style="margin-top:-2px;"><i class="fa fa-plus-circle"></i> Registrate</a>
+					</div>
+				</div>
+				<div class="panel-body">
+					<%= form_for(resource, as: resource_name, url: session_path(resource_name),html: {class: "form-login"}) do |f| %>
+						<div class="form-group">
+							<%= f.label :email %><br />
+							<%= f.email_field :email, autofocus: true,class: "form-control input-sm bounceIn animation-delay2" %>
+						</div>
+						<div class="form-group">
+							<%= f.label :password , "Contraseña"%><br />
+							<%= f.password_field :password, autocomplete: "off" ,class: "form-control input-sm bounceIn animation-delay3"%>						
+						</div>							
+						<div class="seperator"></div>
+						<div><%= f.submit "Iniciar Sesión", class: "btn btn-success btn-sm bounceIn animation-delay5 pull-right" %>
+						</div>
+					<% end %>
+				</div>
+			</div><!-- /panel -->
+		</div><!-- /login-widget -->
+	</div><!-- /login-wrapper -->
