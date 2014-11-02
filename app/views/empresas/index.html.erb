@@ -153,6 +153,7 @@
                 <td><%= empresa.direccion %></td>
                 <td><%= empresa.region %></td>
                 <td><%= link_to 'Detalles', empresa %></td>
+                <td><%= link_to 'Editar', edit_empresa_path(empresa) %></td> 
               </tr>
             <% end %>
           </tbody>
