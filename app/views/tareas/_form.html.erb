@@ -1,0 +1,119 @@
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+<script src="jquery.ui.datepicker-es.js"></script>
+
+<script>
+$(function () {
+$.datepicker.setDefaults($.datepicker.regional["es"]);
+$("#datepicker1").datepicker({
+firstDay: 1,
+dateFormat: 'dd-mm-yy',
+dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'],
+monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun',
+'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
+});
+});
+</script>
+
+<script>
+$(function () {
+$.datepicker.setDefaults($.datepicker.regional["es"]);
+$("#datepicker2").datepicker({
+firstDay: 1,
+dateFormat: 'dd-mm-yy',
+dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'],
+monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun',
+'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
+});
+});
+</script>
+
+<%= form_for(@tarea) do |f| %>
+<% if @tarea.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tarea.errors.count, "error") %> No se puede almacenar:</h2>
+
+      <ul>
+      <% @tarea.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+<% end %>
+
+<div class="panel panel-default">
+              <form class="form-horizontal form-border no-margin" id="type-constraint" data-validate="parsley" novalidate="">
+                <div class="panel-heading">
+                  Ingresar tarea
+                </div>
+                <div class="panel-body">
+                  <div class="form-group">
+                    <label for="tarea_nombre" class="control-label col-lg-3">Nombre de tarea</label>
+                    <div class="col-lg-9">
+                      <input type="text" class="form-control input-sm" data-required="true" placeholder="Nombre de tarea" id="tarea_nombre" name="tarea[nombre]" required>
+                      <div class="seperator"></div>
+                    </div><!-- /.col -->
+                  </div><!-- /form-group -->
+                  <div class="form-group">
+                    <label class="control-label col-lg-3">Estado</label>
+                    <div class="col-lg-9">
+                    <select type="text" class="form-control chzn-select" id="tarea_estado" name="tarea[estado]">
+                      <option> </option>
+                      <option>Sin asignar</option>
+                      <option>Iniciada</option>
+                      <option>En proceso</option>
+                      <option>Cancelada</option>
+                      <option>Terminada</option>
+                    </select>
+                      <div class="seperator"></div>
+                    </div><!-- /.col -->
+                  </div><!-- /form-group -->
+                  <div class="form-group">
+                    <label class="control-label col-lg-3">Creación</label>
+                    <div class="col-lg-9">
+                      <input type="text" class="form-control input-sm" data-type="date" placeholder="Creación" id="datepicker1" name="tarea[creacion]">
+                      <div class="seperator"></div>
+                    </div><!-- /.col -->
+                                    <div class="form-group">
+                    <label class="control-label col-lg-3">Termino</label>
+                    <div class="col-lg-9">
+                      <input type="text" class="form-control input-sm" data-type="date" placeholder="Termino" id="datepicker2" name="tarea[termino]">
+                      <div class="seperator"></div>
+                    </div><!-- /.col -->
+                  </div><!-- /form-group -->
+                  <div class="form-group">
+                    <label class="control-label col-lg-3">Descripción</label>
+                    <div class="col-lg-9">
+                    <input type="text" class="form-control input-sm" placeholder="Descripción" id="tarea_descripcion" name="tarea[descripcion]" required>
+                      <div class="seperator"></div>
+                    </div><!-- /.col -->
+                  </div><!-- /form-group -->
+                  <div class="form-group">
+                    <label class="control-label col-lg-3">Servicio</label>
+                    <div class="col-lg-9">
+                      <input type="integer" class="form-control input-sm" data-required="true" placeholder="Servicio" id="tarea_servicio" name="tarea[servicio]">
+                      <div class="seperator"></div>
+                    </div><!-- /.col -->
+                  </div><!-- /form-group -->
+                  <div class="form-group">
+                    <label class="control-label col-lg-3">Ejecutante</label>
+                    <div class="col-lg-9">
+                      <input type="integer" class="form-control input-sm" data-required="true" placeholder="Ejecutante" id="tarea_ejecutante" name="tarea[ejecutante]">
+                      <div class="seperator"></div>
+                    </div><!-- /.col -->
+                  </div><!-- /form-group -->
+                  </div><!-- /panel-body -->
+                </div><!-- /panel-heading -->
+                <button name="commit" class="btn btn-success" type="submit">Crear tarea</button>
+              </form>
+               <div class="seperator"></div>
+              <a href="/tareas" class="btn btn-warning">
+  <i class="fa fa-chevron-left"></i>
+   Volver
+</a>
+            </div>
+<% end %>

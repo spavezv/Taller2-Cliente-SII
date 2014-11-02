@@ -1,11 +1,7 @@
 Rails.application.routes.draw do
+  resources :tareas
+
   resources :empresas
-
-  resources :companies
-
-  get 'ejecutante/Administrador'
-
-  get 'ejecutante/Super_Administrador'
 
   devise_for :usuarios
   # The priority is based upon order of creation: first created -> highest priority.

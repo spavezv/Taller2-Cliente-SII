@@ -1,0 +1,39 @@
+<div class="panel panel-default">
+        <div class="panel-heading">
+          Tareas
+        </div>
+        <div class="panel-body">
+          Total de tareas registradas en la empresa.
+        </div>
+        <table class="table table-hover table-striped">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Estado</th>
+              <th>Creación</th>
+              <th>Termino</th>
+              <th>Descripcion</th>
+              <th>Servicio</th>
+              <th>Ejecutante</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @tareas.each do |tarea| %>
+        <tr>
+          <td><%= tarea.nombre %></td>
+          <td><%= tarea.estado %></td>
+          <td><%= tarea.creacion %></td>
+          <td><%= tarea.termino %></td>
+          <td><%= tarea.descripcion %></td>
+          <td><%= tarea.servicio %></td>
+          <td><%= tarea.ejecutante %></td>
+          <td><%= link_to 'Detalles', tarea %></td>
+          <td><%= link_to 'Editar', edit_tarea_path(tarea) %></td>
+          <td><%= link_to 'Eliminar', tarea, method: :delete, data: { confirm: '¿Está seguro?' } %></td>
+        </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <br>
+        <%= link_to 'Nueva Tarea', new_tarea_path %>
+  </div>
