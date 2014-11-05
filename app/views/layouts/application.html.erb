@@ -164,6 +164,8 @@
 				</div>
         		<div class="main-menu">
 					<ul>
+						<!--Usuaio Super-administrador-->
+
 						<% if current_usuario.tipo_de_usuario == 1 %>
 						<li>
 							<a href="#">
@@ -209,6 +211,7 @@
 								<span class="menu-hover"></span>
 							</a>
 						</li>
+						<!--Usuaio administrador-->
 						<% elsif current_usuario.tipo_de_usuario == 2 %>
 						<li>
 							<a href="#">
@@ -249,6 +252,33 @@
 								</li>
 							</ul>
 						</li>
+						<li>
+							<a href="#">
+								<span class="menu-icon">
+									<i class="fa fa-users fa-lg"></i> 
+								</span>
+								<span class="text">
+									Servicio
+								</span>
+								<span class="menu-hover"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li>
+									<a href="/servicios">
+										Mis servicios
+									</a>
+								</li>
+								<li>
+									<a href="/servicios/new">
+										Nuevo servicio
+									</a>
+								</li>
+
+							</ul>
+						</li>						
+
+						<!--Usuaio ejecutante-->
+
 						<% elsif current_usuario.tipo_de_usuario == 3 %>
 						<li>
 							<a href="#">
@@ -284,6 +314,8 @@
 								</li>
 							</ul>
 						</li>
+
+						<!--Usuaio cliente-->
 
 						<% elsif current_usuario.tipo_de_usuario == 4 %>
 						<li>

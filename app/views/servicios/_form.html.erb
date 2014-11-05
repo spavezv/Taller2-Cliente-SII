@@ -1,0 +1,101 @@
+<%= form_for(@servicio) do |f| %>
+  <% if @servicio.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@servicio.errors.count, "error") %> prohibited this servicio from being saved:</h2>
+
+      <ul>
+      <% @servicio.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nombre %><br>
+    <%= f.text_field :nombre %>
+  </div>
+  <div class="field">
+    <%= f.label :id_empresa %><br>
+    <%= f.number_field :id_empresa %>
+  </div>
+  <div class="field">
+    <%= f.label :creacion %><br>
+    <%= f.date_select :creacion %>
+  </div>
+  <div class="field">
+    <%= f.label :precio %><br>
+    <%= f.text_field :precio %>
+  </div>
+  <div class="field">
+    <%= f.label :pagado %><br>
+    <%= f.check_box :pagado %>
+  </div>
+  <div class="field">
+    <%= f.label :avance %><br>
+    <%= f.number_field :avance %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div> 
+  
+      <!--<div class="panel panel-default">
+
+          <div class="panel-body">
+             <form class="form-horizontal form-border no-margin" id="type-constraint" data-validate="parsley" novalidate="">
+
+         
+              <div class="form-group">
+                <label class="control-label col-lg-3" for="servicio_nombre">Nombre servicio</label>
+                  <div class="col-lg-9">
+                    <input type="text" data-required="true" class="form-control input-sm" id="nombre_servicio" placeholder="Ingresa nombre del servicio">
+                    <div class="seperator"></div>
+                  </div><!-- /.col -->                
+              </div><!-- /form-group -->
+
+
+
+ 
+
+
+<!--
+              <div class="form-group">
+               
+                <label class="col-lg-2 control-label">Fecha de creacion</label>
+                  <div class="col-lg-10">
+                    <div class="input-group">
+                      <div class="col-lg-9">
+                        <input type="text" value="06/10/2013" class="datepicker form-control">
+             
+                        <div class="seperator"></div>
+
+                      </div>                        
+                      <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    </div>
+                  </div>
+              </div>
+
+              <div class="form-group">
+                <label for="servicio_precio">Precio del servicio</label>
+                <div class="col-lg-9">
+                  <input type="text" data-required="true" class="form-control input-sm" id="precio_servicio" placeholder="Ingresa precio">
+                  <div class="seperator"></div>
+                </div>
+               
+              </div>
+              <button name="commit" class="btn btn-success" type="submit">Crear servicio</button>
+            </form>
+ 
+            
+        </div>        
+      </div>-->
+ 
+  
+   
+
+
+
+
+<% end %>
+
+
