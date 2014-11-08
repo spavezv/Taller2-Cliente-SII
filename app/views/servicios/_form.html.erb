@@ -1,4 +1,4 @@
-<%= form_for(@servicio) do |f| %>
+<%= simple_form_for(@servicio, html: {class:"form-horizontal form-border no-margin"}) do |f| %>
   <% if @servicio.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@servicio.errors.count, "error") %> prohibited this servicio from being saved:</h2>
@@ -11,7 +11,9 @@
     </div>
   <% end %>
 
-  <div class="field">
+
+
+ <!-- <div class="form-group">
     <%= f.label :nombre %><br>
     <%= f.text_field :nombre %>
   </div>
@@ -37,64 +39,104 @@
   </div>
   <div class="actions">
     <%= f.submit %>
-  </div> 
+  </div> -->
   
-      <!--<div class="panel panel-default">
+  <div class="panel panel-default">
+    <div class="panel-body" >
+      <div class="form-group">
+        <%= f.label :nombre_Servico, :class => "ontrol-label col-lg-3" %><br>
+        <div class="col-lg-4">
+          <%= f.text_field :nombre, :class => "form-control input-sm", :placeholder =>"Ingrese el nombre" %>
+      
+        </div><!-- /.col -->
+      </div><!-- /form-group -->
 
-          <div class="panel-body">
-             <form class="form-horizontal form-border no-margin" id="type-constraint" data-validate="parsley" novalidate="">
+    <!--<div class="form-group">
+            <%= f.label :codigo_empresa, :class => "control-label col-lg-3" %><br>
+            <label class="control-label col-lg-3">Región</label>
+            <div class="col-lg-9">
+              <select type="text" class="form-control chzn-select" id="empresa_region" name="empresa[region]">
+                <option> </option>
+                <option>XV - Arica y Parinacota</option>
+                <option>I - Tarapacá</option>
+                <option>II - Antofagasta</option>
+                <option>III - Atacama</option>
+                <option>IV - Coquimbo</option>
+                <option>V - Valparaíso</option>
+                <option>VI - O'Higgins</option>
+                <option>VII - Maule</option>
+                <option>VIII - BioBió</option>
+                <option>IX - Araucanía</option>
+                <option>XIV - Los Ríos</option>
+                <option>X - Los Lagos</option>
+                <option>XI - Aysén</option>
+                <option>XII - Magallanes</option>
+                <option>RM - Metropolitana</option>
+              </select>
+            <div class="seperator"></div>
+        </div>
+      </div><!-- /form-group -->
+    
 
+    <div class="form-group">
+        <%= f.label :id_empresa, :class => "control-label col-lg-3" %><br>                
+        <div class="col-lg-2">
+          <%= f.number_field :id_empresa, :class => "form-control input-sm", :data_type =>"digits" %>
+        
+        </div><!-- /.col -->
+    </div><!-- /form-group -->
+
+
+    <div class="form-group">
+        <%= f.label :creacion, :class => "control-label col-lg-3" %><br>                
+        <div class="col-lg-9">
+           <%= f.date_select :creacion, :class =>"form-control input-sm" %>
          
-              <div class="form-group">
-                <label class="control-label col-lg-3" for="servicio_nombre">Nombre servicio</label>
-                  <div class="col-lg-9">
-                    <input type="text" data-required="true" class="form-control input-sm" id="nombre_servicio" placeholder="Ingresa nombre del servicio">
-                    <div class="seperator"></div>
-                  </div><!-- /.col -->                
-              </div><!-- /form-group -->
+        </div><!-- /.col -->
+    </div><!-- /form-group -->    
+
+    <div class="form-group">
+        <%= f.label :precio, :class => "control-label col-lg-3" %><br>                
+        <div class="col-lg-2">
+           <%= f.text_field :precio, :class => "form-control input-sm" %>
+          
+        </div><!-- /.col -->
+    </div><!-- /form-group -->
 
 
+    <div class="form-group">
+        <%= f.label :servicio_pagado, :class => "control-label col-lg-3" %><br>                               
+        <div class="col-lg-2">
+           <%= f.collection_check_boxes :pagado, [[true, 'Yes'] ,[false, 'No']], :first, :last,:class => "form-control input-sm" %>
+       
+        </div><!-- /.col -->                    
+    </div><!-- /form-group -->
 
+
+    <div class="form-group">
+        <%= f.label :avance, :class => "control-label col-lg-3" %><br>                
+        <div class="col-lg-2">
+           <%= f.text_field :avance, :class => "form-control input-sm" %>
+          
+        </div><!-- /.col -->
+    </div><!-- /form-group -->
  
 
 
-<!--
-              <div class="form-group">
-               
-                <label class="col-lg-2 control-label">Fecha de creacion</label>
-                  <div class="col-lg-10">
-                    <div class="input-group">
-                      <div class="col-lg-9">
-                        <input type="text" value="06/10/2013" class="datepicker form-control">
-             
-                        <div class="seperator"></div>
-
-                      </div>                        
-                      <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                    </div>
-                  </div>
-              </div>
-
-              <div class="form-group">
-                <label for="servicio_precio">Precio del servicio</label>
-                <div class="col-lg-9">
-                  <input type="text" data-required="true" class="form-control input-sm" id="precio_servicio" placeholder="Ingresa precio">
-                  <div class="seperator"></div>
-                </div>
-               
-              </div>
-              <button name="commit" class="btn btn-success" type="submit">Crear servicio</button>
-            </form>
- 
-            
-        </div>        
-      </div>-->
- 
-  
-   
+  </div><!-- /panel-body -->
 
 
 
+  <div class="actions" style="position:relative; top:50px ;left:300px" >
+    <a href="/servicios" class="btn btn-warning">
+      <i class="fa fa-chevron-left"></i>
+      Back
+    </a>  
+    <%= f.submit :Aceptar, :class => "btn btn-success"%>
+    
+
+  </div>                 
+</div>
 
 <% end %>
 
