@@ -1,30 +1,35 @@
-<h1>Listing servicios</h1>
+  <script>
+    $(function  ()  {
+      $('#dataTable').dataTable( {
+        "bJQueryUI": true,
+        "sPaginationType": "full_numbers"
+      });
+  </script>
 
 
-  
-<div id="dataTable_wrapper" class="dataTables_wrapper" role="grid">
-  <div class="fg-toolbar ui-toolbar ui-widget-header ui-corner-tl ui-corner-tr ui-helper-clearfix">
-    <div id="dataTable_length" class="dataTables_length">
-      <label>Show <select class="form-control input-sm inline-block" size="1" style="width:100px;" name="dataTable_length" aria-controls="dataTable">
-        <option value="10" selected="selected">10</option>
-        <option value="25">25</option>
-        <option value="50">50</option>
-        <option value="100">100</option>
-        </select> entries</label>
-      </div>
-      <div class="dataTables_filter" id="dataTable_filter"><label> 
-        <div class="input-group pull-right" style="width:200px;"><input type="text" class="form-control input-sm" placeholder="search here..." aria-controls="dataTable">
-          <span class="input-group-btn">
-            <button class="btn btn-default btn-sm" type="button"><i class="fa fa-search"></i></button>
-          </span></div></label></div></div>
-        <table class="table table-striped dataTable" id="dataTable" aria-describedby="dataTable_info">
+<h1 style="position:relative ;left:300px">Lista de servicios</h1>
+
+
+          <div class="panel panel-default table-responsive">
+          <div class="panel-heading">
+            Data Table
+            <span class="label label-info pull-right">790 Items</span>
+          </div>
+          <div class="padding-md clearfix">
+            <table class="table table-striped" id="dataTable">
               <thead>
-                <tr role="row"><th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="No: activate to sort column ascending" style="width: 96px;"><div class="DataTables_sort_wrapper">No<span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span></div></th><th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Product: activate to sort column ascending" style="width: 353px;"><div class="DataTables_sort_wrapper">Servicio<span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span></div></th><th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 106px;" aria-label="Price: activate to sort column ascending"><div class="DataTables_sort_wrapper">Precio<span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span></div></th><th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Quantity: activate to sort column ascending" style="width: 149px;"><div class="DataTables_sort_wrapper">Empresa<span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span></div></th><th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 108px;" aria-label="Sales: activate to sort column ascending"><div class="DataTables_sort_wrapper">Estado de pago<span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span></div></th><th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 159px;" aria-sort="descending" aria-label="Date: activate to sort column ascending"><div class="DataTables_sort_wrapper">Fecha<span class="DataTables_sort_icon css_right ui-icon ui-icon-triangle-1-s"></span></div></th><th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 136px;"><div class="DataTables_sort_wrapper">Avance<span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span></div></th></tr>
+                <tr>
+                  <th>No</th>
+                  <th>Product</th>
+                  <th>Price</th>
+                  <th>Quantity</th>
+                  <th>Sales</th>
+                  <th>Date</th>
+                  <th>Status</th>
+                </tr>
               </thead>
-              
-
-            <tbody role="alert" aria-live="polite" aria-relevant="all">
-            <% @servicios.each do |servicio| %>
+              <tbody role="alert" aria-live="polite" aria-relevant="all">
+                <% @servicios.each do |servicio| %>
                 <tr class="odd">
                   <td><%= servicio.id %></td>
                   <td><%= servicio.nombre %></td>
@@ -33,26 +38,31 @@
                   <td><%= servicio.pagado %></td>
                   <td><%= servicio.creacion %></td>
                   <td><%= servicio.avance %></td>
- 
-                  
-                  <td><%= link_to 'Edit', edit_servicio_path(servicio), :class=>"btn btn-warning btn-sm "%></td>
-                  <td><%= button_to "Eliminar", servicio, :method=>:delete, :class=>:destroy, :class =>"btn btn-danger btn-sm ", data: { confirm: 'Are you sure?' }  %></td>
-            
-                
+
+
+
+
+                  <td> <%= link_to '<i class="fa fa-eye fa-lg"></i>'.html_safe, servicio_path(servicio) %></td>
+                  <td><%= link_to '<i class="fa fa-edit fa-lg "></i>'.html_safe, edit_servicio_path(servicio) %></td>
+
+                  <td><%= link_to '<i class="fa fa-trash-o fa-lg"></i>'.html_safe,servicio, method: :delete %></td>
+                  admin
+
+                  <!--<td><%= link_to 'Detalles', servicio, :class => "fa fa-eye fa-lg" %></td>
+                  <td><%= link_to 'Edit', edit_servicio_path(servicio), :class=>"fa fa-edit fa-lg "%></td>
+                  <td><%= button_to "Eliminar", servicio, :method=>:delete, :class=>:destroy, :class =>"fa fa-trash-o fa-lg", data: { confirm: 'Are you sure?' }  %></td>-->
+
+
                 </tr>
-                    <% end %>
-                </tbody>
-                </table>
-                </div>
+                <% end %>
+              </tbody>              
+            </table>
+          </div><!-- /.padding-md -->
+        </div><!-- /panel -->
 
 
 
+  
 
 
 
-
-
-
-
-
-<%= link_to 'New Servicio', new_servicio_path %>
