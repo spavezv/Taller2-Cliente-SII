@@ -1,4 +1,4 @@
-<%= simple_form_for(@servicio, html: {class:"form-horizontal form-border no-margin"}) do |f| %>
+<%= form_for(@servicio, html: {class:"form-horizontal form-border no-margin"}) do |f| %>
   <% if @servicio.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@servicio.errors.count, "error") %> prohibited this servicio from being saved:</h2>
@@ -12,39 +12,11 @@
   <% end %>
 
 
-
- <!-- <div class="form-group">
-    <%= f.label :nombre %><br>
-    <%= f.text_field :nombre %>
-  </div>
-  <div class="field">
-    <%= f.label :id_empresa %><br>
-    <%= f.number_field :id_empresa %>
-  </div>
-  <div class="field">
-    <%= f.label :creacion %><br>
-    <%= f.date_select :creacion %>
-  </div>
-  <div class="field">
-    <%= f.label :precio %><br>
-    <%= f.text_field :precio %>
-  </div>
-  <div class="field">
-    <%= f.label :pagado %><br>
-    <%= f.check_box :pagado %>
-  </div>
-  <div class="field">
-    <%= f.label :avance %><br>
-    <%= f.number_field :avance %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div> -->
   
   <div class="panel panel-default">
     <div class="panel-body" >
       <div class="form-group">
-      <label class="ontrol-label col-lg-2">Nombre servicio</label>
+      <label class="control-label col-lg-2">Nombre servicio</label>
         
         <div class="col-lg-6">
           <%= f.text_field :nombre, :class => "form-control input-sm", :placeholder =>"Ingrese el nombre" %>
@@ -56,7 +28,7 @@
     
 
     <div class="form-group">
-    <label class="ontrol-label col-lg-2">Empresa</label>
+    <label class="control-label col-lg-2">Empresa</label>
                 
         <div class="col-lg-6">
           <%= f.number_field :id_empresa, :class => "form-control input-sm", :data_type =>"digits" %>
@@ -66,7 +38,7 @@
 
 
     <div class="form-group">
-         <label class="ontrol-label col-lg-2">Creacion</label>            
+         <label class="control-label col-lg-2">Creacion</label>            
         <div class="col-lg-6">
            <%= f.date_select :creacion, :class =>"form-control input-sm" %>
          
@@ -74,33 +46,26 @@
     </div><!-- /form-group -->    
 
     <div class="form-group">
-        <label class="ontrol-label col-lg-2">Precio</label>
+        <label class="control-label col-lg-2">Precio</label>
                        
         <div class="col-lg-6">
-           <%= f.text_field :precio, :class => "form-control input-sm" %>
+           <%= f.text_field :precio, :class => "form-control " %>
           
         </div><!-- /.col -->
     </div><!-- /form-group -->
 
-
     <div class="form-group">
-        <label class="ontrol-label col-lg-2">Servicio pagado</label>
-                                       
-        <div class="col-lg-6">
-           <%= f.collection_check_boxes :pagado, [[true, 'Yes'] ,[false, 'No']], :first, :last,:class => "form-control input-sm" %>
-       
-        </div><!-- /.col -->                    
+        <label class="control-label col-lg-2">Estado de deuda</label>
+            
+
+        <div class="col-lg-6 ">             
+             <%= select(:servicio,:pagado , [['Pagado', 1], ['No pagado', 0]], :class => "choosen-single") %>
+
+        </div>                                       
+  
     </div><!-- /form-group -->
 
 
-    <div class="form-group">
-        <label class="ontrol-label col-lg-2">Avance</label>
-                       
-        <div class="col-lg-6">
-           <%= f.text_field :avance, :class => "form-control input-sm" %>
-          
-        </div><!-- /.col -->
-    </div><!-- /form-group -->
  
 
 
@@ -119,6 +84,19 @@
   </div>                 
 </div>
 
+
+
+
+
+
+
+
+
+
 <% end %>
+
+
+
+
 
 

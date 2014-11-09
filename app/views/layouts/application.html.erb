@@ -3,7 +3,10 @@
 <head>
   <title>Taller2ClienteSii</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag "application" %>  
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <link rel="stylesheet" href="http://railsgirls.com/assets/bootstrap.css">
+  <script src="js/jquery.dataTables.min.js"></script>
   <%= csrf_meta_tags %>
 </head>
 <% if usuario_signed_in? %>
