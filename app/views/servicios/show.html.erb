@@ -1,37 +1,62 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @servicio.nombre %>
-</p>
+<h1 align="center" style="position:relative ;left:-100px"> Servicio</h1>
+<%= form_for(@servicio, html: {class:"form-horizontal form-border no-margin"}) do |f| %>
+  <% if @servicio.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@servicio.errors.count, "error") %> prohibited this servicio from being saved:</h2>
 
-<p>
-  <strong>Id empresa:</strong>
-  <%= @servicio.id_empresa %>
-</p>
-
-<p>
-  <strong>Creacion:</strong>
-  <%= @servicio.creacion %>
-</p>
-
-<p>
-  <strong>Precio:</strong>
-  <%= @servicio.precio %>
-</p>
-
-<p>
-  <strong>Pagado:</strong>
-  <%= @servicio.pagado %>
-</p>
-
-<p>
-  <strong>Avance:</strong>
-  <%= @servicio.avance %>
-</p>
-
-<%= link_to 'Edito', edit_servicio_path(@servicio) %> |
-<%= link_to 'Back', servicios_path %>
+      <ul>
+      <% @servicio.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
 
 
+<!--
+  <div class="panel panel-default">
+    <div class="panel-body" >
+      <div class="form-group">
+      <label class="control-label col-lg-2">Nombre servicio</label>
+        
+        <div class="col-lg-6">
+         <input type="text" class="form-control input-sm"  value="<%= @servicio.nombre %>" disabled ="true">
+ 
+        
+        </div>
+      </div>-->
+    
 
+
+    <div class="panel panel-default fadeInDown animation-delay2">
+      <div class="panel-heading">
+        Datos de la empresa:
+      </div>
+      <div class="panel-body">
+        <td>Nombre: <%= @servicio.nombre %></td><br>
+        <td>Id empresa: <%= @servicio.id_empresa %></td><br>
+        <td>Fecha de creacion: <%= @servicio.creacion %></td><br>
+        <% if @servicio.pagado? %>
+
+            <td>Estado de deuda: Pagado</td><br>
+        <%else%>
+           <td>Estado de deuda: No pagado</td><br>
+         <% end %>  
+        <td>Precio del servicio: $ <%= @servicio.precio %></td><br>
+        <td>Avance: </td><br>
+        
+       
+
+      </div>
+      <div class="actions" style="position:relative; top:50px ;left:300px" >
+        <a href="/servicios" class="btn btn-warning">
+         <i class="fa fa-chevron-left"></i>
+            Volver
+        </a>  
+       <%= f.submit :Aceptar, :class => "btn btn-success"%>
+      </div>  
+    </div><!-- /panel -->
+
+<% end %>
