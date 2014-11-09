@@ -1,16 +1,8 @@
-  <script>
-    $(function  ()  {
-      $('#dataTable').dataTable( {
-        "bJQueryUI": true,
-        "sPaginationType": "full_numbers"
-      });
-  </script>
-
-
 <h1 style="position:relative ;left:300px">Lista de servicios</h1>
 
 
-          <div class="panel panel-default table-responsive">
+</div><!-- /panel -->
+        <div class="panel panel-default table-responsive">
           <div class="panel-heading">
             Data Table
             <span class="label label-info pull-right">790 Items</span>
@@ -28,41 +20,43 @@
                   <th>Status</th>
                 </tr>
               </thead>
-              <tbody role="alert" aria-live="polite" aria-relevant="all">
-                <% @servicios.each do |servicio| %>
-                <tr class="odd">
-                  <td><%= servicio.id %></td>
-                  <td><%= servicio.nombre %></td>
-                  <td><%= servicio.precio %></td>
-                  <td><%= servicio.id_empresa %></td>
-                  <td><%= servicio.pagado %></td>
-                  <td><%= servicio.creacion %></td>
-                  <td><%= servicio.avance %></td>
-
-
-
-
-                  <td> <%= link_to '<i class="fa fa-eye fa-lg"></i>'.html_safe, servicio_path(servicio) %></td>
-                  <td><%= link_to '<i class="fa fa-edit fa-lg "></i>'.html_safe, edit_servicio_path(servicio) %></td>
-
-                  <td><%= link_to '<i class="fa fa-trash-o fa-lg"></i>'.html_safe,servicio, method: :delete %></td>
-                  admin
-
-                  <!--<td><%= link_to 'Detalles', servicio, :class => "fa fa-eye fa-lg" %></td>
-                  <td><%= link_to 'Edit', edit_servicio_path(servicio), :class=>"fa fa-edit fa-lg "%></td>
-                  <td><%= button_to "Eliminar", servicio, :method=>:delete, :class=>:destroy, :class =>"fa fa-trash-o fa-lg", data: { confirm: 'Are you sure?' }  %></td>-->
-
-
+              <tbody>
+                <tr>
+                  <td>#1001</td>
+                  <td>Leather Bag</td>
+                  <td>$89</td>
+                  <td>30</td>
+                  <td>187</td>
+                  <td>Oct 08,2013</td>
+                  <td><span class="label label-success">In Stock</span></td>
                 </tr>
-                <% end %>
-              </tbody>              
+                <tr>
+                  <td>#1002</td>
+                  <td>Brown Sunglasses <span class="label label-success m-left-xs">Best Seller</span> </td>
+                  <td>$120</td>
+                  <td>0</td>
+                  <td>861</td>
+                  <td>Oct 07,2013</td>
+                  <td><span class="label label-danger">Sold Out</span></td>
+                </tr>
+                <tr>
+                  <td>#1003</td>
+                  <td>Casual Boots</td>
+                  <td>$99</td>
+                  <td>100</td>
+                  <td>12</td>
+                  <td>Oct 06,2013</td>
+                  <td><span class="label label-success">In Stock</span></td>
+                </tr>
+              </tbody>
             </table>
-          </div><!-- /.padding-md -->
         </div><!-- /panel -->
-
-
-
-  
-
-
-
+<script>
+    $(function  ()  {
+      $('#dataTable').dataTable( {
+        "bJQueryUI": true,
+        "sPaginationType": "full_numbers",
+        "bDestroy": true
+      });
+    });
+  </script>

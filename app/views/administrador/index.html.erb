@@ -11,9 +11,7 @@
               <th>Nombre fantasia</th>
               <th>Nombre comercial</th>
               <th>Correo</th>
-              <th>Web</th>
-              <th>Telefono</th>
-              <th>Duracion</th>
+
             </tr>
           </thead>
           <tbody>
@@ -22,13 +20,10 @@
           <td><%= usuario.id %></td>
           <td><%= usuario.email %></td>
           <td><%= usuario.tipo_de_usuario %></td>
-          <td><%= link_to 'Detalles', usuario %></td>
-          <td><%= link_to 'Editar', edit_empresa_path(empresa) %></td>
-          <td><%= link_to 'Eliminar', usuario, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
         </tr>
             <% end %>
           </tbody>
         </table>
         <br>
-        <%= link_to 'Nueva empresa', new_empresa_path %>
   </div>

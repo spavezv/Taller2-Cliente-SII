@@ -8,7 +8,7 @@
 </head>
 <% if usuario_signed_in? %>
 
-<body>
+<body data-no-turbolink>
 
 	<div id="wrapper" class="preload">
 		<div id="top-nav" class="fixed skin-6 default">           
@@ -210,6 +210,19 @@
 								</span>
 								<span class="menu-hover"></span>
 							</a>
+							<ul>
+								<li>
+									<a href="">
+										Agregar
+									</a>
+								</li>
+								<li>
+									<a href="/servicios/new">
+										Listar 
+									</a>
+								</li>
+
+							</ul>
 						</li>
 						<!--Usuaio administrador-->
 						<% elsif current_usuario.tipo_de_usuario == 2 %>
@@ -224,6 +237,29 @@
 								<span class="menu-hover"></span>
 							</a>
 						</li>
+						<li>
+							<a href="#">
+								<span class="menu-icon">
+									<i class="fa fa-tasks fa-lg"></i> 
+								</span>
+								<span class="text">
+									Servicio
+								</span>
+								<span class="menu-hover"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li>
+									<a href="/servicios">
+										Mis servicios
+									</a>
+								</li>
+								<li>
+									<a href="/servicios/new">
+										Nuevo servicio
+									</a>
+								</li>
+							</ul>
+						</li>	
 						<li>
 							<a href="#">
 								<span class="menu-icon">
@@ -252,45 +288,9 @@
 								</li>
 							</ul>
 						</li>
-						<li>
-							<a href="#">
-								<span class="menu-icon">
-									<i class="fa fa-tasks fa-lg"></i> 
-								</span>
-								<span class="text">
-									Servicio
-								</span>
-								<span class="menu-hover"></span>
-							</a>
-							<ul class="dropdown-menu">
-								<li>
-									<a href="/servicios">
-										Mis servicios
-									</a>
-								</li>
-								<li>
-									<a href="/servicios/new">
-										Nuevo servicio
-									</a>
-								</li>
-
-							</ul>
-						</li>						
-
 						<!--Usuaio ejecutante-->
 
 						<% elsif current_usuario.tipo_de_usuario == 3 %>
-						<li>
-							<a href="#">
-								<span class="menu-icon">
-									<i class="fa fa-desktop fa-lg"></i> 
-								</span>
-								<span class="text">
-									Empresa
-								</span>
-								<span class="menu-hover"></span>
-							</a>
-						</li>
 						<li>
 							<a href="#">
 								<span class="menu-icon">
@@ -314,7 +314,6 @@
 								</li>
 							</ul>
 						</li>
-
 						<!--Usuaio cliente-->
 
 						<% elsif current_usuario.tipo_de_usuario == 4 %>
@@ -324,22 +323,10 @@
 									<i class="fa fa-desktop fa-lg"></i> 
 								</span>
 								<span class="text">
-										Empresas 
+										Servicios 
 								</span>
 								<span class="menu-hover"></span>
 							</a>
-							<ul class="dropdown-menu">
-								<li>
-									<a href="/empresas">
-										Suscrito
-									</a>
-								</li>
-								<li>
-									<a href="/empresas">
-										Otras Empresas
-									</a>
-								</li>
-							</ul>
 						</li>
 						<%end%>
 					</ul>
