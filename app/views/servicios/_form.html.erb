@@ -44,21 +44,43 @@
   <div class="panel panel-default">
     <div class="panel-body" >
       <div class="form-group">
-      <label class="ontrol-label col-lg-2">Nombre servicio</label>
-        
-        <div class="col-lg-6">
+        <%= f.label :nombre_Servico, :class => "ontrol-label col-lg-3" %><br>
+        <div class="col-lg-4">
           <%= f.text_field :nombre, :class => "form-control input-sm", :placeholder =>"Ingrese el nombre" %>
       
         </div><!-- /.col -->
       </div><!-- /form-group -->
 
-
+    <!--<div class="form-group">
+            <%= f.label :codigo_empresa, :class => "control-label col-lg-3" %><br>
+            <label class="control-label col-lg-3">Región</label>
+            <div class="col-lg-9">
+              <select type="text" class="form-control chzn-select" id="empresa_region" name="empresa[region]">
+                <option> </option>
+                <option>XV - Arica y Parinacota</option>
+                <option>I - Tarapacá</option>
+                <option>II - Antofagasta</option>
+                <option>III - Atacama</option>
+                <option>IV - Coquimbo</option>
+                <option>V - Valparaíso</option>
+                <option>VI - O'Higgins</option>
+                <option>VII - Maule</option>
+                <option>VIII - BioBió</option>
+                <option>IX - Araucanía</option>
+                <option>XIV - Los Ríos</option>
+                <option>X - Los Lagos</option>
+                <option>XI - Aysén</option>
+                <option>XII - Magallanes</option>
+                <option>RM - Metropolitana</option>
+              </select>
+            <div class="seperator"></div>
+        </div>
+      </div><!-- /form-group -->
     
 
     <div class="form-group">
-    <label class="ontrol-label col-lg-2">Empresa</label>
-                
-        <div class="col-lg-6">
+        <%= f.label :id_empresa, :class => "control-label col-lg-3" %><br>                
+        <div class="col-lg-2">
           <%= f.number_field :id_empresa, :class => "form-control input-sm", :data_type =>"digits" %>
         
         </div><!-- /.col -->
@@ -66,17 +88,16 @@
 
 
     <div class="form-group">
-         <label class="ontrol-label col-lg-2">Creacion</label>            
-        <div class="col-lg-6">
+        <%= f.label :creacion, :class => "control-label col-lg-3" %><br>                
+        <div class="col-lg-9">
            <%= f.date_select :creacion, :class =>"form-control input-sm" %>
          
         </div><!-- /.col -->
     </div><!-- /form-group -->    
 
     <div class="form-group">
-        <label class="ontrol-label col-lg-2">Precio</label>
-                       
-        <div class="col-lg-6">
+        <%= f.label :precio, :class => "control-label col-lg-3" %><br>                
+        <div class="col-lg-2">
            <%= f.text_field :precio, :class => "form-control input-sm" %>
           
         </div><!-- /.col -->
@@ -84,9 +105,8 @@
 
 
     <div class="form-group">
-        <label class="ontrol-label col-lg-2">Servicio pagado</label>
-                                       
-        <div class="col-lg-6">
+        <%= f.label :servicio_pagado, :class => "control-label col-lg-3" %><br>                               
+        <div class="col-lg-2">
            <%= f.collection_check_boxes :pagado, [[true, 'Yes'] ,[false, 'No']], :first, :last,:class => "form-control input-sm" %>
        
         </div><!-- /.col -->                    
@@ -94,9 +114,8 @@
 
 
     <div class="form-group">
-        <label class="ontrol-label col-lg-2">Avance</label>
-                       
-        <div class="col-lg-6">
+        <%= f.label :avance, :class => "control-label col-lg-3" %><br>                
+        <div class="col-lg-2">
            <%= f.text_field :avance, :class => "form-control input-sm" %>
           
         </div><!-- /.col -->
@@ -111,7 +130,7 @@
   <div class="actions" style="position:relative; top:50px ;left:300px" >
     <a href="/servicios" class="btn btn-warning">
       <i class="fa fa-chevron-left"></i>
-      Volver
+      Back
     </a>  
     <%= f.submit :Aceptar, :class => "btn btn-success"%>
     
