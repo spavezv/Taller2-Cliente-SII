@@ -1,1 +1,29 @@
-vista del super admin
+  <div class="panel panel-default">
+        <div class="panel-heading">
+          Usuarios
+        </div>
+        <div class="panel-body">
+          Total de compañias registradas en el sistema.
+        </div>
+        <table class="table table-hover table-striped">
+          <thead>
+            <tr>
+              <th>Nombre fantasia</th>
+              <th>Nombre comercial</th>
+              <th>Correo</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <% @usuarios.each do |usuario| %>
+        <tr>
+          <td><%= usuario.id %></td>
+          <td><%= usuario.email %></td>
+          <td><%= usuario.tipo_de_usuario %></td>
+
+        </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <br>
+  </div>
