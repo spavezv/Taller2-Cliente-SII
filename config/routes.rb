@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get "ejecutante/index" => "ejecutante#index"
   get "administrador/index" => "administrador#index"
   get "super_administrador/index" => "super_administrador#index"
+  get "super_administrador/filtrarUsuarios/:id" => "super_administrador#filtrarUsuarios"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

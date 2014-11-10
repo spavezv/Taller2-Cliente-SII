@@ -1,5 +1,5 @@
 class AdministradorController < ApplicationController
-	before_action :authenticate_usuario!
+
 	respond_to :html, :xml, :json
 	def index
 		@usuarios = Usuario.all

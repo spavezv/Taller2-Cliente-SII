@@ -2,15 +2,11 @@
 <html lang="es">
 <head>
   <title>Taller2ClienteSii</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= stylesheet_link_tag "application" %>  
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <link rel="stylesheet" href="http://railsgirls.com/assets/bootstrap.css">
-  <script src="js/jquery.dataTables.min.js"></script>
   <%= csrf_meta_tags %>
 </head>
 <% if usuario_signed_in? %>
-
 <body data-no-turbolink>
 
 	<div id="wrapper" class="preload">
@@ -171,7 +167,7 @@
 
 						<% if current_usuario.tipo_de_usuario == 1 %>
 						<li>
-							<a href="#">
+							<a href="/super_administrador/index">
 								<span class="menu-icon">
 									<i class="fa fa-users fa-lg"></i> 
 								</span>
@@ -182,22 +178,22 @@
 							</a>
 							<ul class="dropdown-menu">
 								<li>
-									<a href="#">
+									<a href="/super_administrador/filtrarUsuarios/1">
 										Super Administradores
 									</a>
 								</li>
 								<li>
-									<a href="#">
+									<a href="/super_administrador/filtrarUsuarios/2">
 										Administradores
 									</a>
 								</li>
 								<li>
-									<a href="#">
+									<a href="/super_administrador/filtrarUsuarios/3">
 										Ejecutantes
 									</a>
 								</li>
 								<li>
-									<a href="#">
+									<a href="/super_administrador/filtrarUsuarios/4">
 										Clientes
 									</a>
 								</li>
@@ -213,18 +209,17 @@
 								</span>
 								<span class="menu-hover"></span>
 							</a>
-							<ul>
+							<ul class="dropdown-menu">
 								<li>
-									<a href="">
+									<a href="/servicios">
 										Agregar
 									</a>
 								</li>
 								<li>
 									<a href="/servicios/new">
-										Listar 
+										Listar
 									</a>
 								</li>
-
 							</ul>
 						</li>
 						<!--Usuaio administrador-->
