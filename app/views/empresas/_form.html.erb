@@ -1,4 +1,4 @@
-<%= form_for(@empresa) do |f| %>
+<%= form_for(@empresa, html: {class:"form-horizontal form-border no-margin"}) do |f| %>
 <% if @empresa.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@empresa.errors.count, "error") %> No se puede almacenar:</h2>
@@ -11,11 +11,9 @@
     </div>
 <% end %>
 
+<% if current_usuario.tipo_de_usuario == 1 %>
 <div class="panel panel-default">
               <form class="form-horizontal form-border no-margin" id="type-constraint" data-validate="parsley" novalidate="">
-                <div class="panel-heading">
-                  Ingresar empresa
-                </div>
                 <div class="panel-body">
                   <div class="form-group">
                     <label for="empresa_nombre_fantasia" class="control-label col-lg-3">Nombre de fantasía</label>
@@ -62,7 +60,7 @@
                   <div class="form-group">
                     <label class="control-label col-lg-3">Región</label>
                     <div class="col-lg-9">
-                    <select type="text" class="form-control chzn-select" id="empresa_region" name="empresa[region]">
+                    <select type="text" class="form-control chzn-select" id="empresa_region" name="empresa[region]" required>
                       <option> </option>
                       <option>XV - Arica y Parinacota</option>
                       <option>I - Tarapacá</option>
@@ -78,7 +76,7 @@
                       <option>X - Los Lagos</option>
                       <option>XI - Aysén</option>
                       <option>XII - Magallanes</option>
-                      <option>RM - Metropolitana</option>
+                      <option selected>RM - Metropolitana</option>
                     </select>
                       <div class="seperator"></div>
                     </div><!-- /.col -->
@@ -93,7 +91,7 @@
                   <div class="form-group">
                     <label class="control-label col-lg-3">Giro</label>
                     <div class="col-lg-9">
-                    <select type="text" class="form-control chzn-select" id="empresa_giro" name="empresa[giro]">
+                    <select type="text" class="form-control chzn-select" id="empresa_giro" name="empresa[giro]" required>
                       <option> </option>
                       <option>Agricultura, ganadería, caza y silvicultura</option>
                       <option>Pesca</option>
@@ -110,21 +108,21 @@
                       <option>Adm. Pública y defensa; planes de seg. Social afiliación obligatoria</option>
                       <option>Enseñanza</option>
                       <option>Servicios sociales y de salud</option>
-                      <option>Otras actividades de servicios comunitarias, sociales y personales</option>
+                      <option selected>Otras actividades de servicios comunitarias, sociales y personales</option>
                     </select>
                       <div class="seperator"></div>
                     </div><!-- /.col -->
                   </div><!-- /form-group -->
                   </div><!-- /panel-body -->
                 </div><!-- /panel-heading -->
-                <button name="commit" class="btn btn-success" type="submit">Crear empresa</button>
-              </form>
-               <div class="seperator"></div>
-              <a href="/empresas" class="btn btn-warning">
-  <i class="fa fa-chevron-left"></i>
-   Back
-</a>
+                <div align="center">
+                  <a href="/empresas" class="btn btn-warning"> <i class="fa fa-chevron-left"></i>Volver</a>
+                  <button name="commit" class="btn btn-success" type="submit">Aceptar</button>
+                </div>
+              </form>              
+             
             </div>
+  <% end %>          
 <% end %>
 
 

@@ -1,103 +1,68 @@
- 
-      <div class="padding-md">
-        <div class="row">
-          <div class="col-md-3 col-sm-3">
-            <div class="row">
-              <div class="col-xs-6 col-sm-12 col-md-6 text-center">
-                <a href="#">
-                  <img src="/assets/<%=@empresa.nombre_fantasia=%>.jpg" alt="User Avatar" class="img-thumbnail">
-                </a>
-                <div class="seperator"></div>
-                <div class="seperator"></div>
-              </div><!-- /.col -->
-              <div class="col-xs-6 col-sm-12 col-md-6">
-                <strong class="font-14"><%= @empresa.nombre_fantasia %></strong>
-                <small class="block text-muted">
-                  <%= @empresa.correo %>
-                </small> 
-                <div class="seperator"></div>
-                
-                <div class="seperator"></div>
-                <a href="#" class="social-connect tooltip-test facebook-hover" data-toggle="tooltip" data-original-title="Facebook"><i class="fa fa-facebook"></i></a>
-                <a href="#" class="social-connect tooltip-test twitter-hover" data-toggle="tooltip" data-original-title="Twitter"><i class="fa fa-twitter"></i></a>
-                <a href="#" class="social-connect tooltip-test google-plus-hover" data-toggle="tooltip" data-original-title="Google Plus"><i class="fa fa-google-plus"></i></a>
-                <div class="seperator"></div>
-                <div class="seperator"></div>
-              </div><!-- /.col -->
-            </div><!-- /.row -->
-            <div class="panel">
-              <div class="panel-body">
-                <div class="row">
-                  <div class="col-xs-4 text-center">
-                    <span class="block font-14">301</span>
-                    <small class="text-muted">Servicios</small>
-                  </div><!-- /.col -->
-                  <div class="col-xs-4 text-center">
-                    <span class="block font-14">129</span>
-                    <small class="text-muted">Tareas Pendientes</small>
-                  </div><!-- /.col -->
-                  <div class="col-xs-4 text-center">
-                    <span class="block font-14">2731</span>
-                    <small class="text-muted">Tareas Terminadas</small>
-                  </div><!-- /.col -->
-                </div><!-- /.row -->
-              </div>
-            </div><!-- /panel -->
-          </div><!-- /.col -->
-          <div class="col-md-9 col-sm-9">
-            <div class="tab-content">
-              <div class="tab-pane fade in active" id="overview">
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="panel panel-default fadeInDown animation-delay2">
-                      <div class="panel-heading">
-                        Datos de la empresa:
-                      </div>
-                      <div class="panel-body">
-                        <td>Web: <%= @empresa.correo %></td><br>
-                        <td>Teléfono: <%= @empresa.telefono %></td><br>
-                        <td>Dirección: <%= @empresa.direccion %></td><br>
-                        <td>Region: <%= @empresa.region %></td><br>
-                        <td>Giro: <%= @empresa.giro %></td>
-                           <% if current_usuario.tipo_de_usuario == 1 || current_usuario.tipo_de_usuario == 2 %>
-                              <%= link_to 'Edit', edit_empresa_path(@empresa) %> |
-                            <% end %>
-                      </div>
-                    </div><!-- /panel -->
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-        </div><!-- /.row -->    
-  </div><!-- /.padding-md -->
+<% if current_usuario.tipo_de_usuario == 1 %>
 
-   <div class="panel panel-default">
+<div class="panel panel-default fadeInDown animation-delay2">
+  <div class="panel-heading">
+    Datos de la empresa:
+  </div>
+  <div class="panel-body">
+    <td>Nombre de fantasía: <%= @empresa.nombre_fantasia %></td><br>
+    <td>Nombre comercial: <%= @empresa.nombre_comercial %></td><br>
+    <td>Email: <%= @empresa.correo %></td><br>
+    <td>Web: <%= @empresa.web %></td><br>
+    <td>Teléfono: <%= @empresa.telefono %></td><br>
+    <td>Dirección: <%= @empresa.direccion %></td><br>
+    <td>Region: <%= @empresa.region %></td><br>
+    <td>Representante: <%= @empresa.representante %></td><br>
+    <td>Giro: <%= @empresa.giro %></td>                  
+    
+    <%= link_to 'Edit', edit_empresa_path(@empresa) %> </div>
+
+<% elsif current_usuario.tipo_de_usuario == 2 %>
+
+  <div class="panel panel-default fadeInDown animation-delay2">
+    <div class="panel-heading">
+      Datos de la empresa:
+    </div>
+    <div class="panel-body">
+      <td>Nombre de fantasía: <%= @empresa.nombre_fantasia %></td><br>
+      <td>Nombre comercial: <%= @empresa.nombre_comercial %></td><br>
+      <td>Email: <%= @empresa.correo %></td><br>
+      <td>Web: <%= @empresa.web %></td><br>
+      <td>Teléfono: <%= @empresa.telefono %></td><br>
+      <td>Dirección: <%= @empresa.direccion %></td><br>
+      <td>Region: <%= @empresa.region %></td><br>
+      <td>Representante: <%= @empresa.representante %></td><br>
+      <td>Giro: <%= @empresa.giro %></td>                  
+
+      <%= link_to 'Edit', edit_empresa_path(@empresa) %> </div>
+
+<% elsif current_usuario.tipo_de_usuario == 3 %>
+  <div class="panel panel-default fadeInDown animation-delay2">
+    <div class="panel-heading">
+      Datos de la empresa:
+    </div>
+    <div class="panel-body">
+      <td>Nombre de fantasía: <%= @empresa.nombre_fantasia %></td><br>
+      <td>Email: <%= @empresa.correo %></td><br>
+      <td>Web: <%= @empresa.web %></td><br>
+      <td>Dirección: <%= @empresa.direccion %></td><br>
+      <td>Region: <%= @empresa.region %></td><br>
+      <td>Giro: <%= @empresa.giro %></td>                  
+
+      <% elsif current_usuario.tipo_de_usuario == 4 %>
+      <div class="panel panel-default fadeInDown animation-delay2">
         <div class="panel-heading">
-          Servicios
+          Datos de la empresa:
         </div>
         <div class="panel-body">
-          Servicios entregados aqui sdsfsdfsdffs
-        </div>
-        <table class="table table-hover table-striped">
-          <thead>
-            <tr>
-              <th>Servicio</th>
-              <th>Servicio</th>
-              <th>Servicio</th>
-              <th>Servicio</th>
+          <td>Nombre de fantasía: <%= @empresa.nombre_fantasia %></td><br>
+          <td>Email: <%= @empresa.correo %></td><br>
+          <td>Web: <%= @empresa.web %></td><br>
+          <td>Dirección: <%= @empresa.direccion %></td><br>
+          <td>Region: <%= @empresa.region %></td><br>
+<% end %>
 
-            </tr>
-          </thead>
-          <tbody>
-            
-          </tbody>
-        </table>
-        <br>
-        
-  </div>
 <a href="/empresas" class="btn btn-warning">
-<i class="fa fa-chevron-left"></i>
-   Atrás
+  <i class="fa fa-chevron-left"></i>
+  Atrás
 </a>
