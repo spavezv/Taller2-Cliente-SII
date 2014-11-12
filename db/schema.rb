@@ -36,7 +36,8 @@ ActiveRecord::Schema.define(version: 20141105022643) do
     t.date     "creacion"
     t.string   "precio"
     t.boolean  "pagado"
-    t.integer  "avance"
+    t.integer  "tareas_cantidad"
+    t.integer  "tareas_terminadas"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -47,7 +48,7 @@ ActiveRecord::Schema.define(version: 20141105022643) do
     t.date     "creacion"
     t.date     "termino"
     t.text     "descripcion"
-    t.integer  "servicio"
+    t.integer  "servicio_id"
     t.integer  "ejecutante"
     t.datetime "created_at"
     t.datetime "updated_at"

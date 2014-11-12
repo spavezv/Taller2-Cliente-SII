@@ -6,7 +6,8 @@ class CreateServicios < ActiveRecord::Migration
       t.date :creacion
       t.string :precio
       t.boolean :pagado
-      t.integer :avance
+      t.integer :tareas_cantidad
+      t.integer :tareas_terminadas
 
       t.timestamps
     end

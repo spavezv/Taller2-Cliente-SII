@@ -6,7 +6,7 @@ class CreateTareas < ActiveRecord::Migration
       t.date :creacion
       t.date :termino
       t.text :descripcion
-      t.integer :servicio
+      t.integer :servicio_id
       t.integer :ejecutante
 
       t.timestamps
