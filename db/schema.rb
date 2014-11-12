@@ -17,15 +17,15 @@ ActiveRecord::Schema.define(version: 20141105022643) do
   enable_extension "plpgsql"
 
   create_table "empresas", force: true do |t|
-    t.string   "nombre_fantasia"
-    t.string   "nombre_comercial"
+    t.string   "nombre_fantasia",  limit: nil
+    t.string   "nombre_comercial", limit: nil
     t.text     "correo"
     t.text     "web"
     t.integer  "telefono"
     t.text     "direccion"
-    t.string   "region"
+    t.string   "region",           limit: nil
     t.text     "representante"
-    t.string   "giro"
+    t.string   "giro",             limit: nil
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -42,8 +42,8 @@ ActiveRecord::Schema.define(version: 20141105022643) do
   end
 
   create_table "tareas", force: true do |t|
-    t.string   "nombre"
-    t.string   "estado"
+    t.string   "nombre",      limit: nil
+    t.string   "estado",      limit: nil
     t.date     "creacion"
     t.date     "termino"
     t.text     "descripcion"
@@ -54,17 +54,17 @@ ActiveRecord::Schema.define(version: 20141105022643) do
   end
 
   create_table "usuarios", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
+    t.string   "email",                  limit: nil, default: "", null: false
+    t.string   "encrypted_password",     limit: nil, default: "", null: false
+    t.string   "reset_password_token",   limit: nil
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",                      default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.integer  "tipo_de_usuario",        default: 4,  null: false
+    t.string   "current_sign_in_ip",     limit: nil
+    t.string   "last_sign_in_ip",        limit: nil
+    t.integer  "tipo_de_usuario",                    default: 4,  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

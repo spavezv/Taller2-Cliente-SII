@@ -4,7 +4,8 @@ class ServiciosController < ApplicationController
 
   def index
     @servicios = Servicio.all
-    respond_with(@servicios)
+    @empresas = Empresa.all
+    respond_with(@servicios, @empresas)
   end
 
   def show
