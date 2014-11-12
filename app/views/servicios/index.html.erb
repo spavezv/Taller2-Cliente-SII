@@ -24,7 +24,7 @@
       <% @servicios.each do |servicio| %>
       <tr>
         <td><%= servicio.nombre %></td>
-        <td><%= @empresas[1] %></td>
+        <td><%= servicio.id_empresa %></td>
         <td><%= servicio.creacion %></td>
         <td>$<%= servicio.precio %></td>
         <td><%= servicio.pagado %></td>
@@ -40,7 +40,7 @@
   </table>
 </div><!-- /panel -->
 
-<%= link_to "Nuevo servicio", 'servicios/new', class: "btn btn-primary" %>
+
 
 <script>
     $(function  ()  {

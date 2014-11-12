@@ -18,10 +18,13 @@ class ServiciosController < ApplicationController
   end
 
   def edit
+    @servicio = Servicio.find(params[:id])
+    respond_with(@servicio)
   end
 
   def create
     @servicio = Servicio.new(servicio_params)
+    @servicio.creacion = Time.now
     @servicio.save
     respond_with(@servicio)
   end

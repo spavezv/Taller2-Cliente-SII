@@ -1,6 +1,69 @@
-<h1 align="center" style="position:relative ;left:-100px">Editar servicio</h1>
+<%= form_for(@servicio, html: {class:"form-horizontal form-border no-margin"}) do |f| %>
+  <% if @servicio.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@servicio.errors.count, "error") %> No se puede almacenar:</h2>
 
-<%= render 'form' %>
+      <ul>
+      <% @servicio.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<!--Si el usuario es administrador, puede crear un servicio-->
+<% if current_usuario.tipo_de_usuario == 2  %>
+<div class="panel panel-default">
+  <form class="form-horizontal form-border no-margin" id="type-constraint" data-validate="parsley" novalidate="">
+    <div class="panel-body">
+      <!--Nombre del servicio-->
+      <div class="form-group">
+        <label for="servicio_nombre" class="control-label col-lg-3">Nombre del servicio</label>
+        <div class="col-lg-9">
+          <input type="text" class="form-control input-sm" data-required="true" placeholder="Nombre del servicio" id="servicio_nombre" name="servicio[nombre]" value="<%=@servicio.nombre=%>" required>
+          <div class="seperator"></div>
+        </div><!-- /.col -->
+      </div><!-- /form-group -->
+ 
+  <!--Precio del servicio-->
+      <div class="form-group">
+        <label for="servicio_precio" class="control-label col-lg-3">Precio del Servicio</label>
+        <div class="col-lg-9">
+          <div class="input-group">
+            <span class="input-group-addon">$</span>
+            <input type="text" class="form-control input-sm" data-type="digits" placeholder="Precio del Servicio" id="servicio_precio" name="servicio[precio]" value="<%=@servicio.precio=%>"required>
+          </div>
+          <div class="seperator"></div>
+        </div><!-- /.col -->
+      </div><!-- /form-group -->
 
-<!--<%= link_to 'Show', @servicio %> |
-<%= link_to 'Back', servicios_path %>-->
+<!--Estado de la deuda del servicio-->
+    <div class="form-group">
+      <label class="control-label col-lg-3">Estado de la deuda</label>
+      <div class="col-lg-9">
+      <select type="text" class="form-control chzn-select" id="servicio_pagado" value="<%=@servicio.pagado=%>" name="servicio[pagado]" required>
+        <option value="1">Pagado</option>
+        <option value="0"selected>No pagado</option>
+      </select>
+      </div><!-- /.col -->
+    </div><!-- /form-group -->
+
+  </div><!-- /panel-body -->
+
+  <div align="center">
+    <a href="/servicios" class="btn btn-warning">
+      <i class="fa fa-chevron-left"></i>Volver</a>  
+    <button name="commit" class="btn btn-success" type="submit">Aceptar</button>
+  </div>  
+
+  </div>                 
+</div>
+
+<% end %>
+
+<% end %>
+
+
+
+
+
+

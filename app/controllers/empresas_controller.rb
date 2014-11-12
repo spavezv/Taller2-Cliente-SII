@@ -18,6 +18,7 @@ class EmpresasController < ApplicationController
 
   def edit
      @empresa = Empresa.find(params[:id])
+     respond_with(@empresa)
   end
 
   def create

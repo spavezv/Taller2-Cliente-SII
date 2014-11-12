@@ -1,7 +1,7 @@
 <%= form_for(@servicio, html: {class:"form-horizontal form-border no-margin"}) do |f| %>
   <% if @servicio.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@servicio.errors.count, "error") %> prohibited this servicio from being saved:</h2>
+      <h2><%= pluralize(@servicio.errors.count, "error") %> No se puede almacenar:</h2>
 
       <ul>
       <% @servicio.errors.full_messages.each do |message| %>
@@ -10,88 +10,55 @@
       </ul>
     </div>
   <% end %>
-
-
-  
-  <div class="panel panel-default">
-    <div class="panel-body" >
+<!--Si el usuario es administrador, puede crear un servicio-->
+<% if current_usuario.tipo_de_usuario == 2  %>
+<div class="panel panel-default">
+  <form class="form-horizontal form-border no-margin" id="type-constraint" data-validate="parsley" novalidate="">
+    <div class="panel-body">
+      <!--Nombre del servicio-->
       <div class="form-group">
-      <label class="control-label col-lg-2">Nombre servicio</label>
-        
-        <div class="col-lg-6">
-          <%= f.text_field :nombre, :class => "form-control input-sm", :placeholder =>"Ingrese el nombre" %>
-      
+        <label for="servicio_nombre" class="control-label col-lg-3">Nombre del servicio</label>
+        <div class="col-lg-9">
+          <input type="text" class="form-control input-sm" data-required="true" placeholder="Nombre del servicio" id="servicio_nombre" name="servicio[nombre]" required>
+          <div class="seperator"></div>
+        </div><!-- /.col -->
+      </div><!-- /form-group -->
+ 
+  <!--Precio del servicio-->
+      <div class="form-group">
+        <label for="servicio_precio" class="control-label col-lg-3">Precio del Servicio</label>
+        <div class="col-lg-9">
+          <div class="input-group">
+            <span class="input-group-addon">$</span>
+            <input type="text" class="form-control input-sm" data-type="digits" placeholder="Precio del Servicio" id="servicio_precio" name="servicio[precio]" required>
+          </div>
+          <div class="seperator"></div>
         </div><!-- /.col -->
       </div><!-- /form-group -->
 
-
-    
-
+<!--Estado de la deuda del servicio-->
     <div class="form-group">
-    <label class="control-label col-lg-2">Empresa</label>
-                
-        <div class="col-lg-6">
-          <%= f.number_field :id_empresa, :class => "form-control input-sm", :data_type =>"digits" %>
-        
-        </div><!-- /.col -->
+      <label class="control-label col-lg-3">Estado de la deuda</label>
+      <div class="col-lg-9">
+      <select type="text" class="form-control chzn-select" id="servicio_pagado" name="servicio[pagado]" required>
+        <option value="1">Pagado</option>
+        <option value="0"selected>No pagado</option>
+      </select>
+      </div><!-- /.col -->
     </div><!-- /form-group -->
-
-
-    <div class="form-group">
-         <label class="control-label col-lg-2">Creacion</label>            
-        <div class="col-lg-6">
-           <%= f.date_select :creacion, :class =>"form-control input-sm" %>
-         
-        </div><!-- /.col -->
-    </div><!-- /form-group -->    
-
-    <div class="form-group">
-        <label class="control-label col-lg-2">Precio</label>
-                       
-        <div class="col-lg-6">
-           <%= f.text_field :precio, :class => "form-control " %>
-          
-        </div><!-- /.col -->
-    </div><!-- /form-group -->
-
-    <div class="form-group">
-        <label class="control-label col-lg-2">Estado de deuda</label>
-            
-
-        <div class="col-lg-6 ">             
-             <%= select(:servicio,:pagado , [['Pagado', 1], ['No pagado', 0]], :class => "choosen-single") %>
-
-        </div>                                       
-  
-    </div><!-- /form-group -->
-
-
- 
-
 
   </div><!-- /panel-body -->
 
-
-
-  <div class="actions" style="position:relative; top:50px ;left:300px" >
+  <div align="center">
     <a href="/servicios" class="btn btn-warning">
-      <i class="fa fa-chevron-left"></i>
-      Volver
-    </a>  
-    <%= f.submit :Aceptar, :class => "btn btn-success"%>
-    
+      <i class="fa fa-chevron-left"></i>Volver</a>  
+    <button name="commit" class="btn btn-success" type="submit">Aceptar</button>
+  </div>  
 
   </div>                 
 </div>
 
-
-
-
-
-
-
-
-
+<% end %>
 
 <% end %>
 
