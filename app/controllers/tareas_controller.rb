@@ -42,6 +42,6 @@ class TareasController < ApplicationController
     end
 
     def tarea_params
-      params.require(:tarea).permit(:nombre, :estado, :creacion, :termino, :descripcion, :servicio, :ejecutante)
+      params.require(:tarea).permit(:nombre, :estado, :creacion, :termino, :descripcion, :ejecutante)
     end
 end
