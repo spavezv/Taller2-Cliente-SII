@@ -46,7 +46,12 @@
     <div class="form-group">
          <label class="control-label col-lg-2">Creación</label>            
         <div class="col-lg-6">
-           <%= f.date_select :creacion, :class =>"form-control input-sm" %>
+           <div class="input-group">
+            <%= f.text_field :creacion, :class =>"datepicker form-control input-sm" %>
+            <span class="input-group-addon">
+              <i class="fa fa-calendar"></i>
+            </span>
+          </div>
          
         </div><!-- /.col -->
     </div><!-- /form-group -->    
@@ -55,7 +60,13 @@
     <div class="form-group">
          <label class="control-label col-lg-2">Término</label>            
         <div class="col-lg-6">
-           <%= f.date_select :termino, :class =>"form-control input-sm" %>
+          <div class="input-group">
+            <%= f.text_field :termino, :class =>"datepicker form-control input-sm" %>
+            <span class="input-group-addon">
+              <i class="fa fa-calendar"></i>
+            </span>
+          </div>
+
          
         </div><!-- /.col -->
     </div><!-- /form-group -->
@@ -93,5 +104,8 @@
 
   </div>                 
 </div>
+<script type="text/javascript">
+$(".datepicker").datepicker();
+</script>
 
 <% end %>
