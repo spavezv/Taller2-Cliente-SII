@@ -1,34 +1,37 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @tarea.nombre %>
-</p>
+<h1 align="center" style="position:relative ;left:-100px"> Tarea</h1>
+<%= form_for(@tarea, html: {class:"form-horizontal form-border no-margin"}) do |f| %>
+  <% if @tarea.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tarea.errors.count, "error") %> prohibited this tarea from being saved:</h2>
 
-<p>
-  <strong>Estado:</strong>
-  <%= @tarea.estado %>
-</p>
+      <ul>
+      <% @tarea.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>   
 
-<p>
-  <strong>Creacion:</strong>
-  <%= @tarea.creacion %>
-</p>
+    <div class="panel panel-default fadeInDown animation-delay2">
+      <div class="panel-heading">
+        Datos de la tarea:
+      </div>
+      <div class="panel-body">
+        <td>Nombre: <%= @tarea.nombre %></td><br>
+        <td>Estado: <%= @tarea.estado %></td><br>
+        <td>Fecha de creación: <%= @tarea.creacion %></td><br>
+        <td>Fecha de término: <%= @tarea.termino %></td><br>
+        <td>Descripción: <%= @tarea.descripcion %></td><br>
+        <td>Ejecutante: <%= @tarea.usuario.email %></td><br>        
+      </div>
+      <div class="actions" style="position:relative; top:50px ;left:300px" >
+        <a href="/tareas" class="btn btn-warning">
+         <i class="fa fa-chevron-left"></i>
+            Volver
+        </a>  
+       <%= f.submit :Aceptar, :class => "btn btn-success"%>
+      </div>  
+    </div><!-- /panel -->
 
-<p>
-  <strong>Termino:</strong>
-  <%= @tarea.termino %>
-</p>
-
-<p>
-  <strong>Descripcion:</strong>
-  <%= @tarea.descripcion %>
-</p>  
-
-<p>
-  <strong>Ejecutante:</strong>
-  <%= @tarea.usuario_id.email %>
-</p>
-
-<%= link_to 'Edit', edit_tarea_path(@tarea) %> |
-<%= link_to 'Back', tareas_path %>
+<% end %>

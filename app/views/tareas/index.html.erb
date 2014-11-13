@@ -28,7 +28,7 @@
         <td><%= tarea.nombre %></td>
         <td><%= tarea.estado %></td>
         <td><%= tarea.descripcion %></td>
-        <td><%= tarea.usuario_id %></td>
+        <td><%= tarea.usuario.email %></td>
         <td> <%= link_to '<i class="fa fa-eye fa-lg"></i>'.html_safe, tarea_path(tarea) %>
          <%= link_to '<i class="fa fa-edit fa-lg "></i>'.html_safe, edit_tarea_path(tarea) %>
          <%= link_to '<i class="fa fa-trash-o fa-lg"></i>'.html_safe,tarea, method: :delete %>
