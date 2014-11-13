@@ -1,1 +1,1 @@
-json.extract! @servicio, :id, :nombre, :id_empresa, :creacion, :precio, :pagado, :avance, :created_at, :updated_at
+json.extract! @servicio, :id, :nombre, :id_empresa, :creacion, :precio, :pagado, :tareas_cantidad, :tareas_terminadas

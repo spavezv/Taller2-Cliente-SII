@@ -30,10 +30,12 @@
         <td><%= servicio.pagado %></td>
         <td>
           <div class="progress">
-            <div class="progress-bar" style="width:<%= (servicio.tareas_terminadas*100)/servicio.tareas_cantidad %>%"></div>
+            <div class="progress-bar" style="width:<%= (servicio.tareas_terminadas*100)/(servicio.tareas_cantidad.nonzero? || 1) %>%"></div>
             </small>
           </div>
-          <small class="pull-right text-muted"><%= (servicio.tareas_terminadas*100)/servicio.tareas_cantidad %>%
+          <small class="pull-right text-muted"><%= (servicio.tareas_terminadas*100)/(servicio.tareas_cantidad.nonzero? || 1)
+
+           %>%
         </td>
       </tr>
       <% end %>

@@ -45,6 +45,6 @@ class ServiciosController < ApplicationController
     end
 
     def servicio_params
-      params.require(:servicio).permit(:nombre, :id_empresa, :creacion, :precio, :pagado, :avance)
+      params.require(:servicio).permit(:id, :nombre, :creacion, :precio, :pagado)
     end
 end
