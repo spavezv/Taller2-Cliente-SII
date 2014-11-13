@@ -1,37 +1,51 @@
-<div class="panel panel-default">
-        <div class="panel-heading">
-          Tareas
-        </div>
-        <div class="panel-body">
-          Total de tareas registradas en la empresa.
-        </div>
-        <table class="table table-hover table-striped">
-          <thead>
-            <tr>
-              <th>Nombre</th>
-              <th>Estado</th>
-              <th>Creación</th>
-              <th>Termino</th>
-              <th>Descripcion</th>
-              <th>Ejecutante</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @tareas.each do |tarea| %>
-        <tr>
-          <td><%= tarea.nombre %></td>
-          <td><%= tarea.estado %></td>
-          <td><%= tarea.creacion %></td>
-          <td><%= tarea.termino %></td>
-          <td><%= tarea.descripcion %></td>
-          <td><%= tarea.ejecutante %></td>
-          <td><%= link_to 'Detalles', tarea %></td>
-          <td><%= link_to 'Editar', edit_tarea_path(tarea) %></td>
-          <td><%= link_to 'Eliminar', tarea, method: :delete, data: { confirm: '¿Está seguro?' } %></td>
-        </tr>
-            <% end %>
-          </tbody>
-        </table>
-        <br>
-        <%= link_to 'Nueva Tarea', new_tarea_path %>
+
+</div><!-- /panel -->
+  <div class="panel panel-default table-responsive">
+ 
+</div><!-- /panel -->
+  <div class="panel panel-default table-responsive">
+ 
+  <div class="panel-heading">
+    Lista de tareas
+    <span class="label label-info pull-right"> <%= @tareas.length %> Items</span>
   </div>
+ 
+  <div class="padding-md clearfix">
+ 
+  <table class="table table-striped" id="dataTable">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Estado</th>
+        <th>Descripción</th>
+        <th>Ejecutante</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tareas.each do |tarea| %>
+      <tr>
+        <td><%= tarea.nombre %></td>
+        <td><%= tarea.estado %></td>
+        <td><%= tarea.descripcion %></td>
+        <td><%= tarea.usuario_id %></td>
+        <td> <%= link_to '<i class="fa fa-eye fa-lg"></i>'.html_safe, tarea_path(tarea) %>
+         <%= link_to '<i class="fa fa-edit fa-lg "></i>'.html_safe, edit_tarea_path(tarea) %>
+         <%= link_to '<i class="fa fa-trash-o fa-lg"></i>'.html_safe,tarea, method: :delete %>
+       </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div><!-- /panel -->
+ 
+ 
+ 
+<script>
+    $(function  ()  {
+      $('#dataTable').dataTable( {
+        "bJQueryUI": true,
+        "sPaginationType": "full_numbers"
+      });
+    });
+  </script>

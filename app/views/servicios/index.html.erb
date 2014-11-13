@@ -1,23 +1,24 @@
 
 </div><!-- /panel -->
   <div class="panel panel-default table-responsive">
-
+ 
+</div><!-- /panel -->
+  <div class="panel panel-default table-responsive">
+ 
   <div class="panel-heading">
     Lista de servicios
     <span class="label label-info pull-right"> <%= @servicios.length %> Items</span>
   </div>
-
+ 
   <div class="padding-md clearfix">
-
+ 
   <table class="table table-striped" id="dataTable">
     <thead>
       <tr>
         <th>Nombre</th>
         <th>Empresa</th>
-        <th>Creado</th>
-        <th>Precio</th>
-        <th>Pagado</th>
         <th>Avance</th>
+        <th>Acciones</th>
       </tr>
     </thead>
     <tbody>
@@ -25,9 +26,6 @@
       <tr>
         <td><%= servicio.nombre %></td>
         <td><%= servicio.id_empresa %></td>
-        <td><%= servicio.creacion %></td>
-        <td>$<%= servicio.precio %></td>
-        <td><%= servicio.pagado %></td>
         <td>
           <div class="progress">
             <div class="progress-bar" style="width:<%= (servicio.tareas_terminadas*100)/(servicio.tareas_cantidad.nonzero? || 1) %>%"></div>
@@ -37,14 +35,19 @@
 
            %>%
         </td>
+        <td> <%= link_to '<i class="fa fa-eye fa-lg"></i>'.html_safe, servicio_path(servicio) %>
+         <%= link_to '<i class="fa fa-edit fa-lg "></i>'.html_safe, edit_servicio_path(servicio) %>
+         <%= link_to '<i class="fa fa-trash-o fa-lg"></i>'.html_safe,servicio, method: :delete %>
+         <%= link_to '<i class="fa fa-plus fa-lg"></i>'.html_safe, new_tarea_path %>
+       </td>
       </tr>
       <% end %>
     </tbody>
   </table>
 </div><!-- /panel -->
-
-
-
+ 
+ 
+ 
 <script>
     $(function  ()  {
       $('#dataTable').dataTable( {
