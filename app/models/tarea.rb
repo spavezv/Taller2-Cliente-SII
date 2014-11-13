@@ -1,5 +1,6 @@
 class Tarea < ActiveRecord::Base
 	belongs_to :servicio
+	belongs_to :usuario
 	before_update :estado_previo
 	after_update :cambio_estado
 

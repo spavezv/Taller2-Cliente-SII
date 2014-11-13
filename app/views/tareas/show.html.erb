@@ -27,7 +27,7 @@
 
 <p>
   <strong>Ejecutante:</strong>
-  <%= @tarea.ejecutante %>
+  <%= @tarea.usuario_id.email %>
 </p>
 
 <%= link_to 'Edit', edit_tarea_path(@tarea) %> |
