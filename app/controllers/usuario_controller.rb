@@ -3,7 +3,7 @@ class UsuarioController < ApplicationController
 	before_action :set_usuario, only: [:show, :edit, :update, :destroy]
 
 	def index
-		@usuarios = usuario.all
+		@usuarios = Usuario.all
 		respond_with(@usuario)
 	end
 
@@ -17,11 +17,11 @@ class UsuarioController < ApplicationController
 	end
 
 	def edit
-		@usuario = usuario.find(params[:id])
+		@usuario = Usuario.find(params[:id])
 	end
 
 	def create
-		@usuario = usuario.new(usuario_params)
+		@usuario = Usuario.new(usuario_params)
 		@usuario.save
 		respond_with(@usuario)
 	end
@@ -38,10 +38,10 @@ class UsuarioController < ApplicationController
 
 	private
 	def set_usuario
-		@usuario = usuario.find(params[:id])
+		@usuario = Usuario.find(params[:id])
 	end
 
 	def usuario_params
-		params.require(:usuario).permit(:tipo_de_usuario)
+		params.require(:usuario).permit(:tipo_de_usuario, :nombre)
 	end
 end

@@ -1,0 +1,32 @@
+
+<h1 align="center" style="position:relative ;left:-100px"> Tarea</h1>
+  <% if @usuario.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@usuario.errors.count, "error") %> prohibited this tarea from being saved:</h2>
+
+      <ul>
+      <% @usuario.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>   
+
+    <div class="panel panel-default fadeInDown animation-delay2">
+      <div class="panel-heading">
+        Datos de la tarea:
+      </div>
+      <div class="panel-body">
+        <td>Nombre: <%= @usuario.nombre %></td><br>
+        <td>Estado: <%= @usuario.email %></td><br>
+        <td>Fecha de creación: <%= @usuario.tipo_de_usuario %></td><br>      
+      </div>
+      <div class="actions" style="position:relative; top:50px ;left:300px" >
+        <a href="/tareas" class="btn btn-warning">
+         <i class="fa fa-chevron-left"></i>
+            Volver
+        </a>
+        <%= link_to 'Aceptar', super_administrador_index_path, class: "btn btn-success" %>
+
+      </div>  
+    </div><!-- /panel -->
