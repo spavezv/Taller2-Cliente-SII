@@ -32,7 +32,10 @@
             end      
               %>
           <td><%= @tipo %></td>
-          <td></td>
+          <td> <%= link_to '<i class="fa fa-eye fa-lg"></i>'.html_safe, usuario_path(usuario) %>
+         <%= link_to '<i class="fa fa-edit fa-lg "></i>'.html_safe, edit_usuario_path(usuario) %>
+         <%= link_to '<i class="fa fa-trash-o fa-lg"></i>'.html_safe %>
+          </td>
         </tr>
             <% end %>
               </tbody>
