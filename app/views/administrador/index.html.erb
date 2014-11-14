@@ -1,29 +1,51 @@
-  <div class="panel panel-default">
-        <div class="panel-heading">
-          Usuarios
-        </div>
-        <div class="panel-body">
-          Total de compañias registradas en el sistema.
-        </div>
-        <table class="table table-hover table-striped">
-          <thead>
-            <tr>
-              <th>Nombre fantasia</th>
-              <th>Nombre comercial</th>
-              <th>Correo</th>
+<h1 style="position:relative ;left:300px">Lista de Usuarios</h1>
 
-            </tr>
-          </thead>
-          <tbody>
+
+</div><!-- /panel -->
+        <div class="panel panel-default table-responsive">
+          <div class="panel-heading">
+            Lista de Usuarios
+          </div>
+          <div class="padding-md clearfix">
+            <table class="table table-striped" id="dataTable">
+              <thead>
+                <tr>
+              <th>ID</th>
+              <th>Correo electrónico</th>
+              <th>Tipo de usuario</th>
+              <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
             <% @usuarios.each do |usuario| %>
         <tr>
           <td><%= usuario.id %></td>
           <td><%= usuario.email %></td>
-          <td><%= usuario.tipo_de_usuario %></td>
-
+          <%if usuario.tipo_de_usuario == 1
+              @tipo = "Super Administrador"
+            elsif usuario.tipo_de_usuario ==2
+              @tipo ="Administrador"
+            elsif usuario.tipo_de_usuario ==3
+              @tipo ="Ejecutante"
+            elsif usuario.tipo_de_usuario ==4
+              @tipo ="Cliente"
+            end      
+              %>
+          <td><%= @tipo %></td>
+          <td> <%= link_to '<i class="fa fa-eye fa-lg"></i>'.html_safe %>
+         <%= link_to '<i class="fa fa-edit fa-lg "></i>'.html_safe  %>
+         <%= link_to '<i class="fa fa-trash-o fa-lg"></i>'.html_safe %>
+          </td>
         </tr>
             <% end %>
-          </tbody>
-        </table>
-        <br>
-  </div>
+              </tbody>
+            </table>
+        </div><!-- /panel -->
+<script>
+    $(function  ()  {
+      $('#dataTable').dataTable( {
+        "bJQueryUI": true,
+        "sPaginationType": "full_numbers"
+      });
+    });
+  </script>

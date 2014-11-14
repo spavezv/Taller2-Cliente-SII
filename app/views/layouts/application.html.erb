@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
   <title>Taller2ClienteSii</title>
+  <meta name="viewport" context="with=devise-width, initial-scale=1, maximun-scale=1">
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -51,7 +52,7 @@
 						<li><a href="#">Ver todos los mensajes</a></li>					  
 					</ul>
 				</li>
-				<li class="dropdown hidden-xs">
+				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<i class="fa fa-tasks fa-lg"></i>
 						<span class="notification-label bounceIn animation-delay5">4</span>
@@ -113,7 +114,7 @@
 				</li>
 				<li class="profile dropdown">
 					<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-						<strong><%= current_usuario.email %></strong>
+						<strong><%= current_usuario.nombre %></strong>
 						<span><i class="fa fa-chevron-down"></i></span>
 					</a>
 					<ul class="dropdown-menu">
@@ -121,7 +122,7 @@
 							<a class="clearfix" href="#">
 								<%= image_tag("male.jpg")%>
 								<div class="detail">
-									<strong><%= current_usuario.email %></strong>
+									<strong><%= current_usuario.nombre %></strong>
 									<p class="grey"><%= current_usuario.email %></p> 
 								</div>
 							</a>
@@ -150,11 +151,10 @@
 					<%= link_to '<i class="fa fa-power-off"></i>'.html_safe, destroy_usuario_session_path, method: :delete, class: "btn btn-sm pull-right"%>
 				</div>
 				<div class="user-block clearfix">
-					
+					<%= image_tag("male.jpg")%>
 					<div class="detail">
-						<%= image_tag("male.jpg")%>
 						<strong>
-							<%= current_usuario.email %>
+							<%= current_usuario.nombre %>
 						</strong>
 						<ul class="list-inline">
 							<li><a href="#"> Perfil</a></li>
@@ -211,12 +211,12 @@
 							</a>
 							<ul class="dropdown-menu">
 								<li>
-									<a href="/servicios">
+									<a href="/empresas">
 										Agregar
 									</a>
 								</li>
 								<li>
-									<a href="/servicios/new">
+									<a href="/empresas/new">
 										Listar
 									</a>
 								</li>
