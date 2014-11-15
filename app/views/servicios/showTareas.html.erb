@@ -1,0 +1,82 @@
+<h1 align="center" style="position:relative ;left:-100px"> Servicio</h1>
+<%= form_for(@servicio, html: {class:"form-horizontal form-border no-margin"}) do |f| %>
+  <% if @servicio.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@servicio.errors.count, "error") %> prohibited this servicio from being saved:</h2>
+
+      <ul>
+      <% @servicio.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+    <div class="panel panel-default fadeInDown animation-delay2">
+      <div class="panel-heading">
+        Datos del servicio:
+      </div>
+      <div class="panel-body">
+        <td>Nombre: <%= @servicio.nombre %></td><br>
+        <td>Id empresa: <%= @servicio.id_empresa %></td><br>
+        <td>Fecha de creacion: <%= @servicio.creacion %></td><br>
+        <% if @servicio.pagado? %>
+
+            <td>Estado de deuda: Pagado</td><br>
+        <%else%>
+           <td>Estado de deuda: No pagado</td><br>
+         <% end %>  
+        <td>Precio del servicio: $ <%= @servicio.precio %></td><br>
+
+      </div>
+      <div class="actions" style="position:relative; top:50px ;left:300px" >
+        <a href="/servicios" class="btn btn-warning">
+         <i class="fa fa-chevron-left"></i>
+            Volver
+        </a>  
+       <%= f.submit :Aceptar, :class => "btn btn-success"%>
+      </div>  
+    </div><!-- /panel -->
+
+<% end %>
+
+
+        <div class="panel panel-default table-responsive">
+          <div class="panel-heading">
+            Data Table
+            <span class="label label-info pull-right">790 Items</span>
+          </div>
+          <div class="padding-md clearfix">
+            <table class="table table-striped" id="dataTable">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Estado</th>
+                  <th>Usuario/th>
+                  <th>Fecha termino</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>#1001</td>
+                  <td>Leather Bag</td>
+                  <td>$89</td>
+                  <td>30</td>
+                  <td>187</td>
+                  <td>Oct 08,2013</td>
+                  <td><span class="label label-success">In Stock</span></td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div><!-- /.padding-md -->
+        </div><!-- /panel -->
+
+  <script>
+    $(function  ()  {
+      $('#dataTable').dataTable( {
+        "bJQueryUI": true,
+        "sPaginationType": "full_numbers"
+      });
+    });
+  </script>

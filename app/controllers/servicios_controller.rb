@@ -23,10 +23,11 @@ class ServiciosController < ApplicationController
   end
 
   def create
+
     @servicio = Servicio.new(servicio_params)
     @servicio.creacion = Time.now
     @servicio.save
-    respond_with(@servicio)
+    respond_with(@servicio, :location => servicios_path)
   end
 
   def update

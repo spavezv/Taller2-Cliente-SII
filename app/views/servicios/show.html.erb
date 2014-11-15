@@ -30,13 +30,49 @@
         <td>Precio del servicio: $ <%= @servicio.precio %></td><br>
 
       </div>
-      <div class="actions" style="position:relative; top:50px ;left:300px" >
-        <a href="/servicios" class="btn btn-warning">
-         <i class="fa fa-chevron-left"></i>
-            Volver
-        </a>  
-       <%= f.submit :Aceptar, :class => "btn btn-success"%>
-      </div>  
+ 
     </div><!-- /panel -->
 
 <% end %>
+  <div class="panel panel-default table-responsive">
+    <div class="panel-heading">
+      <h3>Tareas</h3>
+      <span class="label label-info pull-right">790 Items</span>
+    </div>
+    <div class="padding-md clearfix">
+      <table class="table table-striped" id="dataTable">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Estado</th>
+            <th>Cliente</th>
+            <th>Fecha término</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>extraccion molar</td>
+            <td>pendiente</td>
+            <td>Juan</td>
+            <td>30- 15-2015</td>
+            <td align="center"> 
+            <i class="fa fa-eye fa-lg"></i>'
+            <i class="fa fa-edit fa-lg "></i>
+             <i class="fa fa-trash-o fa-lg"></i>
+           </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div><!-- /.padding-md -->
+  </div><!-- /panel -->
+
+  <script>
+    $(function  ()  {
+      $('#dataTable').dataTable( {
+        "bJQueryUI": true,
+        "sPaginationType": "full_numbers"
+      });
+    });
+  </script>

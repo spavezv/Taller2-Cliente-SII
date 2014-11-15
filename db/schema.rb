@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20141114031511) do
     t.date     "termino"
     t.text     "descripcion"
     t.integer  "servicio_id"
+    t.integer  "ejecutante"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "usuario_id"
