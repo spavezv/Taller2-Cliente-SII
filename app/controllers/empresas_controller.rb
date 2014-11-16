@@ -12,13 +12,15 @@ class EmpresasController < ApplicationController
   end
 
   def new
+    @administradores = Usuario.where(:tipo_de_usuario => 2)
     @empresa = Empresa.new
-    respond_with(@empresa)
+    respond_with(@empresa,@administradores)
   end
 
   def edit
+     @administradores = Usuario.where(:tipo_de_usuario => 2)
      @empresa = Empresa.find(params[:id])
-     respond_with(@empresa)
+     respond_with(@empresa,@administradores)
   end
 
   def create

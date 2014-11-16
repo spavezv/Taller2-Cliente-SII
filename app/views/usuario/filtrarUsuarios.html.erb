@@ -21,7 +21,7 @@
         <tr>
           <td><%= usuario.id %></td>
           <td><%= usuario.email %></td>
-          <%if usuario.tipo_de_usuario == 1
+          <%if usuario.tipo_de_usuario == 1  && current_usuario.tipo_de_usuario== 1
               @tipo = "Super Administrador"
             elsif usuario.tipo_de_usuario ==2
               @tipo ="Administrador"
@@ -49,3 +49,4 @@
       });
     });
   </script>
+

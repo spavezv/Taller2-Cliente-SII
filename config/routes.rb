@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :empresas
 
   resources :usuario
+  get "usuario/filtrarUsuarios/:id" => "usuario#filtrarUsuarios"
   
   devise_for :usuarios
   # The priority is based upon order of creation: first created -> highest priority.
@@ -18,7 +19,7 @@ Rails.application.routes.draw do
   get "ejecutante/index" => "ejecutante#index"
   get "administrador/index" => "administrador#index"
   get "super_administrador/index" => "super_administrador#index"
-  get "super_administrador/filtrarUsuarios/:id" => "super_administrador#filtrarUsuarios"
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

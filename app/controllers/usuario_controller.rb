@@ -35,6 +35,11 @@ class UsuarioController < ApplicationController
 		@usuario.destroy
 		respond_with(@usuario)
 	end
+	
+	def filtrarUsuarios
+  		@usuarios = Usuario.where(:tipo_de_usuario => params[:id])
+  		respond_with(@Usuarios)
+  	end
 
 	private
 	def set_usuario
