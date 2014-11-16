@@ -19,6 +19,7 @@
         <th>Nombre</th>
         <th>Empresa</th>
         <th>Avance</th>
+        <td></td>
         <th >Acciones</th>
       </tr>
     </thead>
@@ -30,11 +31,12 @@
         <td>
           <div class="progress">
             <div class="progress-bar" style="width:<%= (servicio.tareas_terminadas*100)/(servicio.tareas_cantidad.nonzero? || 1) %>%"></div>
-            </small>
+            
           </div>
-          <small class="pull-right text-muted"><%= (servicio.tareas_terminadas*100)/(servicio.tareas_cantidad.nonzero? || 1)
-
-           %>%
+        </td>
+        <td >
+          <small  class="pull-right text-muted"><%= (servicio.tareas_terminadas*100)/(servicio.tareas_cantidad.nonzero? || 1) %>%
+          </small>
         </td>
         <td > <%= link_to '<i class="fa fa-eye fa-lg"></i>'.html_safe, servicio_path(servicio) %>
          <%= link_to '<i class="fa fa-edit fa-lg "></i>'.html_safe, edit_servicio_path(servicio) %>

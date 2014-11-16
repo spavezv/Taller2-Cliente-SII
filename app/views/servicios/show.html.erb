@@ -37,7 +37,10 @@
   <div class="panel panel-default table-responsive">
     <div class="panel-heading">
       <h3>Tareas</h3>
-      <span class="label label-info pull-right">790 Items</span>
+      
+      <%= link_to "Nueva tarea".html_safe, new_tarea_path , :class => "btn btn-success  pull-right fa fa-plus fa-lg", :style => "margin-bottom: 1em; margin-right: 1em"%>
+
+
     </div>
     <div class="padding-md clearfix">
       <table class="table table-striped" id="dataTable">
