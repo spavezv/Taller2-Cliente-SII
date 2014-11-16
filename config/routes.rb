@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'archivos/subir_archivos'
+
+  get 'archivos/listar_archivos'
+
+  get 'archivos/borrar_archivos'
+
+  get 'archivos/guardar_comentarios'
+
   resources :servicios
 
   resources :tareas
@@ -18,7 +26,15 @@ Rails.application.routes.draw do
   get "cliente/index" => "cliente#index"
   get "ejecutante/index" => "ejecutante#index"
   get "administrador/index" => "administrador#index"
+  post "administrador/index" => "administrador#index"
   get "super_administrador/index" => "super_administrador#index"
+  get "super_administrador/filtrarUsuarios/:id" => "super_administrador#filtrarUsuarios"
+  get "archivos/subir_archivos"
+  post "archivos/subir_archivos"
+  get "archivos/listar_archivos"
+  post "archivos/borrar_archivos"
+  get "archivos/guardar_comentarios"
+  post "archivos/guardar_comentarios"
 
 
   # Example of regular route:
