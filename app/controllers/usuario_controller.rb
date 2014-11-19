@@ -16,8 +16,11 @@ class UsuarioController < ApplicationController
 		respond_with(@usuario)
 	end
 
-	def edit
+	def edit 	 
 		@usuario = Usuario.find(params[:id])
+		@empresas = Empresa.all
+		respond_with(@usuario,@empresas)
+
 	end
 
 	def create
@@ -27,7 +30,12 @@ class UsuarioController < ApplicationController
 	end
 
 	def update
+		empresas=params[:usuario]
 		@usuario.update(usuario_params)
+		empresas[:empresas].collecter do |k|
+			@usuario.empresas << Empresa.find(k)
+		end
+		@usuario.save
 		respond_with(@usuario)
 	end
 
@@ -47,6 +55,6 @@ class UsuarioController < ApplicationController
 	end
 
 	def usuario_params
-		params.require(:usuario).permit(:tipo_de_usuario, :nombre)
+		params.require(:usuario).permit(:tipo_de_usuario, :nombre, :empresas => [])
 	end
 end

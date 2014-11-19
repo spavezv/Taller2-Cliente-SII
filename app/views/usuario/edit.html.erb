@@ -30,6 +30,7 @@
           <div class="seperator"></div>
         </div><!-- /.col -->
       </div>
+    <% if current_usuario != @usuario %>
     <div class="form-group">
       <label class="control-label col-lg-2">Tipo de Usuario</label>
       <div class="col-lg-9">
@@ -40,6 +41,18 @@
       </select>
       </div><!-- /.col -->
     </div><!-- /form-group -->
+    <% end %>
+                  <div class="form-group">
+                    <label class="control-label col-lg-2">Asignar Empresa</label>
+                    <div class="col-lg-9">
+                                <%= f.select :empresas,
+                      @empresas.collect { |u| [u.nombre_fantasia, u.id] },
+               { include_blank: false },
+               { class: "form-control chzn-select" }
+%>
+                      <div class="seperator"></div>
+                    </div><!-- /.col -->
+                  </div><!-- /form-group -->
   </div><!-- /panel-body -->
 
   <div align="center">
@@ -52,3 +65,8 @@
 <% end %>
 
 <% end %>
+<script type="text/javascript">
+    $(function  ()  {
+        $(".chzn-select").chosen();
+    });
+</script>
