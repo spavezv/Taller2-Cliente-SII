@@ -1,3 +1,5 @@
 class Servicio < ActiveRecord::Base
-	has_many :tarea
+	has_many :tareas
+	belongs_to :empresa
+	
 end

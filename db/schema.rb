@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141115202411) do
+ActiveRecord::Schema.define(version: 20141119205950) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20141115202411) do
     t.integer  "tareas_terminadas", default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "id_cliente"
   end
 
   create_table "tareas", force: true do |t|
@@ -79,5 +80,12 @@ ActiveRecord::Schema.define(version: 20141115202411) do
 
   add_index "usuarios", ["email"], name: "index_usuarios_on_email", unique: true, using: :btree
   add_index "usuarios", ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true, using: :btree
+
+  create_table "usuraio_empresas", force: true do |t|
+    t.integer  "id_cliente"
+    t.integer  "id_empresa"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

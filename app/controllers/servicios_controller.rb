@@ -14,7 +14,9 @@ class ServiciosController < ApplicationController
 
   def new
     @servicio = Servicio.new
+    @empresas = Empresa.all
     respond_with(@servicio)
+
   end
 
   def edit
@@ -46,6 +48,6 @@ class ServiciosController < ApplicationController
     end
 
     def servicio_params
-      params.require(:servicio).permit(:id, :nombre, :creacion, :precio, :pagado)
+      params.require(:servicio).permit(:id, :nombre, :creacion, :precio, :pagado, :id_empresa)
     end
 end

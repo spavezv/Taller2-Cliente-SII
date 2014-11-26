@@ -19,7 +19,7 @@
         <th>Nombre</th>
         <th>Empresa</th>
         <th>Avance</th>
-        <td></td>
+        <th>%</th>
         <th >Acciones</th>
       </tr>
     </thead>
@@ -27,7 +27,9 @@
       <% @servicios.each do |servicio| %>
       <tr>
         <td><%= servicio.nombre %></td>
-        <td><%= servicio.id_empresa %></td>
+        <td><%= Empresa.find(servicio.id_empresa).nombre_comercial %></td>
+
+
         <td>
           <div class="progress">
             <div class="progress-bar" style="width:<%= (servicio.tareas_terminadas*100)/(servicio.tareas_cantidad.nonzero? || 1) %>%"></div>

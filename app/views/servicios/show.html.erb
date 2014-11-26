@@ -19,7 +19,7 @@
       </div>
       <div class="panel-body">
         <td>Nombre: <%= @servicio.nombre %></td><br>
-        <td>Id empresa: <%= @servicio.id_empresa %></td><br>
+        <td>Empresa: <%= Empresa.find(@servicio.id_empresa).nombre_comercial  %></td><br>
         <td>Fecha de creacion: <%= @servicio.creacion %></td><br>
         <% if @servicio.pagado? %>
 
@@ -28,6 +28,7 @@
            <td>Estado de deuda: No pagado</td><br>
          <% end %>  
         <td>Precio del servicio: $ <%= @servicio.precio %></td><br>
+        <td> id cliente: $ <%= @servicio.id_cliente %></td>
 
       </div>
  

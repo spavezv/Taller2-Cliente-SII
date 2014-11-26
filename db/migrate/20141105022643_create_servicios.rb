@@ -8,6 +8,7 @@ class CreateServicios < ActiveRecord::Migration
       t.boolean :pagado
       t.integer :tareas_cantidad
       t.integer :tareas_terminadas
+      t.integer :id_cliente
 
       t.timestamps
     end
