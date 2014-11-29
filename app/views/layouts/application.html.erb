@@ -53,35 +53,29 @@
 					</ul>
 				</li>
 				<li class="dropdown">
+					<% servicios = obtener_servicios %>
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<i class="fa fa-tasks fa-lg"></i>
-						<span class="notification-label bounceIn animation-delay5">4</span>
+						<span class="notification-label bounceIn animation-delay5"><%= servicios.length %></span>
 					</a>
 					<ul class="dropdown-menu task dropdown-2">
-						<li><a href="#">Nuevas tareas</a></li>					  
-						<li>
-							<a href="#">
-								<div class="clearfix">
-									<span class="pull-left">Bug Fixes</span>
-									<small class="pull-right text-muted">78%</small>
-								</div>
-								<div class="progress">
-									<div class="progress-bar" style="width:78%"></div>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<div class="clearfix">
-									<span class="pull-left">Software Updating</span>
-									<small class="pull-right text-muted">54%</small>
-								</div>
-								<div class="progress progress-striped">
-									<div class="progress-bar progress-bar-success" style="width:54%"></div>
-								</div>
-							</a>
-						</li>
-						<li><a href="#">Ver todas las tareas</a></li>					  
+						<li><a href="#">Servicios en ejecución</a></li>		
+
+						<% servicios.each do |servicio| %>		  
+							<li>
+								<a href="#">
+									<div class="clearfix">
+										<span class="pull-left"><%= servicio.nombre %></span>
+										<small class="pull-right text-muted"><%= (servicio.tareas_terminadas*100)/(servicio.tareas_cantidad.nonzero? || 1) %>%</small>
+									</div>
+									<div class="progress">
+										<div class="progress-bar" style="width:<%= (servicio.tareas_terminadas*100)/(servicio.tareas_cantidad.nonzero? || 1) %>%"></div>
+									</div>
+								</a>
+							</li>
+						<% end %>
+
+						<li><a href="#">Ver todos los servicios</a></li>					  
 					</ul>
 				</li>
 				<li class="dropdown">
