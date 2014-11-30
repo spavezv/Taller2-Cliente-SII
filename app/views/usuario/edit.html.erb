@@ -11,7 +11,7 @@
     </div>
   <% end %>
 <!--Si el usuario es super administrador, puede cambiar el tipo de usuario-->
-<% if current_usuario.tipo_de_usuario == 1  %>
+<% if current_usuario.tipo_de_usuario == 1 || current_usuario.tipo_de_usuario == 2 %>
 <div class="panel panel-default pull-center"> 
 <!--muestra la edicion del tipo de usuario, ademas muestra el nombre y el email de ese usuario-->
   <div class="panel-body">
@@ -26,30 +26,56 @@
       <div class="form-group">
         <label class="control-label col-lg-2">Email</label>
         <div class="col-lg-9">
-          <input type="text" class="form-control input-sm" id="nombre_email" name="nombre[email]" value="<%= @usuario.email%>" disabled>
+          <input type="text" class="form-control input-sm" id="usuario_email" name="usuario[email]" value="<%= @usuario.email%>" disabled>
           <div class="seperator"></div>
         </div><!-- /.col -->
       </div>
-    <% if current_usuario != @usuario %>
+    <% if current_usuario.tipo_de_usuario == 1 && current_usuario != @usuario %>
     <div class="form-group">
       <label class="control-label col-lg-2">Tipo de Usuario</label>
       <div class="col-lg-9">
-      <select type="text" class="form-control chzn-select" id="usuario_tipo" value="<%=@usuario.tipo_de_usuario=%>" name="usuario[tipo_de_usuario]" required>
+      <select type="text" class="form-control chzn-select" id="usuario_tipo_de_usuario" value="<%=@usuario.tipo_de_usuario=%>" name="usuario[tipo_de_usuario]" required>
         <option value="1">Super Administrador</option>
         <option value="2" selected>Administrador</option>
         <option value="4">Cliente</option>
       </select>
       </div><!-- /.col -->
     </div><!-- /form-group -->
+    <% elsif current_usuario.tipo_de_usuario == 2 && current_usuario != @usuario %>
+    <div class="form-group">
+      <label class="control-label col-lg-2">Tipo de Usuario</label>
+      <div class="col-lg-9">
+      <select type="text" class="form-control chzn-select" id="usuario_tipo_de_usuario" value="<%=@usuario.tipo_de_usuario=%>" name="usuario[tipo_de_usuario]" required>
+        <option value="2" >Administrador</option>
+        <option value="3" >Ejecutante</option>
+        <option value="4" selected>Cliente</option>
+      </select>
+      </div><!-- /.col -->
+    </div><!-- /form-group -->
+
     <% end %>
+    <% if  current_usuario.tipo_de_usuario == 1 && @usuario.tipo_de_usuario == 2 %>
                   <div class="form-group">
                     <label class="control-label col-lg-2">Asignar Empresa</label>
                     <div class="col-lg-9">
                                 <%= f.select :empresas,
                       @empresas.collect { |u| [u.nombre_fantasia, u.id] },
-               { include_blank: false },
+               { include_blank: true },
                { class: "form-control chzn-select" }
 %>
+<% elsif current_usuario.tipo_de_usuario == 2 %>
+                  <div class="form-group">
+                    <label class="control-label col-lg-2">Asignar Empresa</label>
+                    <div class="col-lg-9">
+                                <%= f.select :empresas,
+                      @empresas.collect { |u| [u.nombre_fantasia, u.id] },
+               { include_blank: true },
+               { class: "form-control chzn-select" }
+%>
+
+<% else %>
+  <input type="hidden" class="form-control input-sm" id="usuario_empresas" name="usuario[empresas]">
+  <%end %>
                       <div class="seperator"></div>
                     </div><!-- /.col -->
                   </div><!-- /form-group -->

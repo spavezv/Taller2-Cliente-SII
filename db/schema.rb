@@ -45,7 +45,6 @@ ActiveRecord::Schema.define(version: 20141119205950) do
     t.integer  "tareas_terminadas", default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "id_cliente"
   end
 
   create_table "tareas", force: true do |t|
