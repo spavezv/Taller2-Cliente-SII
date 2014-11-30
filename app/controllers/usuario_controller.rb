@@ -3,7 +3,14 @@ class UsuarioController < ApplicationController
 	before_action :set_usuario, only: [:show, :edit, :update, :destroy]
 
 	def index
-		@usuarios = Usuario.all
+		if current_usuario.tipo_de_usuario == 1
+			@usuarios = Usuario.all
+		elsif current_usuario.tipo_de_usuario == 2
+			@empresas = current_usuario.empresas
+			@empresas.each do |empresa|
+				@usuarios = empresa.usuarios
+			end
+		end
 		respond_with(@usuario)
 	end
 
@@ -18,7 +25,11 @@ class UsuarioController < ApplicationController
 
 	def edit 	 
 		@usuario = Usuario.find(params[:id])
-		@empresas = Empresa.all
+		if current_usuario.tipo_de_usuario == 1
+			@empresas = Empresa.all
+		elsif current_usuario.tipo_de_usuario == 2
+			@empresas = current_usuario.empresas
+		end
 		respond_with(@usuario,@empresas)
 
 	end
@@ -30,11 +41,12 @@ class UsuarioController < ApplicationController
 	end
 
 	def update
-		empresas=params[:usuario]
-		@usuario.update(usuario_params)
-		empresas[:empresas].collecter do |k|
-			@usuario.empresas << Empresa.find(k)
+		@id_empresa= params[:usuario][:empresas]
+		if(@id_empresa != "" )
+			@empresa = Empresa.find(@id_empresa)
+			@usuario.empresas << @empresa
 		end
+		@usuario.update(usuario_params)
 		@usuario.save
 		respond_with(@usuario)
 	end
@@ -45,8 +57,19 @@ class UsuarioController < ApplicationController
 	end
 	
 	def filtrarUsuarios
-  		@usuarios = Usuario.where(:tipo_de_usuario => params[:id])
-  		respond_with(@Usuarios)
+		if current_usuario.tipo_de_usuario == 1
+			@usuarios = Usuario.where(:tipo_de_usuario => params[:id])
+		elsif current_usuario.tipo_de_usuario == 2
+			if params[:id] == "5"
+				@usuarios = Usuario.where(:tipo_de_usuario => 4)
+			else
+				@empresas = current_usuario.empresas
+				@empresas.each do |empresa|
+					@usuarios = empresa.usuarios.where(:tipo_de_usuario => params[:id])
+				end
+			end
+		end
+  		respond_with(@usuarios)
   	end
 
 	private
@@ -55,6 +78,6 @@ class UsuarioController < ApplicationController
 	end
 
 	def usuario_params
-		params.require(:usuario).permit(:tipo_de_usuario, :nombre, :empresas => [])
+		params.require(:usuario).permit(:tipo_de_usuario, :nombre)
 	end
 end
