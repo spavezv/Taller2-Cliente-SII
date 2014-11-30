@@ -35,7 +35,7 @@ Rails.application.routes.draw do
   post "archivos/borrar_archivos"
   get "archivos/guardar_comentarios"
   post "archivos/guardar_comentarios"
-
+  get "cliente/servicios" => "servicios#index"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
