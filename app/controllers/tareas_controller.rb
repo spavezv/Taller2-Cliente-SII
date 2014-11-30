@@ -3,11 +3,19 @@ class TareasController < ApplicationController
   before_action :set_tarea, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tareas = Tarea.all
-    respond_with(@tarea)
+    if params[:estadoTarea] == "Asignadas"
+      @tareas = current_usuario.tareas_asignadas.where.not(:estado => "Terminada")
+    elsif params[:estadoTarea] == "Terminadas"
+      @tareas = current_usuario.tareas_asignadas.where(:estado => "Terminada")
+    else
+      @tareas = current_usuario.tareas_asignadas
+    end
+    respond_with(@tareas)
   end
 
   def show
+    @usuarios = Usuario.all
+    @usuario = @usuarios.find_by(id: @tarea.usuario_id)
     respond_with(@tarea)
   end
 
@@ -44,4 +52,5 @@ class TareasController < ApplicationController
     def tarea_params
       params.require(:tarea).permit(:nombre, :estado, :creacion, :termino, :descripcion, :usuario_id)
     end
+
 end

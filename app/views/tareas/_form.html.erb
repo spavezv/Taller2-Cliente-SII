@@ -11,8 +11,6 @@
     </div>
   <% end %>
 
-
-  
   <div class="panel panel-default">
     <div class="panel-body" >
       <div class="form-group">
@@ -23,9 +21,6 @@
       
         </div><!-- /.col -->
       </div><!-- /form-group -->
-
-
-    
 
     <div class="form-group">
     <label class="control-label col-lg-2">Estado</label>
@@ -42,7 +37,7 @@
         </div><!-- /.col -->
     </div><!-- /form-group -->
 
-
+    <% if current_usuario.id == 2 %>
     <div class="form-group">
          <label class="control-label col-lg-2">Creación</label>            
         <div class="col-lg-6">
@@ -55,8 +50,9 @@
          
         </div><!-- /.col -->
     </div><!-- /form-group -->    
+    <% end %>
 
-
+    <% if current_usuario.id == 2 %>
     <div class="form-group">
          <label class="control-label col-lg-2">Término</label>            
         <div class="col-lg-6">
@@ -66,11 +62,11 @@
               <i class="fa fa-calendar"></i>
             </span>
           </div>
-
+    
          
         </div><!-- /.col -->
     </div><!-- /form-group -->
-
+    <% end %>
 
     <div class="form-group">
         <label class="control-label col-lg-2">Descripción</label>
@@ -81,6 +77,7 @@
         </div><!-- /.col -->
     </div><!-- /form-group -->
 
+    <% if current_usuario.id == 2 %>
     <div class="form-group">
     <label class="control-label col-lg-2">Ejecutante</label>
                 
@@ -89,6 +86,7 @@
         
         </div><!-- /.col -->
     </div><!-- /form-group -->
+    <% end %>
 
     <div class="form-group">
     <label class="control-label col-lg-2">Adjuntar Archivo</label>
@@ -105,12 +103,11 @@
 
 
   <div class="actions" style="position:relative; top:50px ;left:300px" >
-    <a href="/servicios" class="btn btn-warning">
+    <a href="/tareas" class="btn btn-warning">
       <i class="fa fa-chevron-left"></i>
       Volver
     </a>  
     <%= f.submit :Aceptar, :class => "btn btn-success"%>
-    
 
   </div>                 
 </div>

@@ -1,25 +1,20 @@
 
 </div><!-- /panel -->
   <div class="panel panel-default table-responsive">
- 
-</div><!-- /panel -->
-  <div class="panel panel-default table-responsive">
- 
+
+  
   <div class="panel-heading">
     Lista de tareas
-    <span class="label label-info pull-right"> <%= @tareas.length %> Items</span>
+    <span class="label label-info pull-right"> <%= @tareas.try(:length) || 0 %> Items</span>
   </div>
- 
-  <div class="padding-md clearfix">
- 
+
   <table class="table table-striped" id="dataTable">
     <thead>
       <tr>
         <th>Nombre</th>
         <th>Estado</th>
-        <th>Descripción</th>
-        <th>Ejecutante</th>
-        <th>Acciones</th>
+        <th>Creación</th>
+        <th>Cliente</th>
       </tr>
     </thead>
     <tbody>
@@ -27,20 +22,19 @@
       <tr>
         <td><%= tarea.nombre %></td>
         <td><%= tarea.estado %></td>
-        <td><%= tarea.descripcion %></td>
-        <td><%= tarea.usuario.email %></td>
-        <td> <%= link_to '<i class="fa fa-eye fa-lg"></i>'.html_safe, tarea_path(tarea) %>
+        <td><%= tarea.created_at %></td>
+        <td><%= tarea.usuario_id %></td>
+        <td><%= link_to '<i class="fa fa-eye fa-lg"></i>'.html_safe, tarea_path(tarea) %>
          <%= link_to '<i class="fa fa-edit fa-lg "></i>'.html_safe, edit_tarea_path(tarea) %>
-         <%= link_to '<i class="fa fa-trash-o fa-lg"></i>'.html_safe,tarea, method: :delete %>
        </td>
       </tr>
       <% end %>
     </tbody>
   </table>
+
 </div><!-- /panel -->
- 
- 
- 
+  <div class="padding-md clearfix">
+
 <script>
     $(function  ()  {
       $('#dataTable').dataTable( {
@@ -48,4 +42,4 @@
         "sPaginationType": "full_numbers"
       });
     });
-  </script>
+</script>

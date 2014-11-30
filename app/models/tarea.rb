@@ -1,9 +1,7 @@
 class Tarea < ActiveRecord::Base
 	belongs_to :servicio
-	belongs_to :usuario
-	before_update :estado_previo
+	belongs_to :tareas_asignadas, :class_name => "Usuario"
 	after_update :cambio_estado
-	
 
 	def cambio_estado		
 		if estado_changed? && estado == "Terminada"

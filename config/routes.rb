@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :servicios
 
   resources :tareas
+  get "tareas/index/:estadoTarea" => "tareas#index"
 
   resources :empresas
 
@@ -36,6 +37,7 @@ Rails.application.routes.draw do
   get "archivos/guardar_comentarios"
   post "archivos/guardar_comentarios"
   get "cliente/servicios" => "servicios#index"
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
