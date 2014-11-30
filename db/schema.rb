@@ -46,10 +46,7 @@ ActiveRecord::Schema.define(version: 20141130165005) do
     t.integer  "cliente"
     t.datetime "created_at"
     t.datetime "updated_at"
-<<<<<<< HEAD
     t.integer  "administrador"
-=======
->>>>>>> origin/master
   end
 
   create_table "tareas", force: true do |t|
