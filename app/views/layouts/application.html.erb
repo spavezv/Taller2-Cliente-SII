@@ -58,18 +58,19 @@
 						<% servicios = servicios_administrados %>
 					<% elsif current_usuario.tipo_de_usuario == 4 %>
 						<% servicios = servicios_contratados %>
-					<%end%>
+					<% end %>
 
+					<% if current_usuario.tipo_de_usuario == 2 || current_usuario.tipo_de_usuario == 4 %>
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<i class="fa fa-tasks fa-lg"></i>
-						<span class="notification-label bounceIn animation-delay5"><%= servicios.length %></span>
+						<span class="notification-label bounceIn animation-delay5"><%= servicios.try(:length) || 0 %></span>
 					</a>
 					<ul class="dropdown-menu task dropdown-2">
 						<li><a href="#">Servicios en ejecución</a></li>		
 
 						<% servicios.each do |servicio| %>		  
 							<li>
-								<a href="#">
+								<a href="/servicios/<%= servicio.id =%>">
 									<div class="clearfix">
 										<span class="pull-left"><%= servicio.nombre %></span>
 										<small class="pull-right text-muted"><%= (servicio.tareas_terminadas*100)/(servicio.tareas_cantidad.nonzero? || 1) %>%</small>
@@ -80,9 +81,10 @@
 								</a>
 							</li>
 						<% end %>
-						<li><a href="#">Ver todos los servicios</a></li>	
+						<li><a href="/servicios">Ver todos los servicios</a></li>	
 										  
 					</ul>
+					<% end %>
 				</li>
 				<li class="dropdown">
 					<a class="dropdown-toggle" data-toggle="dropdown" href="#">
