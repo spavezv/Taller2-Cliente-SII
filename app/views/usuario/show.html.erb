@@ -14,12 +14,24 @@
 
     <div class="panel panel-default fadeInDown animation-delay2">
       <div class="panel-heading">
-        Datos de la tarea:
+        Datos del usuario:
       </div>
       <div class="panel-body">
         <td>Nombre: <%= @usuario.nombre %></td><br>
         <td>Email: <%= @usuario.email %></td><br>
-        <td>Tipo de Usuario: <%= @usuario.tipo_de_usuario %></td><br>      
+        <% if @usuario.tipo_de_usuario == 1 %>
+          <% @tipo = "Super Administrador" %>
+        <%elsif @usuario.tipo_de_usuario == 2 %>
+          <% @tipo = "Administrador" %>
+        <%elsif @usuario.tipo_de_usuario == 3 %>
+          <% @tipo = "Ejecutante" %>
+        <%elsif @usuario.tipo_de_usuario == 4 %>
+          <% @tipo = "Cliente" %>
+        <% end %>
+
+
+
+        <td>Tipo de Usuario: <%= @tipo %></td><br>      
       </div>
       <div class="actions" style="position:relative; top:50px ;left:300px" >
         <a href="/usuario" class="btn btn-warning">
