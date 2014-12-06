@@ -13,26 +13,63 @@
     </div>
   <% end %>
   
-    <div class="panel panel-default fadeInDown animation-delay2">
-      <div class="panel-heading">
-        Datos del servicio:
-      </div>
-      <div class="panel-body">
-        <td>Nombre: <%= @servicio.nombre %></td><br>
-        <td>Empresa: <%= Empresa.find(@servicio.id_empresa).nombre_comercial  %></td><br>
-        <td>Fecha de creacion: <%= @servicio.creacion %></td><br>
-        <% if @servicio.pagado? %>
+<div class="padding-md">
+        <div class="row">
+          <div class="col-md-3 col-sm-3">
+            
+              <div class="col-xs-6 col-sm-12 col-md-6">
+                <strong class="font-14"><%= @servicio.nombre%></strong>
+                <small class="block text-muted">
+                  Empresa: <%= Empresa.find(@servicio.id_empresa).nombre_comercial  %>
+                </small>                              
+              </div><!-- /.col -->
+            
+            <div class="panel">              
+              <div class="panel-body">
+                <div class="row">                  
+                  <div class="col-xs-4 text-center">
+                    <span class="block font-14"><%= @servicio.tareas_cantidad%></span>
+                    <small class="text-muted">Tareas Pendientes</small>
+                  </div><!-- /.col -->
+                  <div class="col-xs-4 text-center">
+                    <span class="block font-14"><%= @servicio.tareas_terminadas%></span>
+                    <small class="text-muted">Tareas Terminadas</small>
+                  </div><!-- /.col -->
+                </div><!-- /.row -->
+              </div> <!-- /panel body-->
+            </div><!-- /panel -->
+          
+          </div><!-- /.col -->
+          
 
-            <td>Estado de deuda: Pagado</td><br>
-        <%else%>
-           <td>Estado de deuda: No pagado</td><br>
-         <% end %>  
-        <td>Precio del servicio: $ <%= @servicio.precio %></td><br>
-        <td> id cliente: $ <%= @servicio.cliente %></td>
 
-      </div>
- 
-    </div><!-- /panel -->
+          <div class="col-md-9 col-sm-9">
+            <div class="tab-content">
+              <div class="tab-pane fade in active" id="overview">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="panel panel-default fadeInDown animation-delay2">
+                      <div class="panel-heading">
+                       <strong class="font-14"> Datos del servicio: </strong>
+                      </div>
+                      <div class="panel-body">
+                        <td>Fecha de creación: <%= @servicio.creacion %></td><br>
+                        <% if @servicio.pagado? %>
+                          <td>Estado de deuda: Pagado</td><br>
+                        <%else%>
+                          <td>Estado de deuda: No pagado</td><br>
+                        <% end %>
+                        <td>Precio del servicio: $ <%= @servicio.precio %></td><br>
+                        </div>
+                    </div><!-- /panel -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div><!-- /.row -->    
+  </div><!-- /.padding-md -->
 
 <% end %>
   <div class="panel panel-default table-responsive">
