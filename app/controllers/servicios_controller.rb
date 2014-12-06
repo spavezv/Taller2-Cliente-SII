@@ -9,7 +9,8 @@ class ServiciosController < ApplicationController
   end
 
   def show
-    respond_with(@servicio)
+    @tareas = Tarea.where(:servicio_id => :id)
+    respond_with(@servicio, @tareas)
   end
 
   def new

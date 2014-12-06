@@ -13,20 +13,33 @@
     </div>
   <% end %>   
 
-    <div class="panel panel-default fadeInDown animation-delay2">
-      <div class="panel-heading">
-        Datos de la tarea:
-      </div>
-      <div class="panel-body">
-        <td>Nombre: <%= @tarea.nombre %></td><br>
-        <td>Estado: <%= @tarea.estado %></td><br>
-        <td>Fecha de creación: <%= @tarea.creacion %></td><br>
-        <td>Fecha de término: <%= @tarea.termino %></td><br>
-        <td>Descripción: <%= @tarea.descripcion %></td><br>
-        <td>Cliente: <%= @usuario.nombre %></td><br>        
-      </div>
+   <div class="col-md-12 col-sm-12">
+            <div class="tab-content">
+              <div class="tab-pane fade in active" id="overview">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="panel panel-default fadeInDown animation-delay2">
+                      <div class="panel-heading">
+                       <strong class="font-14"> Datos de la tarea: </strong>
+                      </div>
+                      <div class="panel-body">
+                        <td>Nombre: <%= @tarea.nombre %></td><br>
+                        <td>Estado: <%= @tarea.estado %></td><br>
+                        <td>Fecha de creación: <%= @tarea.creacion %></td><br>
+                        <td>Fecha de término: <%= @tarea.termino %></td><br>
+                        <td>Descripción: <%= @tarea.descripcion %></td><br>
+                        </div>
+                    </div><!-- /panel -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+</div><!-- /.row -->    
+  </div><!-- /.padding-md -->
+
       <div class="actions" style="position:relative; top:50px ;left:300px" >
-        <a href="/tareas" class="btn btn-warning">
+        <a href="/servicios/<%= @tarea.servicio_id%>" class="btn btn-warning">
          <i class="fa fa-chevron-left"></i>
             Volver
         </a>  
