@@ -6,6 +6,7 @@ class UsuarioController < ApplicationController
 		if current_usuario.tipo_de_usuario == 1
 			@usuarios = Usuario.all
 		elsif current_usuario.tipo_de_usuario == 2
+			@usuarios = Usuario.where(:id => 0)
 			@empresas = current_usuario.empresas
 			@empresas.each do |empresa|
 				@usuarios = empresa.usuarios
@@ -63,6 +64,7 @@ class UsuarioController < ApplicationController
 			if params[:id] == "5"
 				@usuarios = Usuario.where(:tipo_de_usuario => 4)
 			else
+				@usuarios = Usuario.where(:id => 0)
 				@empresas = current_usuario.empresas
 				@empresas.each do |empresa|
 					@usuarios = empresa.usuarios.where(:tipo_de_usuario => params[:id])
