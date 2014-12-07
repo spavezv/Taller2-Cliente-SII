@@ -15,7 +15,7 @@ class ServiciosController < ApplicationController
 
   def new
     @servicio = Servicio.new
-    @empresas = Empresa.all
+    @empresas = current_usuario.empresas
     respond_with(@servicio)
 
   end

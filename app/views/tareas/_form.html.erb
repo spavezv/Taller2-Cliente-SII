@@ -75,12 +75,16 @@
         </div><!-- /.col -->
     </div><!-- /form-group -->
 
-    <% if current_usuario.id == 2 %>
+    <% if current_usuario.tipo_de_usuario == 2 %>
     <div class="form-group">
     <label class="control-label col-lg-2">Ejecutante</label>
                 
         <div class="col-lg-6">
-          <%= f.number_field :usuario_id, :class => "form-control input-sm" %>
+          <%= f.select :ejecutante,
+                      @ejecutantes.collect { |u| [u.email, u.id] },
+               { include_blank: false },
+               { class: "form-control chzn-select" }
+          %>
         
         </div><!-- /.col -->
     </div><!-- /form-group -->
@@ -114,3 +118,8 @@ $(".datepicker").datepicker();
 </script>
 
 <% end %>
+<script type="text/javascript">
+    $(function  ()  {
+        $(".chzn-select").chosen();
+    });
+</script>

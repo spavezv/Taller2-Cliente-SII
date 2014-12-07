@@ -21,7 +21,12 @@ class TareasController < ApplicationController
 
   def new
     @tarea = Tarea.new
-    respond_with(@tarea)
+    @ejecutantes = Usuario.where(:id => 0)
+    @empresas = current_usuario.empresas
+    @empresas.each do |empresa|
+      @ejecutantes += empresa.usuarios.where(:tipo_de_usuario => 3)
+    end
+    respond_with(@tarea,@ejecutantes)
   end
 
   def edit
@@ -50,7 +55,7 @@ class TareasController < ApplicationController
     end
 
     def tarea_params
-      params.require(:tarea).permit(:nombre, :estado, :creacion, :termino, :descripcion, :usuario_id)
+      params.require(:tarea).permit(:nombre, :estado, :creacion, :termino, :descripcion, :ejecutante)
     end
 
 end

@@ -14,11 +14,11 @@ Usuario.create(email: 'admin3@mimemo.cl', password: '12345678', tipo_de_usuario:
 #creando solo un administrador
 Usuario.create(email: 'superadmin@mimemo.cl', password: '12345678', tipo_de_usuario: 1, nombre: 'superadmin')
 
-#creando ejecutantes
-Usuario.create(email: 'ejecutante@mimemo.cl', password: '12345678', tipo_de_usuario: 3, nombre: 'ejecutante')
-Usuario.create(email: 'ejecutante2@mimemo.cl', password: '12345678', tipo_de_usuario: 3, nombre: 'ejecutante2')
-Usuario.create(email: 'ejecutante3@mimemo.cl', password: '12345678', tipo_de_usuario: 3, nombre: 'ejecutante3')
-Usuario.create(email: 'ejecutante4@mimemo.cl', password: '12345678', tipo_de_usuario: 3, nombre: 'ejecutante4')
+#creando ejecutantes pero quedan como clientes
+Usuario.create(email: 'ejecutante@mimemo.cl', password: '12345678', tipo_de_usuario: 4, nombre: 'ejecutante')
+Usuario.create(email: 'ejecutante2@mimemo.cl', password: '12345678', tipo_de_usuario: 4, nombre: 'ejecutante2')
+Usuario.create(email: 'ejecutante3@mimemo.cl', password: '12345678', tipo_de_usuario: 4, nombre: 'ejecutante3')
+Usuario.create(email: 'ejecutante4@mimemo.cl', password: '12345678', tipo_de_usuario: 4, nombre: 'ejecutante4')
 
 #creando clientes
 Usuario.create(email: 'cliente@mimemo.cl', password: '12345678', tipo_de_usuario: 4, nombre: 'cliente')

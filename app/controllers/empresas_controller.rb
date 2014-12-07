@@ -3,7 +3,11 @@ class EmpresasController < ApplicationController
   before_action :set_empresa, only: [:show, :edit, :update, :destroy]
 
   def index
-    @empresas = Empresa.all
+    if(current_usuario.tipo_de_usuario== 2)
+      @empresas = current_usuario.empresas
+    else
+      @empresas = Empresa.all
+    end
     respond_with(@empresas)
   end
 

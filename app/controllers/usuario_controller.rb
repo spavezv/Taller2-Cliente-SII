@@ -9,7 +9,7 @@ class UsuarioController < ApplicationController
 			@usuarios = Usuario.where(:id => 0)
 			@empresas = current_usuario.empresas
 			@empresas.each do |empresa|
-				@usuarios = empresa.usuarios
+				@usuarios += empresa.usuarios
 			end
 		end
 		respond_with(@usuario)
@@ -67,7 +67,7 @@ class UsuarioController < ApplicationController
 				@usuarios = Usuario.where(:id => 0)
 				@empresas = current_usuario.empresas
 				@empresas.each do |empresa|
-					@usuarios = empresa.usuarios.where(:tipo_de_usuario => params[:id])
+					@usuarios += empresa.usuarios.where(:tipo_de_usuario => params[:id])
 				end
 			end
 		end
