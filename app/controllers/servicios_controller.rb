@@ -3,22 +3,32 @@ class ServiciosController < ApplicationController
   before_action :set_servicio, only: [:show, :edit, :update, :destroy]
 
   def index
-    @servicios = Servicio.all
-    @empresas = Empresa.all
+    if (current_usuario.tipo_de_usuario == 4)
+      @servicios = current_usuario.servicios_contratados
+    else
+      @servicios = Servicio.all
+      @empresas = Empresa.all
+    end
     respond_with(@servicios, @empresas)
   end
 
   def show
     session[:servicio_id] = params[:id]
     @servicio = Servicio.find(params[:id])
+    @usuarios = Usuario.all
+    @cliente = @usuarios.find_by(id: @servicio.cliente)
     @tareas = @servicio.tareas
     respond_with(@servicio, @tareas)
   end
 
   def new
     @servicio = Servicio.new
+    @clientes = Usuario.where(:id => 0)
     @empresas = current_usuario.empresas
-    respond_with(@servicio)
+    @empresas.each do |empresa|
+      @clientes += empresa.usuarios.where(:tipo_de_usuario => 4)
+    end
+    respond_with(@servicio,@clientes)
 
   end
 
@@ -51,6 +61,6 @@ class ServiciosController < ApplicationController
     end
 
     def servicio_params
-      params.require(:servicio).permit(:id, :nombre, :creacion, :precio, :pagado, :id_empresa)
+      params.require(:servicio).permit(:id, :nombre, :creacion, :precio, :pagado, :id_empresa, :cliente)
     end
 end

@@ -50,6 +50,18 @@
         </div><!-- /.col -->
       </div><!-- /form-group -->
 
+<!--Cliente del servicio-->
+    <div class="form-group">
+      <label class="control-label col-lg-3">Cliente</label>
+      <div class="col-lg-6">
+          <%= f.select :cliente,
+                      @clientes.collect { |u| [u.nombre, u.id] },
+               { include_blank: false },
+               { class: "form-control chzn-select" }
+          %>
+      </div>
+    </div>
+
 <!--Estado de la deuda del servicio-->
     <div class="form-group">
       <label class="control-label col-lg-3">Estado de la deuda</label>

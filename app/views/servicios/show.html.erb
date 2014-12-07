@@ -53,6 +53,7 @@
                        <strong class="font-14"> Datos del servicio: </strong>
                       </div>
                       <div class="panel-body">
+                        <td>Cliente: <%= @cliente.nombre %></td><br>
                         <td>Fecha de creación: <%= @servicio.creacion %></td><br>
                         <% if @servicio.pagado? %>
                           <td>Estado de deuda: Pagado</td><br>
