@@ -4,9 +4,9 @@ class TareasController < ApplicationController
 
   def index
     if params[:estadoTarea] == "Asignadas"
-      @tareas = current_usuario.tareas_asignadas.where.not(:estado => "Terminada")
+      @tareas = current_usuario.tareas_asignadas.where.not(:estado => "Completada")
     elsif params[:estadoTarea] == "Terminadas"
-      @tareas = current_usuario.tareas_asignadas.where(:estado => "Terminada")
+      @tareas = current_usuario.tareas_asignadas.where(:estado => "Completada")
     else
       @tareas = current_usuario.tareas_asignadas
     end
@@ -15,7 +15,7 @@ class TareasController < ApplicationController
 
   def show
     @usuarios = Usuario.all
-    @usuario = @usuarios.find_by(id: @tarea.usuario_id)
+    @ejecutante = @usuarios.find_by(id: @tarea.ejecutante)
     respond_with(@tarea)
   end
 
@@ -31,6 +31,11 @@ class TareasController < ApplicationController
 
   def edit
     @tarea = Tarea.find(params[:id])
+    @ejecutantes = Usuario.where(:id => 0)
+    @empresas = current_usuario.empresas
+    @empresas.each do |empresa|
+      @ejecutantes += empresa.usuarios.where(:tipo_de_usuario => 3)
+    end
   end
 
   def create
