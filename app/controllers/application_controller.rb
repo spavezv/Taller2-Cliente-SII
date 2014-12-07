@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   helper_method :servicios_contratados
   helper_method :servicios_administrados
+  helper_method :current_servicio
 
   protected
 
@@ -19,6 +20,10 @@ class ApplicationController < ActionController::Base
 
   def servicios_administrados
     @servicios = current_usuario.servicios_administrados
+  end
+
+  def current_servicio
+    @current_servicio ||= Servicio.find(session[:servicio_id]) if session[:servicio_id]
   end
   
 end

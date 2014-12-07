@@ -9,7 +9,9 @@ class ServiciosController < ApplicationController
   end
 
   def show
-    @tareas = Tarea.where(:servicio_id => :id)
+    session[:servicio_id] = params[:id]
+    @servicio = Servicio.find(params[:id])
+    @tareas = @servicio.tareas
     respond_with(@servicio, @tareas)
   end
 

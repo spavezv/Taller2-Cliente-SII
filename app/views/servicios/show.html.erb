@@ -90,26 +90,23 @@
           <tr>
             <th>Nombre</th>
             <th>Estado</th>
-            <th>Cliente</th>
+            <th>Ejecutante</th>
             <th>Fecha término</th>
             <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <!-- /.aqui hacer un foeeach de tareas de un servicio -->
-            
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td> 
-            <i class="fa fa-eye fa-lg"></i>'
-            <i class="fa fa-edit fa-lg "></i>
-             <i class="fa fa-trash-o fa-lg"></i>
-           </td>
-
-          </tr>
+          <% @tareas.each do |tarea| %>
+            <tr>
+              <td><%= tarea.nombre %></td>
+              <td><%= tarea.estado %></td>
+              <td><%= Usuario.find_by(id: tarea.ejecutante).nombre %></td>
+              <td><%= tarea.termino %></td>
+              <td><a class="fa fa-eye fa-lg" href=""></a>
+              <a class="fa fa-edit fa-lg" href=""></a>
+              </td>
+            </tr>
+            <% end %>
 
         </tbody>
       </table>
