@@ -49,6 +49,11 @@ class TareasController < ApplicationController
     respond_with(@tarea)
   end
 
+  def update_archivo
+    @tarea.update(tarea_params_archivo)
+    respond_with(@tarea)
+  end
+
   def destroy
     @tarea.destroy
     respond_with(@tarea)
@@ -61,6 +66,10 @@ class TareasController < ApplicationController
 
     def tarea_params
       params.require(:tarea).permit(:nombre, :estado, :creacion, :termino, :descripcion, :ejecutante, :servicio_id)
+    end
+
+    def tarea_params_archivo
+      params.require(:tarea).permit(:nombreArchivo)
     end
 
 end

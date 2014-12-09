@@ -25,7 +25,7 @@ class ArchivosController < ApplicationController
             subir_archivo = "error";
          end
          #Redirige al controlador "archivos", a la acción "lista_archivos" y con la variable de tipo GET "subir_archivos" con el valor "ok" si se subió el archivo y "error" si no se pudo.
-         redirect_to :controller => "archivos", :action => "listar_archivos", :subir_archivo => subir_archivo;
+         redirect_to :controller => "servicios", :action => "index", :subir_archivo => subir_archivo;
       else
          @formato_erroneo = true;
       end

@@ -5,7 +5,7 @@
 <% end %>
 <% if @formato_erroneo %>
   <div>
-     <p> El formato ingresado es incorrecto. Usted sólo puede subir archivos .pdf, .txt y .docx </p>
+     <p> El formato ingresado es incorrecto. Usted sólo puede subir archivos del tipo .pdf, .txt, .docx, .xlsx, .jpg, .png </p>
   </div>
 <% end %>
-<p> <%= link_to "Ir a la lista de archivos", :controller => "archivos", :action => "listar_archivos" %> </p>
+<p> <%= link_to "Servicios", :controller => "servicios", :action => "index" %> </p> <p> <%= link_to "Lista de Archivos", :controller => "archivos", :action => "listar_archivos" %> </p> 

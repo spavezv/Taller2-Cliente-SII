@@ -93,6 +93,7 @@
             <th>Estado</th>
             <th>Ejecutante</th>
             <th>Fecha término</th>
+            <th>Archivos</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -103,8 +104,10 @@
               <td><%= tarea.estado %></td>
               <td><%= Usuario.find_by(id: tarea.ejecutante).nombre %></td>
               <td><%= tarea.termino %></td>
+              <td><%= tarea.nombreArchivo %></td>
               <td><a class="fa fa-eye fa-lg" href=""></a>
               <a class="fa fa-edit fa-lg" href=""></a>
+              <a class="fa fa-plus fa-lg" href="/../archivos/subir_archivos"></a>
               </td>
             </tr>
             <% end %>
