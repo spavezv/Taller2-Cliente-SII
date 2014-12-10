@@ -131,7 +131,11 @@
 								</div>
 							</a>
 						</li>
-						<li><a tabindex="-1" href="#" class="main-link"><i class="fa fa-edit fa-lg"></i> Editar Perfil</a></li>
+						<li>
+							<%= link_to '<i class="fa fa-edit fa-lg"></i> Editar Perfil'.html_safe, edit_usuario_registration_path%>
+						</li>
+
+						<!--<li><a tabindex="-1" href="#" class="main-link"><i class="fa fa-edit fa-lg"></i> Editar Perfil</a></li> -->
 						<li class="divider"></li>
 						<li>
 							<%= link_to '<i class="fa fa-lock fa-lg"></i> Cerrar Sesión'.html_safe, destroy_usuario_session_path, method: :delete %>
