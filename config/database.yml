@@ -15,7 +15,7 @@ development:
   database: taller
   host: localhost
   username: postgres
-  password: postgres
+  password: 1234
   pool: 5
   timeout: 5000
   port: 5432
