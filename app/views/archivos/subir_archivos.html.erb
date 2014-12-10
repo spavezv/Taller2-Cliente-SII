@@ -1,11 +1,30 @@
 <h2> Subir archivo </h2>
 <%= form_tag({:controller => "archivos", :action => "subir_archivos"}, :method => "post", :multipart => true) do %>
-   <%= file_field_tag "archivo", :required => "required" %>
-   <%= submit_tag "Subir archivo" %>
+
+<div class="panel panel-default">
+    <div class="panel-body" >
+    	<table cellspacing="10" cellpadding="10" border="0">
+    		<tr>
+  				<td>Adjuntar Archivo</td>
+  				<td><%= file_field_tag "archivo", :required => "required" %></td>
+  				<td><%= submit_tag "Subir archivo" %></td>
+			</tr>
+			<tr>
+				<td> <a href="/servicios" class="btn btn-warning"> <i class="fa fa-chevron-left"></i> Servicios </a> </td>
+				<td> <a href="/archivos/listar_archivos" class="btn btn-success"> Lista de Archivos </a> </td>
+			</tr>
+      	</table>
+   
+	</div>
+</div>
 <% end %>
 <% if @formato_erroneo %>
   <div>
      <p> El formato ingresado es incorrecto. Usted sólo puede subir archivos del tipo .pdf, .txt, .docx, .xlsx, .jpg, .png </p>
   </div>
 <% end %>
-<p> <%= link_to "Servicios", :controller => "servicios", :action => "index" %> </p> <p> <%= link_to "Lista de Archivos", :controller => "archivos", :action => "listar_archivos" %> </p> 
+
+
+
+<!--<p> <%= link_to "Servicios", :controller => "servicios", :action => "index" %> </p> -->
+<!--<p> <%= link_to "Lista de Archivos", :controller => "archivos", :action => "listar_archivos" %> </p>  -->

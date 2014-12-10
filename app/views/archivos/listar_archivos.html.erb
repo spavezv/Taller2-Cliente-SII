@@ -5,22 +5,42 @@
    <strong> <%= @mensaje %> </strong>
 </div>
 <% end %>
-<!-- Enlace a la página de subir archivos -->
-<p> <%= link_to "Subir archivo", :controller => "archivos", :action => "subir_archivos" %> </p>
+<div class="panel panel-default">
+    <div class="panel-body" >
+
+<table cellspacing="10" cellpadding="10" border="0">
 <!-- Lista de archivos subidos -->
-<ul>
+
+
    <% @archivos.each do |a| %>
+   <tr>
    <% if a == "." or a == ".." then next end; %>
-   <li>
-      <strong> <%= a %> </strong> | <%= link_to "Borrar archivo", {:controller => "archivos", :action => "borrar_archivos", :archivo_a_borrar => a}, {:method => "post", :confirm => "Seguro?"} %>
-   </li>
+   
+      <td><strong> <%= a %> </strong></td>  <td><%= link_to "Borrar archivo", {:controller => "archivos", :action => "borrar_archivos", :archivo_a_borrar => a}, {:method => "post", :confirm => "Seguro?"} %> </td>
+   
+   </tr>
    <% end %>
-</ul>
+
+
 <!-- Acá se guarda el nombre del archivo antes de que el formularo sea enviado-->
-<hr />
 <!-- Comentarios guardados por el usuario. -->
 <!--<h2> Últimos Comentarios: </h2>-->
 <!--<div>-->
    <!--<pre><%= @comentarios; %></pre>-->
    <!--<%= link_to "Agregar comentarios", :controller => "archivos", :action => "guardar_comentarios" %>-->
 <!--</div>-->
+</table>
+</div>
+</div>
+<hr />
+<!-- Enlace a la página de subir archivos -->
+<table cellspacing="10" cellpadding="10" border="0">
+	<tr>
+		<td> <a href="/servicios" class="btn btn-warning"> <i class="fa fa-chevron-left"></i> Servicios </a> </td>
+		<td> <a href="/archivos/subir_archivos" class="btn btn-success"> Subir Archivo </a> </td>
+	</tr>
+</table>
+</div>
+
+<!--<p> <%= link_to "Servicios", :controller => "servicios", :action => "index" %> </p> -->
+<!--<p> <%= link_to "Subir archivo", :controller => "archivos", :action => "subir_archivos" %> </p> -->
