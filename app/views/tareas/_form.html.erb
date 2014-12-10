@@ -13,9 +13,7 @@
 
   <div class="panel panel-default">
     <div class="panel-body" >
-      <% if current_servicio != nil %>
-            <%= f.hidden_field :servicio_id, :value => current_servicio.id %>
-      <%end %>
+      <%= f.hidden_field :servicio_id, :value => current_servicio.id %>
       <div class="form-group">
       <label class="control-label col-lg-2">Nombre tarea</label>
         
