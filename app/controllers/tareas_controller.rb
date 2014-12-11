@@ -3,6 +3,7 @@ class TareasController < ApplicationController
   before_action :set_tarea, only: [:show, :edit, :update, :destroy]
 
   def index
+    @clientes = Usuario.where(:tipo_de_usuario => 4)
     if params[:estadoTarea] == "Asignadas"
       @tareas = current_usuario.tareas_asignadas.where.not(:estado => "Completada")
     elsif params[:estadoTarea] == "Terminadas"
@@ -10,7 +11,7 @@ class TareasController < ApplicationController
     else
       @tareas = current_usuario.tareas_asignadas
     end
-    respond_with(@tareas)
+    respond_with(@tareas, @clientes)
   end
 
   def show

@@ -24,7 +24,11 @@
         <td><%= tarea.nombre %></td>
         <td><%= tarea.estado %></td>
         <td><%= tarea.created_at %></td>
-        <td><%= tarea.usuario_id %></td>
+        <% if tarea.usuario_id != nil %>
+        <td><%= @clientes.find(tarea.usuario_id).nombre%></td>
+        <%else %>
+        <td>Sin asignar</td>
+        <%end %>       
         <td><%= link_to '<i class="fa fa-eye fa-lg"></i>'.html_safe, tarea_path(tarea) %>
          <%= link_to '<i class="fa fa-edit fa-lg "></i>'.html_safe, edit_tarea_path(tarea) %>
        </td>
