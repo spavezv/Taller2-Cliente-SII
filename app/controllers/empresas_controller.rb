@@ -12,7 +12,10 @@ class EmpresasController < ApplicationController
   end
 
   def show
-    respond_with(@empresa)
+    @servicios = Servicio.where(:id_empresa => @empresa.id)
+    @t_pendientes = Tarea.where("servicio_id = ? AND estado = ?", params[:id], 'En ejecución').count
+    @t_terminadas = Tarea.where("servicio_id = ? AND estado = ?", params[:id], 'Completada').count
+    respond_with(@empresa, @servicios, @t_pendientes, @t_terminadas)
   end
 
   def new

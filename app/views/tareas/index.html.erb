@@ -23,7 +23,7 @@
       <tr>
         <td><%= tarea.nombre %></td>
         <td><%= tarea.estado %></td>
-        <td><%= tarea.created_at %></td>
+         <td><%= tarea.created_at.strftime("%d %b. %Y") %></td> 
         <% if tarea.usuario_id != nil %>
         <td><%= @clientes.find(tarea.usuario_id).nombre%></td>
         <%else %>
