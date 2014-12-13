@@ -106,7 +106,11 @@
             <tr>
               <td><%= tarea.nombre %></td>
               <td><%= tarea.estado %></td>
+              <% if Usuario.find_by_id(tarea.ejecutante).nil? %>
+              <td>No asignado</td><br>
+              <% else %>
               <td><%= Usuario.find_by(id: tarea.ejecutante).nombre %></td>
+              <% end %>
               <td><%= tarea.termino %></td>
               <td><%= tarea.nombreArchivo %></td>
               <td><a class="fa fa-eye fa-lg" href=""></a>
