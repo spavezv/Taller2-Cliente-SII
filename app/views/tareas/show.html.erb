@@ -28,7 +28,11 @@
                         <td>Fecha de creación: <%= @tarea.creacion %></td><br>
                         <td>Fecha de término: <%= @tarea.termino %></td><br>
                         <td>Descripción: <%= @tarea.descripcion %></td><br>
+                        <% if @ejecutante.nil? %>
+                        <td>Ejecutante: No asignado</td><br>
+                        <% else %>
                         <td>Ejecutante: <%= @ejecutante.nombre %></td><br>
+                        <% end %>
                         </div>
                     </div><!-- /panel -->
                   </div>
