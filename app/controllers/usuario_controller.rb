@@ -12,6 +12,7 @@ class UsuarioController < ApplicationController
 				@usuarios += empresa.usuarios
 			end
 		end
+
 		respond_with(@usuario)
 	end
 
@@ -71,7 +72,9 @@ class UsuarioController < ApplicationController
 				end
 			end
 		end
-  		respond_with(@usuarios)
+		@empresas = Empresa.all
+		@empresa_usuario = Empresa.all
+  		respond_with(@usuarios, @empresas)
   	end
 
 	private

@@ -1,4 +1,4 @@
-<h1 style="position:relative ;left:300px">Lista de Usuarios</h1>
+  <h1 style="position:relative ;left:300px">Lista de Usuarios</h1>
 
 
 </div><!-- /panel -->
@@ -13,6 +13,10 @@
               <th>ID</th>
               <th>Correo electrónico</th>
               <th>Tipo de usuario</th>
+
+              <%if current_usuario.tipo_de_usuario ==1%>
+              <th> Empresa </th>
+              <%end%>
               <th>Acciones</th>
                 </tr>
               </thead>
@@ -32,6 +36,26 @@
             end      
               %>
           <td><%= @tipo %></td>
+
+          <%if usuario.tipo_de_usuario ==2 && %>
+          <td><a data-toggle="modal" data-target=".bs-example-modal-sm">Ver empresas</a></td>
+          <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Cerrar</span></button>
+                <h4 class="modal-title" id="mySmallModalLabel">Empresas</h4>
+                </div>
+                <div class="modal-body">
+                <% @empresas.each do |empresa| %>                    
+                  <%= @id= usuario.id
+                   %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+          <%end%>
           <td> <%= link_to '<i class="fa fa-eye fa-lg"></i>'.html_safe, usuario_path(usuario) %>
          <%= link_to '<i class="fa fa-edit fa-lg "></i>'.html_safe, edit_usuario_path(usuario) %>
          <%= link_to '<i class="fa fa-trash-o fa-lg"></i>'.html_safe %>
@@ -41,6 +65,10 @@
               </tbody>
             </table>
         </div><!-- /panel -->
+
+        
+
+         
 <script>
     $(function  ()  {
       $('#dataTable').dataTable( {
@@ -48,5 +76,5 @@
         "sPaginationType": "full_numbers"
       });
     });
-  </script>
+
 
