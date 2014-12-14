@@ -14,14 +14,8 @@
               <th>Nombre fantasia</th>
               <th>Nombre comercial</th>
               <th>Correo</th>
-              <th>Web</th>
               <th>Telefono</th>
-              <th>Duracion</th>
-              <th>Region</th>
-              <th>Giro</th>
-              <th>Detalles</th>
-              <th>Editar</th>
-              <th>Eliminar</th>
+              <th>Acciones</th>
             </tr>
           </thead>
           <tbody>
@@ -30,14 +24,10 @@
               <td><%= empresa.nombre_fantasia %></td>
               <td><%= empresa.nombre_comercial %></td>
               <td><%= empresa.correo %></td>
-              <td><%= empresa.web %></td>
               <td><%= empresa.telefono %></td>
-              <td><%= empresa.direccion %></td>
-              <td><%= empresa.region %></td>
-              <td><%= empresa.giro %></td>
-              <td><a class="fa fa-eye fa-lg" href="/empresas/<%=empresa.id=%>"></a></td>
-              <td><a class="fa fa-edit fa-lg" href="/empresas/<%=empresa.id=%>/edit"></a></td>
-              <td><%= link_to 'Eliminar', empresa, method: :delete, data: { confirm: 'Estás seguro?' } %></td>
+              <td><a class="fa fa-eye fa-lg" href="/empresas/<%=empresa.id=%>"></a>
+                  <a class="fa fa-edit fa-lg" href="/empresas/<%=empresa.id=%>/edit"></a>
+                  <%= link_to '<i class="fa fa-trash-o fa-lg"></i>'.html_safe, empresa, method: :delete, data: { confirm: 'Estás seguro?' } %></td>
             </tr>
             <% end %>
           </tbody>
@@ -60,13 +50,8 @@
              <th>Nombre fantasia</th>
               <th>Nombre comercial</th>
               <th>Correo</th>
-              <th>Web</th>
-              <th>Telefono</th>
-              <th>Duracion</th>
-              <th>Region</th>
-              <th>Giro</th>
-              <th>Detalles</th>
-              <th>Editar</th>
+              <th>Dirección</th>
+              <th>Acciones</th>
            </tr>
          </thead>
          <tbody>
@@ -75,14 +60,10 @@
             <td><%= empresa.nombre_fantasia %></td>
               <td><%= empresa.nombre_comercial %></td>
               <td><%= empresa.correo %></td>
-              <td><%= empresa.web %></td>
-              <td><%= empresa.telefono %></td>
               <td><%= empresa.direccion %></td>
-              <td><%= empresa.region %></td>
-              <td><%= empresa.giro %></td>
-            <td><a class="fa fa-eye fa-lg" href="/empresas/<%=empresa.id=%>"></a></td>
-            <td><a class="fa fa-edit fa-lg" href="/empresas/<%=empresa.id=%>/edit"></a></td>
-            
+              <td><a class="fa fa-eye fa-lg" href="/empresas/<%=empresa.id=%>"></a>
+                  <a class="fa fa-edit fa-lg" href="/empresas/<%=empresa.id=%>/edit"></a>
+              </td>
           </tr>
           <% end %>
         </tbody>
@@ -102,11 +83,7 @@
           <tr>
            <th>Nombre fantasia</th>
            <th>Correo</th>
-           <th>Web</th>
-           <th>Direccion</th>
-           <th>Region</th>
-           <th>Giro</th>
-           <th>Detalles</th>
+           <th>Acciones</th>
          </tr>
        </thead>
        <tbody>
@@ -114,10 +91,6 @@
         <tr>
           <td><%= empresa.nombre_fantasia %></td>
           <td><%= empresa.correo %></td>
-          <td><%= empresa.web %></td>
-          <td><%= empresa.direccion %></td>
-          <td><%= empresa.region %></td>
-          <td><%= empresa.giro %></td>
           <td><a class="fa fa-eye fa-lg" href="/empresas/<%=empresa.id=%>"></a></td>
         </tr>
         <% end %>
@@ -138,10 +111,7 @@
         <tr>
          <th>Nombre fantasia</th>
          <th>Correo</th>
-         <th>Web</th>
-         <th>Direccion</th>
-         <th>Region</th>
-         <th>Detalles</th>
+         <th>Acciones</th>
        </tr>
      </thead>
      <tbody>
@@ -149,9 +119,6 @@
       <tr>
         <td><%= empresa.nombre_fantasia %></td>
         <td><%= empresa.correo %></td>
-        <td><%= empresa.web %></td>
-        <td><%= empresa.direccion %></td>
-        <td><%= empresa.region %></td>
         <td><a class="fa fa-eye fa-lg" href="/empresas/<%=empresa.id=%>"></a></td>
       </tr>
       <%end%>
