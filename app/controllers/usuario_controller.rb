@@ -74,7 +74,6 @@ class UsuarioController < ApplicationController
 			end
 		end
 		@empresas = Empresa.all
-		@empresa_usuario = Empresa.all
   		respond_with(@usuarios, @empresas)
   	end
 

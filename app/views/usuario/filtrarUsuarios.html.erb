@@ -10,20 +10,19 @@
             <table class="table table-striped" id="dataTable">
               <thead>
                 <tr>
-              <th>ID</th>
               <th>Correo electrónico</th>
               <th>Tipo de usuario</th>
-
-              <%if current_usuario.tipo_de_usuario ==1%>
+              <% @usuarios.each do |usuario| %>
+              <%if current_usuario.tipo_de_usuario ==1 && usuario.tipo_de_usuario ==2%>
               <th> Empresa </th>
               <%end%>
               <th>Acciones</th>
                 </tr>
               </thead>
               <tbody>
-            <% @usuarios.each do |usuario| %>
+            
         <tr>
-          <td><%= usuario.id %></td>
+          
           <td><%= usuario.email %></td>
           <%if usuario.tipo_de_usuario == 1  && current_usuario.tipo_de_usuario== 1
               @tipo = "Super Administrador"
@@ -38,7 +37,8 @@
           <td><%= @tipo %></td>
 
           <%if usuario.tipo_de_usuario ==2 && %>
-          <td><a data-toggle="modal" data-target=".bs-example-modal-sm">Ver empresas</a></td>
+          
+          <td><button  class="btn btn-xs btn-info" type="button" data-toggle="modal" data-target=".bs-example-modal-sm">Ver empresas</button></td>
           <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-sm">
               <div class="modal-content">
@@ -47,9 +47,11 @@
                 <h4 class="modal-title" id="mySmallModalLabel">Empresas</h4>
                 </div>
                 <div class="modal-body">
+                  
                 <% @empresas.each do |empresa| %>                    
-                  <%= @id= usuario.id
-                   %>
+                  <% if empresa.usuarios.where(:id => usuario.id) %>
+                    <li><%= empresa.nombre_fantasia %></li>
+                  <%end%>
                 <% end %>
               </div>
             </div>
