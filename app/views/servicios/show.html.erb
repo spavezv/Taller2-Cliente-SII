@@ -113,9 +113,8 @@
               <% end %>
               <td><%= tarea.termino %></td>
               <td><%= tarea.nombreArchivo %></td>
-              <td><a class="fa fa-eye fa-lg" href=""></a>
-              <a class="fa fa-edit fa-lg" href=""></a>
-              <a class="fa fa-plus fa-lg" href="/../archivos/subir_archivos"></a>
+              <td><%= link_to '<i class="fa fa-eye fa-lg"></i>'.html_safe, tarea_path(tarea) %>
+              <%= link_to '<i class="fa fa-edit fa-lg "></i>'.html_safe, edit_tarea_path(tarea) %>
               </td>
             </tr>
             <% end %>
