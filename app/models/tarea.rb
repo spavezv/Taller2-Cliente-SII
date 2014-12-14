@@ -4,9 +4,12 @@ class Tarea < ActiveRecord::Base
 	after_update :cambio_estado
 
 	def cambio_estado		
-		if estado_changed? && estado == "Terminada"
+		if estado_changed? && estado == "Completada"
 			@serv = Servicio.find_by(id: servicio)
 			@serv.update(tareas_terminadas: @serv.tareas_terminadas + 1)
+		elsif estado_changed? && estado_was == "Completada"
+			@serv = Servicio.find_by(id: servicio)
+			@serv.update(tareas_terminadas: @serv.tareas_terminadas - 1)	
 		end
 	end
 end
