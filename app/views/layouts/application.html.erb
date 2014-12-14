@@ -21,35 +21,23 @@
 				<li class="dropdown">
 					<a class="dropdown-toggle" data-toggle="dropdown" href="#">
 						<i class="fa fa-envelope fa-lg"></i>
-						<span class="notification-label bounceIn animation-delay4">7</span>
+						<span class="notification-label bounceIn animation-delay4"><%= mis_notificaciones.where(leido: false).length %></span>
 					</a>
 					<ul class="dropdown-menu message dropdown-1">
-						<li><a>Ultimos Mensajes</a></li>					  
+						<li><a>Ultimos Mensajes</a></li>
+						<% mis_notificaciones.each do |notificacion| %>					  
 						<li>
-							<a class="clearfix" href="#">
-								<%= image_tag("male.jpg")%>
+							<a class="clearfix" href="/tareas/<%= notificacion.tarea_id =%>">
 								<div class="detail">
-									<strong>Usuario2</strong>
+								<strong><%= notificacion.titulo %></strong>
 									<p class="no-margin">
-										Lorem ipsum dolor sit amet...
+										<%= notificacion.cuerpo %>
 									</p>
-									<small class="text-muted"><i class="fa fa-check text-success"></i> 27m ago</small>
+									<small class="text-muted"><i class="fa fa-check text-success"></i> <%= notificacion.created_at.strftime("%d %b. %Y") + " a las " + notificacion.created_at.strftime("%I:%M %p") %></small>
 								</div>
 							</a>	
 						</li>
-						<li>
-							<a class="clearfix" href="#">
-								<%= image_tag("male.jpg")%>
-								<div class="detail">
-									<strong>Baby Doe</strong>
-									<p class="no-margin">
-										Lorem ipsum dolor sit amet...
-									</p>
-									<small class="text-muted"><i class="fa fa-reply"></i> 9 Feb 2013</small>
-								</div>
-							</a>	
-						</li>
-						<li><a href="#">Ver todos los mensajes</a></li>					  
+						<% end %>				  
 					</ul>
 				</li>
 				<li class="dropdown">

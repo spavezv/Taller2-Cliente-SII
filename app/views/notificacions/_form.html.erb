@@ -1,0 +1,19 @@
+<%= simple_form_for(@notificacion) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+
+    <%= f.input :mensaje %>
+
+    <%= f.input :leido %>
+
+    <%= f.input :usuario_id %>
+
+    <%= f.input :tarea_id %>
+
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

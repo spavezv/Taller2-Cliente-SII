@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   helper_method :servicios_contratados
   helper_method :servicios_administrados
   helper_method :current_servicio
+  helper_method :mis_notificaciones
 
   protected
 
@@ -25,5 +26,9 @@ class ApplicationController < ActionController::Base
   def current_servicio
     @current_servicio ||= Servicio.find(session[:servicio_id]) if session[:servicio_id]
   end
-  
+
+  def mis_notificaciones
+    @mis_notificaciones = current_usuario.notificacions
+  end
+
 end

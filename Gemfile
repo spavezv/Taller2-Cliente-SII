@@ -25,6 +25,9 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'simple_form'
 
+#utilizada para calcular la diferencia entre 2 fechas en las notificaciones
+gem 'time_diff', '~> 0.3.0'
+
 
 
 # Use ActiveModel has_secure_password
