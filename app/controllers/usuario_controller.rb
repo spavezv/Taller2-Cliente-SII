@@ -45,10 +45,11 @@ class UsuarioController < ApplicationController
 		@id_empresa= params[:usuario][:empresas]
 		if(@id_empresa != "" )
 			@empresa = Empresa.find(@id_empresa)
-			@usuario.empresas << @empresa
+			unless (@usuario.empresas.include?(@empresa))
+				@usuario.empresas << @empresa
+			end
 		end
 		@usuario.update(usuario_params)
-		@usuario.save
 		respond_with(@usuario)
 	end
 
