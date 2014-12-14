@@ -12,9 +12,8 @@
                 <tr>
               <th>Correo electrónico</th>
               <th>Tipo de usuario</th>
-              <% @usuarios.each do |usuario| %>
-              <%if current_usuario.tipo_de_usuario ==1 && usuario.tipo_de_usuario ==2%>
-              <th> Empresa </th>
+              <% if current_usuario.tipo_de_usuario == 1 && params[:id] == "2" %>
+              <th>Empresa</th>
               <%end%>
               <th>Acciones</th>
                 </tr>
@@ -22,7 +21,7 @@
               <tbody>
             
         <tr>
-          
+          <% @usuarios.each do |usuario| %>
           <td><%= usuario.email %></td>
           <%if usuario.tipo_de_usuario == 1  && current_usuario.tipo_de_usuario== 1
               @tipo = "Super Administrador"
@@ -36,10 +35,13 @@
               %>
           <td><%= @tipo %></td>
 
-          <%if usuario.tipo_de_usuario ==2 && %>
+          <%if usuario.tipo_de_usuario == 2%>
           
-          <td><button  class="btn btn-xs btn-info" type="button" data-toggle="modal" data-target=".bs-example-modal-sm">Ver empresas</button></td>
-          <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+          <% if usuario.empresas.any? %>
+
+          <td><button class="btn btn-xs btn-info" type="button" data-toggle="modal" data-target=".<%= usuario.id %>" >Ver empresas</button></td>
+
+          <div class="modal fade <%= usuario.id %>" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-sm">
               <div class="modal-content">
                 <div class="modal-header">
@@ -47,27 +49,29 @@
                 <h4 class="modal-title" id="mySmallModalLabel">Empresas</h4>
                 </div>
                 <div class="modal-body">
-                  
-                <% @empresas.each do |empresa| %>                    
-                  <% if empresa.usuarios.where(:id => usuario.id) %>
-                    <li><%= empresa.nombre_fantasia %></li>
-                  <%end%>
+                <% usuario.empresas.each do |e| %>                    
+                  <li><%= e.nombre_fantasia %> </li>
                 <% end %>
               </div>
             </div>
           </div>
         </div>
+        <% else %>
+        <td>Sin empresas asociadas</td>
+        <% end %>
+          
           <%end%>
-          <td> <%= link_to '<i class="fa fa-eye fa-lg"></i>'.html_safe, usuario_path(usuario) %>
+        <td> <%= link_to '<i class="fa fa-eye fa-lg"></i>'.html_safe, usuario_path(usuario) %>
          <%= link_to '<i class="fa fa-edit fa-lg "></i>'.html_safe, edit_usuario_path(usuario) %>
          <%= link_to '<i class="fa fa-trash-o fa-lg"></i>'.html_safe %>
-          </td>
-        </tr>
-            <% end %>
+        </td>
+      </tr>
+      <% end %>
               </tbody>
             </table>
         </div><!-- /panel -->
 
+        
         
 
          

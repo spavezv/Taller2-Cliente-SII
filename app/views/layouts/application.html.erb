@@ -25,7 +25,7 @@
 					</a>
 					<ul class="dropdown-menu message dropdown-1">
 						<li><a>Ultimos Mensajes</a></li>
-						<% mis_notificaciones.each do |notificacion| %>					  
+						<% mis_notificaciones.reverse_each do |notificacion| %>					  
 						<li>
 							<a class="clearfix" href="/tareas/<%= notificacion.tarea_id =%>">
 								<div class="detail">
@@ -56,7 +56,7 @@
 					<ul class="dropdown-menu task dropdown-2">
 						<li><a href="#">Servicios en ejecución</a></li>		
 
-						<% servicios.each do |servicio| %>		  
+						<% servicios.reverse_each do |servicio| %>		  
 							<li>
 								<a href="/servicios/<%= servicio.id =%>">
 									<div class="clearfix">
