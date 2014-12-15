@@ -153,7 +153,7 @@
 							<%= current_usuario.nombre %>
 						</strong>
 						<ul class="list-inline">
-							<li><a href="#"> Perfil</a></li>
+							<li><%= link_to '<i class="fa fa-eye fa-lg"></i>'.html_safe, usuario_path(current_usuario) %></li>
 						</ul>
 					</div>
 				</div>
