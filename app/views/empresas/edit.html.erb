@@ -1,3 +1,41 @@
+<%
+regiones= [  
+            "XV - Arica y Parinacota",
+            "I - Tarapacá",
+            "II - Antofagasta",
+            "III - Atacama",
+            "IV - Coquimbo",
+            "V - Valparaíso",
+            "VI - O'Higgins",
+            "VII - Maule",
+            "VIII - BioBió",
+            "IX - Araucanía",
+            "XIV - Los Ríos",
+            "X - Los Lagos",
+            "XI - Aysén",
+            "XII - Magallanes",
+            "RM - Metropolitana"
+]
+giro= [
+            "Agricultura, ganadería, caza y silvicultura",
+            "Pesca",
+            "Explotación de minas y canteras",
+            "Industrias manufactureras no metálicas",
+            "Industrias manufactureras metálicas",
+            "Suministro de electricidad, gas y agua",
+            "Construcción",
+            "Comercio al por mayor y menor; rep. Veh.automotores/enseres domésticos",
+            "Hoteles y restaurantes",
+            "Transporte, almacenamiento y comunicaciones",
+            "Intermediación financiera",
+            "Actividades inmobiliarias, empresariales y de alquiler",
+            "Adm. Pública y defensa; planes de seg. Social afiliación obligatoria",
+            "Enseñanza",
+            "Servicios sociales y de salud",
+            "Otras actividades de servicios comunitarias, sociales y personales"
+      ]
+
+%>
 <%= form_for(@empresa) do |f| %>
 <% if @empresa.errors.any? %>
 <div id="error_explanation">
@@ -12,7 +50,6 @@
 <% end %>
 <% if current_usuario.tipo_de_usuario == 1 || current_usuario.tipo_de_usuario == 2 %>
 <div class="panel panel-default">
-  <form class="form-horizontal form-border no-margin" id="type-constraint" data-validate="parsley" novalidate="">
     <div class="panel-heading">
       Editar empresa
     </div>
@@ -63,21 +100,12 @@
         <label class="control-label col-lg-3">Región</label>
         <div class="col-lg-9">
           <select type="text" class="form-control chzn-select" id="empresa_region" value="<%=@empresa.region=%>" name="empresa[region]" required>
-            <option>XV - Arica y Parinacota</option>
-            <option>I - Tarapacá</option>
-            <option>II - Antofagasta</option>
-            <option>III - Atacama</option>
-            <option>IV - Coquimbo</option>
-            <option>V - Valparaíso</option>
-            <option>VI - O'Higgins</option>
-            <option>VII - Maule</option>
-            <option>VIII - BioBió</option>
-            <option>IX - Araucanía</option>
-            <option>XIV - Los Ríos</option>
-            <option>X - Los Lagos</option>
-            <option>XI - Aysén</option>
-            <option>XII - Magallanes</option>
-            <option>RM - Metropolitana</option>
+            <% regiones.each do |region|%>
+            <option <% if @empresa.region == region%>
+                      <%= "selected" %>
+                      <% end %>
+                      ><%=region%></option>
+            <%end %>
           </select>
           <div class="seperator"></div>
         </div><!-- /.col -->
@@ -85,11 +113,7 @@
       <div class="form-group">
         <label class="control-label col-lg-3">Representante</label>
         <div class="col-lg-9">
-                                <%= f.select :representante,
-                      @administradores.collect { |u| [u.nombre, u.id] },
-               { include_blank: false },
-               { class: "form-control chzn-select" }
-%>
+            <input type="text" class="form-control input-sm" data-type="representante" placeholder="Representante" id="empresa_representante" name="empresa[representante]">
           <div class="seperator"></div>
         </div><!-- /.col -->
       </div><!-- /form-group -->
@@ -97,22 +121,12 @@
         <label class="control-label col-lg-3">Giro</label>
         <div class="col-lg-9">
           <select type="text" class="form-control chzn-select" id="empresa_giro" value="<%=@empresa.giro=%>" name="empresa[giro]" required>
-            <option>Agricultura, ganadería, caza y silvicultura</option>
-            <option>Pesca</option>
-            <option>Explotación de minas y canteras</option>
-            <option>Industrias manufactureras no metálicas</option>
-            <option>Industrias manufactureras metálicas</option>
-            <option>Suministro de electricidad, gas y agua</option>
-            <option>Construcción</option>
-            <option>Comercio al por mayor y menor; rep. Veh.automotores/enseres domésticos</option>
-            <option>Hoteles y restaurantes</option>
-            <option>Transporte, almacenamiento y comunicaciones</option>
-            <option>Intermediación financiera</option>
-            <option>Actividades inmobiliarias, empresariales y de alquiler</option>
-            <option>Adm. Pública y defensa; planes de seg. Social afiliación obligatoria</option>
-            <option>Enseñanza</option>
-            <option>Servicios sociales y de salud</option>
-            <option>Otras actividades de servicios comunitarias, sociales y personales</option>
+            <% giro.each do |giro|%>
+            <option <% if @empresa.giro == giro%>
+                      <%= "selected" %>
+                      <% end %>
+                      ><%=giro%></option>
+            <%end %>
           </select>
           <div class="seperator"></div>
         </div><!-- /.col -->
@@ -123,7 +137,6 @@
     <a href="/empresas" class="btn btn-warning"> <i class="fa fa-chevron-left"></i>Volver</a>
     <button name="commit" class="btn btn-success" type="submit">Aceptar</button>
   </div>
-</form>
 <% end %>
 <% end %>
 <script type="text/javascript">

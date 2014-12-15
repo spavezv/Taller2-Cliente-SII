@@ -14,7 +14,7 @@
 
 <% if current_usuario.tipo_de_usuario == 1 %>
 <div class="panel panel-default">
-              <form class="form-horizontal form-border no-margin" id="type-constraint" data-validate="parsley" novalidate="">
+              
                 <div class="panel-body">
                   <div class="form-group">
                     <label for="empresa_nombre_fantasia" class="control-label col-lg-3">Nombre de fantasía</label>
@@ -115,11 +115,12 @@
                     </div><!-- /.col -->
                   </div><!-- /form-group -->
                 </div><!-- /panel-heading -->
-              </form>
-            </div>
+              
+</div>
             <div align="left">
               <a href="/empresas" class="btn btn-warning"> <i class="fa fa-chevron-left"></i>Volver</a>
               <button name="commit" class="btn btn-success" type="submit">Aceptar</button>
+
             </div> 
 
   <% end %>          
