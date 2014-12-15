@@ -30,9 +30,8 @@ ActiveRecord::Schema.define(version: 20141214194611) do
     t.datetime "updated_at"
   end
 
-  create_table "empresas_usuarios", id: false, force: true do |t|
-    t.integer "empresa_id"
-    t.integer "usuario_id"
+  create_table "empresas_usuarios", primary_key: "empresa_id", force: true do |t|
+    t.integer "usuario_id", null: false
   end
 
   create_table "notificacions", force: true do |t|
