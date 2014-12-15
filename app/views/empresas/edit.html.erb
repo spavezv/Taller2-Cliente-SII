@@ -62,7 +62,7 @@
       <div class="form-group">
         <label class="control-label col-lg-3">Región</label>
         <div class="col-lg-9">
-          <select type="text" class="form-control chzn-select" id="empresa_region" name="empresa[region]" value="<%= @empresa.region=%>">
+          <select type="text" class="form-control chzn-select" id="empresa_region" value="<%=@empresa.region=%>" name="empresa[region]" required>
             <option>XV - Arica y Parinacota</option>
             <option>I - Tarapacá</option>
             <option>II - Antofagasta</option>
@@ -96,7 +96,7 @@
       <div class="form-group">
         <label class="control-label col-lg-3">Giro</label>
         <div class="col-lg-9">
-          <select type="text" class="form-control chzn-select" id="empresa_giro" name="empresa[giro]" value="<%= @empresa.giro=%>">
+          <select type="text" class="form-control chzn-select" id="empresa_giro" value="<%=@empresa.giro=%>" name="empresa[giro]" required>
             <option>Agricultura, ganadería, caza y silvicultura</option>
             <option>Pesca</option>
             <option>Explotación de minas y canteras</option>
