@@ -47,7 +47,7 @@
                 <div class="form-group">
                     <label class="control-label col-lg-3">Teléfono</label>
                     <div class="col-lg-9">
-                      <input type="text" class="form-control input-sm" data-type="digits" placeholder="Teléfono" id="empresa_telefono" name="empresa[telefono]">
+                      <input type="text" class="form-control input-sm" data-type="digits" placeholder="Teléfono" id="empresa_telefono" name="empresa[telefono]" maxlength="10">
                       <div class="seperator"></div>
                     </div><!-- /.col -->
                   </div><!-- /form-group -->
@@ -85,11 +85,7 @@
                   <div class="form-group">
                     <label class="control-label col-lg-3">Representante</label>
                     <div class="col-lg-9">
-                      <%= f.select :representante,
-                      @administradores.collect { |u| [u.nombre, u.id] },
-               { include_blank: false },
-               { class: "form-control chzn-select" }
-%>
+                      <input type="text" class="form-control input-sm" data-type="representante" placeholder="Representante" id="empresa_representante" name="empresa[representante]">
                       <div class="seperator"></div>
                     </div><!-- /.col -->
                   </div><!-- /form-group -->
