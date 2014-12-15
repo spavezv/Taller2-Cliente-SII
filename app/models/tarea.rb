@@ -23,16 +23,19 @@ class Tarea < ActiveRecord::Base
 		end
 
 		if ejecutante.present? && ejecutante_changed?
+			@titulo = "Tarea " + estado
 			Notificacion.create(:titulo => @titulo, :cuerpo => nombre , :leido => false, :usuario_id => ejecutante, :tarea_id => id)
 		end
 	end
 
 	def tarea_creada
 		if ejecutante.present?
+			@titulo = "Tarea " + estado
 			Notificacion.create(:titulo => @titulo, :cuerpo => nombre , :leido => false, :usuario_id => ejecutante, :tarea_id => id)
 		end
 		@serv = Servicio.find_by(id: servicio)
 		@serv.update(tareas_cantidad: @serv.tareas_cantidad + 1)
+		update_attribute(:usuario_id, @serv.cliente)
 	end
 
 end

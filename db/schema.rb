@@ -93,11 +93,4 @@ ActiveRecord::Schema.define(version: 20141214194611) do
   add_index "usuarios", ["email"], name: "index_usuarios_on_email", unique: true, using: :btree
   add_index "usuarios", ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true, using: :btree
 
-  create_table "usuraio_empresas", force: true do |t|
-    t.integer  "id_cliente"
-    t.integer  "id_empresa"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
 end
