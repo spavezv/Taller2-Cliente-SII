@@ -64,7 +64,11 @@ class UsuarioController < ApplicationController
 			@usuarios = Usuario.where(:tipo_de_usuario => params[:id])
 		elsif current_usuario.tipo_de_usuario == 2
 			if params[:id] == "5"
+				@es = current_usuario.empresas
 				@usuarios = Usuario.where(:tipo_de_usuario => 4)
+				@es.each do |e|
+					@usuarios = @usuarios - e.usuarios
+				end 
 			else
 				@usuarios = Usuario.where(:id => 0)
 				@empresas = current_usuario.empresas
@@ -75,7 +79,7 @@ class UsuarioController < ApplicationController
 		end
 		@empresas = Empresa.all
   		respond_with(@usuarios, @empresas)
-  	end
+  end
 
 	private
 	def set_usuario

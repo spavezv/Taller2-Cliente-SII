@@ -34,7 +34,12 @@ class ServiciosController < ApplicationController
 
   def edit
     @servicio = Servicio.find(params[:id])
-    respond_with(@servicio)
+    @empresas = current_usuario.empresas
+    @clientes = Usuario.where(:id => 0)
+    @empresas.each do |empresa|
+      @clientes += empresa.usuarios.where(:tipo_de_usuario => 4)
+    end
+    respond_with(@servicio, @clientes)
   end
 
   def create

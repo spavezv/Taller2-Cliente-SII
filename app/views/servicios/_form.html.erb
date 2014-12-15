@@ -53,7 +53,7 @@
 <!--Cliente del servicio-->
     <div class="form-group">
       <label class="control-label col-lg-3">Cliente</label>
-      <div class="col-lg-6">
+      <div class="col-lg-9">
           <%= f.select :cliente,
                       @clientes.collect { |u| [u.nombre, u.id] },
                { include_blank: false },
@@ -77,13 +77,15 @@
 
   </div><!-- /panel-body -->
 
-  <div align="center">
+ 
+
+  </div>     
+
+    <div align="left">
     <a href="/servicios" class="btn btn-warning">
       <i class="fa fa-chevron-left"></i>Volver</a>  
     <button name="commit" class="btn btn-success" type="submit">Aceptar</button>
-  </div>  
-
-  </div>                 
+  </div>             
 </div>
 
 <% end %>
