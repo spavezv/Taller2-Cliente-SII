@@ -28,7 +28,7 @@
               <div class="panel-body">
                 <div class="row">                  
                   <div class="col-xs-4 text-center">
-                    <span class="block font-14"><%= @servicio.tareas_cantidad%></span>
+                    <span class="block font-14"><%= @servicio.tareas_cantidad - @servicio.tareas_terminadas%></span>
                     <small class="text-muted">Tareas Pendientes</small>
                   </div><!-- /.col -->
                   <div class="col-xs-4 text-center">
