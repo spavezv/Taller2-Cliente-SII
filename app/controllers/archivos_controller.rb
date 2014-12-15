@@ -1,6 +1,7 @@
 class ArchivosController < ApplicationController
   Ruta_archivo_comentarios = "app/views/public/comentarios/comentarios.txt";
   Ruta_directorio_archivos = "app/views/public/archivos/";
+  
   def subir_archivos
    @formato_erroneo = false;
    if request.post?

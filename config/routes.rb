@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   resources :notificacions
 
   get 'archivos/subir_archivos'
-
   get 'archivos/listar_archivos'
 
   get 'archivos/borrar_archivos'

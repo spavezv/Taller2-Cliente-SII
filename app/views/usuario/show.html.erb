@@ -14,28 +14,32 @@
 
     <div class="panel panel-default fadeInDown animation-delay2">
       <div class="panel-heading">
-        Datos del usuario:
+        Datos del usuario
       </div>
       <div class="panel-body">
-        <td>Nombre: <%= @usuario.nombre %></td><br>
-        <td>Email: <%= @usuario.email %></td><br>
-        <% if @usuario.tipo_de_usuario == 1 %>
-          <% @tipo = "Super Administrador" %>
-        <%elsif @usuario.tipo_de_usuario == 2 %>
-          <% @tipo = "Administrador" %>
-        <%elsif @usuario.tipo_de_usuario == 3 %>
-          <% @tipo = "Ejecutante" %>
-        <%elsif @usuario.tipo_de_usuario == 4 %>
-          <% @tipo = "Cliente" %>
-        <% end %>
+        <table cellpadding="2" border="0">
+          <tr><td>Nombre</td> <td>: <%= @usuario.nombre %></td></tr>
+          <tr><td>Email</td> <td>: <%= @usuario.email %></td></tr>
+          
+          <% if @usuario.tipo_de_usuario == 1 %>
+            <% @tipo = "Super Administrador" %>
+          <%elsif @usuario.tipo_de_usuario == 2 %>
+            <% @tipo = "Administrador" %>
+          <%elsif @usuario.tipo_de_usuario == 3 %>
+            <% @tipo = "Ejecutante" %>
+          <%elsif @usuario.tipo_de_usuario == 4 %>
+            <% @tipo = "Cliente" %>
+          <% end %>
+          
+        
 
 
-
-        <td>Tipo de Usuario: <%= @tipo %></td><br>      
+          <tr><td>Tipo de Usuario</td> <td>: <%= @tipo %></td></tr> 
+        </table>    
       </div>
        
     </div><!-- /panel -->
      <div>
         <a href="/usuario" class="btn btn-warning">
         <i class="fa fa-chevron-left"></i>Volver</a>
-      </div>
+    </div>

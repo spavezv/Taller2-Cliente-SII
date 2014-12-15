@@ -2,6 +2,8 @@ class EmpresasController < ApplicationController
   respond_to :html, :xml, :json
   before_action :set_empresa, only: [:show, :edit, :update, :destroy]
 
+  
+
   def index
     if(current_usuario.tipo_de_usuario== 2)
       @empresas = current_usuario.empresas
@@ -54,4 +56,7 @@ class EmpresasController < ApplicationController
     def empresa_params
       params.require(:empresa).permit(:nombre_fantasia, :nombre_comercial, :correo, :web, :telefono, :direccion, :region, :representante, :giro)
     end
+
+  
+
 end

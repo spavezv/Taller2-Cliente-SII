@@ -115,6 +115,7 @@
               <td><%= tarea.nombreArchivo %></td>
               <td><%= link_to '<i class="fa fa-eye fa-lg"></i>'.html_safe, tarea_path(tarea) %>
               <%= link_to '<i class="fa fa-edit fa-lg "></i>'.html_safe, edit_tarea_path(tarea) %>
+              <%= link_to '<i class="fa fa-file-o fa-lg "></i>'.html_safe, archivos_subir_archivos_path(tarea) %>
               </td>
             </tr>
             <% end %>
