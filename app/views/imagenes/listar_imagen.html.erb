@@ -1,0 +1,44 @@
+<h2> Imagenes </h2>
+<% if @mensaje %>
+<!-- Mensaje enviado de la anterior página-->
+<div>
+   <strong> <%= @mensaje %> </strong>
+</div>
+<% end %>
+<div class="panel panel-default">
+    <div class="panel-body" >
+
+<table cellspacing="10" cellpadding="10" border="0">
+<!-- Lista de archivos subidos -->
+
+
+   <% @archivos.each do |a| %>
+   <tr>
+   <% if a == "." or a == ".." then next end; %>
+   
+      <td><strong> <%= a %> </strong></td>  <td><%= link_to "Borrar archivo", {:controller => "imagenes", :action => "borrar_imagen", :archivo_a_borrar => a}, {:method => "post", :confirm => "Seguro?"} %> </td>
+   
+   </tr>
+   <% end %>
+
+
+<!-- Acá se guarda el nombre del archivo antes de que el formularo sea enviado-->
+<!-- Comentarios guardados por el usuario. -->
+<!--<h2> Últimos Comentarios: </h2>-->
+<!--<div>-->
+   <!--<pre><%= @comentarios; %></pre>-->
+   <!--<%= link_to "Agregar comentarios", :controller => "archivos", :action => "guardar_comentarios" %>-->
+<!--</div>-->
+</table>
+</div>
+</div>
+<hr />
+<!-- Enlace a la página de subir archivos -->
+<table cellspacing="10" cellpadding="10" border="0">
+   <tr>
+      <td> <a href="/empresas" class="btn btn-warning"> <i class="fa fa-chevron-left"></i> Volver </a> </td>
+      <td> <a href="/imagenes/subir_imagen" class="btn btn-success"> Subir Archivo </a> </td>
+   </tr>
+</table>
+</div>
+

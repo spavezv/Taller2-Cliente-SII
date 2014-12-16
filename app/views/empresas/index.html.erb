@@ -1,5 +1,4 @@
-    <!--Super administrador-->
-    <% if current_usuario.tipo_de_usuario == 1 %>
+
 
 <div class="panel panel-default table-responsive">
     <div class="panel-heading">
@@ -13,6 +12,8 @@
       </div>
 
   </div><!-- /panel heading-->
+      <!--Super administrador-->
+    <% if current_usuario.tipo_de_usuario == 1 %>
        <div class="padding-md clearfix"> 
         <table class="table table-striped" id="dataTable">
           <thead>
@@ -33,6 +34,7 @@
               <td><%= empresa.telefono %></td>
               <td><a class="fa fa-eye fa-lg" href="/empresas/<%=empresa.id=%>"></a>
                   <a class="fa fa-edit fa-lg" href="/empresas/<%=empresa.id=%>/edit"></a>
+                  <%= link_to '<i class="fa fa-file-o fa-lg "></i>'.html_safe, imagenes_subir_imagen_path(empresa) %>
                   <%= link_to '<i class="fa fa-trash-o fa-lg"></i>'.html_safe, empresa, method: :delete, data: { confirm: 'Estás seguro?' } %></td>
             </tr>
             <% end %>

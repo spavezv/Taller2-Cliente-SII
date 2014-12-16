@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'imagenes/subir_imagen'
+
+  get 'imagenes/listar_imagen'
+
+  get 'imagenes/borrar_imagen'
+
+  get 'imagenes/guardar_comentario'
+
   resources :notificacions
 
   get 'archivos/subir_archivos'
@@ -38,6 +46,13 @@ Rails.application.routes.draw do
   get "archivos/guardar_comentarios"
   post "archivos/guardar_comentarios"
   get "cliente/servicios" => "servicios#index"
+
+  get "imagenes/subir_imagen"
+  post "imagenes/subir_imagen"
+  get "imagenes/listar_imagen"
+  post "imagenes/borrar_imagen"
+  get "imagenes/guardar_comentario"
+  post "imagenes/guardar_comentario"
 
 
   # Example of regular route:
