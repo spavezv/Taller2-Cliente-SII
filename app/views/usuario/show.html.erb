@@ -39,7 +39,15 @@
       </div>
        
     </div><!-- /panel -->
-     <div align="left">
-        <a href="/usuario" class="btn btn-warning">
-        <i class="fa fa-chevron-left"></i>Volver</a>
-    </div>
+    <% if @usuario.tipo_de_usuario == 4%>
+
+         <div align="left">          
+            <%= link_to "Volver".html_safe, servicios_path , :class => "btn btn-warning "%>
+        </div>
+     <% else %>
+         <div align="left">
+               
+            <a href="/usuario" class="btn btn-warning">
+            <i class="fa fa-chevron-left"></i>Volver</a>
+        </div>
+      <% end %>  
