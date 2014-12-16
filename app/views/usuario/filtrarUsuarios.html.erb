@@ -35,7 +35,7 @@
               %>
           <td><%= @tipo %></td>
 
-          <%if usuario.tipo_de_usuario == 2%>
+          <%if current_usuario.tipo_de_usuario == 1 && usuario.tipo_de_usuario == 2%>
           
           <% if usuario.empresas.any? %>
 
@@ -49,8 +49,20 @@
                 <h4 class="modal-title" id="mySmallModalLabel">Empresas</h4>
                 </div>
                 <div class="modal-body">
-                <% usuario.empresas.each do |e| %>                    
-                  <li><%= e.nombre_fantasia %> </li>
+                <% usuario.empresas.each do |e| %>
+                <div class="row">
+                      <div class="col-md-6 col-sm-6">                    
+                        <li><%= e.nombre_fantasia %> 
+                          <div class="col-md-6 col-sm-6">                    
+                          <div align="right">
+                         <%= button_to "Eliminar empresa", action=e.usuarios.delete(usuario),  :class => "btn btn-xs btn-danger fa fa-trash-o"%>
+
+                       </div>
+                       </li>
+                       </div>
+                    </div> 
+                                     
+                  
                 <% end %>
               </div>
             </div>

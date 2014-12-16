@@ -20,7 +20,7 @@
       <label class="control-label col-lg-2">Nombre tarea</label>
         
         <div class="col-lg-6">
-          <%= f.text_field :nombre, :class => "form-control input-sm", :placeholder =>"Ingrese el nombre" %>
+          <%= f.text_field :nombre, :class => "form-control input-sm", :placeholder =>"Ingrese el nombre", :required => true %>
       
         </div><!-- /.col -->
       </div><!-- /form-group -->
@@ -29,7 +29,7 @@
     <label class="control-label col-lg-2">Estado</label>
                 
         <div class="col-lg-6">
-          <select type="text" class="form-control chzn-select" id="tarea_estado" name="tarea[estado]">
+          <select type="text" class="form-control chzn-select" id="tarea_estado" name="tarea[estado]" required>
                       <option> </option>
                       <option>En ejecución</option>
                       <option>Completada</option>
@@ -43,7 +43,7 @@
          <label class="control-label col-lg-2">Creación</label>            
         <div class="col-lg-6">
            <div class="input-group">
-            <%= f.text_field :creacion, :class =>"datepicker form-control input-sm" %>
+            <%= f.text_field :creacion, :class =>"datepicker form-control input-sm", :required => true %>
             <span class="input-group-addon">
               <i class="fa fa-calendar"></i>
             </span>
@@ -58,7 +58,7 @@
          <label class="control-label col-lg-2">Término</label>            
         <div class="col-lg-6">
           <div class="input-group">
-            <%= f.text_field :termino, :class =>"datepicker form-control input-sm" %>
+            <%= f.text_field :termino, :class =>"datepicker form-control input-sm", :required => true %>
             <span class="input-group-addon">
               <i class="fa fa-calendar"></i>
             </span>
