@@ -5,9 +5,10 @@
             <div class="row">
               <div class="col-xs-6 col-sm-12 col-md-6 text-center">
                 <a href="#">
-                  <%if File.exist?("/../assets/images/"+@empresa.nombre_fantasia+".jpg") %>
+                  <%if File.exist?("app/assets/images/"+@empresa.nombre_fantasia+".jpg") %>
                     <img src="/assets/<%=@empresa.nombre_fantasia=%>.jpg" alt="User Avatar" class="img-thumbnail">
-                  
+                  <% else %>
+                    <img src="/assets/Default.jpg" alt="User Avatar" class="img-thumbnail">
                   <% end %>
                 </a>
                 <div class="seperator"></div>
@@ -66,7 +67,11 @@
             <div class="row">
               <div class="col-xs-6 col-sm-12 col-md-6 text-center">
                 <a href="#">
-                  <img src="/assets/<%=@empresa.nombre_fantasia=%>.jpg" alt="User Avatar" class="img-thumbnail">
+                  <%if File.exist?("app/assets/images/"+@empresa.nombre_fantasia+".jpg") %>
+                    <img src="/assets/<%=@empresa.nombre_fantasia=%>.jpg" alt="User Avatar" class="img-thumbnail">
+                  <% else %>
+                    <img src="/assets/Default.jpg" alt="User Avatar" class="img-thumbnail">
+                  <% end %>
                 </a>
                 <div class="seperator"></div>
                 <div class="seperator"></div>
