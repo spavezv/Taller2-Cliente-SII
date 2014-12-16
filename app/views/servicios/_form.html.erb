@@ -1,4 +1,4 @@
-<%= form_for(@servicio, html: {class:"form-horizontal form-border no-margin"}) do |f| %>
+<%= form_for(@servicio, html: {class:"form-horizontal form-border no-margin","data-validate" => "parsley"}) do |f| %>
   <% if @servicio.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@servicio.errors.count, "error") %> No se puede almacenar:</h2>
@@ -13,7 +13,6 @@
 <!--Si el usuario es administrador, puede crear un servicio-->
 <% if current_usuario.tipo_de_usuario == 2  %>
 <div class="panel panel-default">
-  <form class="form-horizontal form-border no-margin" id="type-constraint" data-validate="parsley" novalidate="">
     <div class="panel-body">
       <!--Nombre del servicio-->
       <div class="form-group">
@@ -44,7 +43,7 @@
         <div class="col-lg-9">
           <div class="input-group">
             <span class="input-group-addon">$</span>
-            <input type="text" class="form-control input-sm" data-type="digits" placeholder="Precio del Servicio" id="servicio_precio" name="servicio[precio]" required>
+            <input type="text" class="form-control input-sm" data-type="digits" data-validate="parsley" placeholder="Precio del Servicio" id="servicio_precio" name="servicio[precio]" required>
           </div>
           <div class="seperator"></div>
         </div><!-- /.col -->
