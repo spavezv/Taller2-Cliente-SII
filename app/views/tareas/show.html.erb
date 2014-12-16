@@ -36,7 +36,11 @@
                         </div>
                     </div><!-- /panel -->
                     <div align="left" >
+                      <% if current_usuario.tipo_de_usuario == 2 %>
+                      <a href="/tareas" class="btn btn-warning">
+                      <% else %>
                       <a href="/servicios/<%= @tarea.servicio_id%>" class="btn btn-warning">
+                      <% end %>
                        <i class="fa fa-chevron-left"></i>Volver</a>  
                       </div>  
                   </div>
