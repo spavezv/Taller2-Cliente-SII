@@ -50,21 +50,24 @@
                   <div class="col-md-12">
                     <div class="panel panel-default fadeInDown animation-delay2">
                       <div class="panel-heading">
-                       <strong class="font-14"> Datos del servicio: </strong>
+                       <strong class="font-14"> Datos del servicio </strong>
                       </div>
                       <div class="panel-body">
-                      <% if @cliente.nil? %>
-                        <td>Cliente: No asignado</td><br>
-                      <% else %>
-                        <td> Cliente: <%= @cliente.nombre %> </td><br>
-                      <% end %>
-                        <td>Fecha de creación: <%= @servicio.creacion %></td><br>
-                        <% if @servicio.pagado? %>
-                          <td>Estado de deuda: Pagado</td><br>
-                        <%else%>
-                          <td>Estado de deuda: No pagado</td><br>
+
+                      <table cellpadding="2" border="0">
+                        <% if @cliente.nil? %>
+                          <tr> <td>Cliente</td> <td>: No asignado</td> </tr>
+                        <% else %>
+                          <tr> <td>Cliente</td> <td>: <%= @cliente.nombre %></td> </tr>
                         <% end %>
-                        <td>Precio del servicio: $ <%= @servicio.precio %></td><br>
+                          <tr> <td>Fecha de creación</td> <td>: <%= @servicio.creacion %></td> </tr>
+                          <% if @servicio.pagado? %>
+                            <tr> <td>Estado de deuda</td> <td>: Pagado</td> </tr>
+                          <%else%>
+                            <tr> <td>Estado de deuda</td> <td>: No pagado</td> </tr>
+                          <% end %>
+                          <tr> <td>Precio del servicio</td> <td>: $ <%= @servicio.precio %></td> </tr>
+                        </table>
                         </div>
                     </div><!-- /panel -->
                   </div>
