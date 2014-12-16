@@ -1,5 +1,4 @@
-    <!--Super administrador-->
-    <% if current_usuario.tipo_de_usuario == 1 %>
+
 
 <div class="panel panel-default table-responsive">
     <div class="panel-heading">
@@ -13,6 +12,8 @@
       </div>
 
   </div><!-- /panel heading-->
+      <!--Super administrador-->
+    <% if current_usuario.tipo_de_usuario == 1 %>
        <div class="padding-md clearfix"> 
         <table class="table table-striped" id="dataTable">
           <thead>
