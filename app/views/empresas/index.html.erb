@@ -6,9 +6,11 @@
   <div class="col-md-6"> 
     <h4> Empresas </h4>
   </div>
+  <% if current_usuario.tipo_de_usuario == 1 %>
   <div class="col-md-6">
     <%= link_to "Nueva Empresa".html_safe, new_empresa_path , :class => "btn btn-success  pull-right"%>
   </div>
+  <% end %>
       </div>
 
   </div><!-- /panel heading-->
