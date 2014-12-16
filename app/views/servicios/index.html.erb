@@ -10,7 +10,9 @@
     <h4> Servicio </h4>
   </div>
   <div class="col-md-6">
+    <%if current_usuario == 2%>
     <%= link_to "Nuevo servicio".html_safe, new_servicio_path , :class => "btn btn-success  pull-right"%>
+    <%end%>
     </div>
   </div>
 
