@@ -22,7 +22,7 @@ class Tarea < ActiveRecord::Base
 			@serv.update(tareas_terminadas: @serv.tareas_terminadas - 1)	
 		end
 
-		if ejecutante.present? && ejecutante_changed?
+		if !ejecutante_was.nil? && ejecutante_changed?
 			@titulo = "Tarea " + estado
 			Notificacion.create(:titulo => @titulo, :cuerpo => nombre , :leido => false, :usuario_id => ejecutante, :tarea_id => id)
 		end
