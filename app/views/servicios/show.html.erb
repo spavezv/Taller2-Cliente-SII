@@ -83,7 +83,7 @@
   <div class="col-md-6"> 
     <h4> Tareas </h4>
   </div>
-  <%if current_usuario == 2%>
+  <%if current_usuario.tipo_de_usuario == 2%>
   <div class="col-md-6">
     <%= link_to "Nueva tarea".html_safe, new_tarea_path , :class => "btn btn-success  pull-right"%>
   </div>
