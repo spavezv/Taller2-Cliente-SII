@@ -1,0 +1,8 @@
+<h1>Imagenes#guardar_comentario</h1>
+
+<%= form_tag({:controller => "imagenes", :action => "guardar_comentario"}, :method => "post") do %>
+   <%= text_area_tag "comentarios", @comentarios, :cols => 50, :rows => 10, :required => "required" %>
+   <br />
+   <%= submit_tag "Guardar comentario" %>
+<% end %>
+<p> <%= link_to "Volver a la lista de archivos", :controller => "imagenes", :action => "listar_imagen" %> </p>

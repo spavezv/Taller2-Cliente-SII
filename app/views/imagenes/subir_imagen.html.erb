@@ -1,0 +1,27 @@
+<h1>Subir Imagen</h1>
+<%= form_tag({:controller => "imagenes", :action => "subir_imagen"}, :method => "post", :multipart => true) do %>
+
+<div class="panel panel-default">
+    <div class="panel-body" >
+    	<table cellspacing="10" cellpadding="10" border="0">
+    		<tr>
+  				<td>Adjuntar Imagen</td>
+  				<td><%= file_field_tag "archivo", :required => "required" %></td>
+  				<td><%= submit_tag "Subir Imagen" %></td>
+			</tr>
+			<tr>
+				<td> <a href="/empresas" class="btn btn-warning"> <i class="fa fa-chevron-left"></i> Vorver </a> </td>
+				<td> <a href="/imagenes/listar_imagen" class="btn btn-success"> Lista de Imagenes </a> </td>
+			</tr>
+      	</table>
+   
+	</div>
+</div>
+<% end %>
+<% if @formato_erroneo %>
+  <div>
+     <p> El formato ingresado es incorrecto. Usted sólo puede subir archivos del tipo .jpg </p>
+  </div>
+<% end %>
+
+<!--<p> <%= link_to "Volver a la lista de archivos", :controller => "imagenes", :action => "listar_imagen" %> </p>-->

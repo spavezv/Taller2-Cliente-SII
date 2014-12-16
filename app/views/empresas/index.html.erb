@@ -33,6 +33,7 @@
               <td><%= empresa.telefono %></td>
               <td><a class="fa fa-eye fa-lg" href="/empresas/<%=empresa.id=%>"></a>
                   <a class="fa fa-edit fa-lg" href="/empresas/<%=empresa.id=%>/edit"></a>
+                  <%= link_to '<i class="fa fa-file-o fa-lg "></i>'.html_safe, imagenes_subir_imagen_path(empresa) %>
                   <%= link_to '<i class="fa fa-trash-o fa-lg"></i>'.html_safe, empresa, method: :delete, data: { confirm: 'Estás seguro?' } %></td>
             </tr>
             <% end %>
