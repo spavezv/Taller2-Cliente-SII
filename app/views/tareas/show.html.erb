@@ -39,7 +39,9 @@
                     </div><!-- /panel -->
 
                     <!-- -->
+                    <%if current_usuario.tipo_de_usuario == 2 || current_usuario.tipo_de_usuario == 4%>
                     <div class="panel panel-default table-responsive">
+    
     <div class="panel-heading">
       <div class="row">
   <div class="col-md-6"> 
@@ -53,16 +55,12 @@
         <thead>
           <tr>
             <th>Nombre Archivo</th>
-            <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
           <% @tarea.archivos.each do |archivo| %>
             <tr>
               <td><%= archivo.nombreArchivo %></td>
-              <td><%= link_to '<i class="fa fa-eye fa-lg"></i>'.html_safe, "/app/views/public/archivos/"+archivo.nombreArchivo %>
-              <!--<%= link_to '<i class="fa fa-trash-o fa-lg"></i>'.html_safe, {:controller => "archivos", :action => "borrar_archivos", :archivo_a_borrar => archivo.nombreArchivo}, {:method => "post", :confirm => "Seguro?"} %> -->
-              </td>
             </tr>
             <% end %>
 
@@ -70,6 +68,7 @@
       </table>
     </div><!-- /.padding-md -->
   </div><!-- /panel -->
+  <% end %>
 
 <!-- ...... ..-->
 
