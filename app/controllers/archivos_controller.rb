@@ -4,6 +4,7 @@ class ArchivosController < ApplicationController
   
   def subir_archivos
    @formato_erroneo = false;
+   @tarea= Tarea.find(params[:id_tarea])
    if request.post?
       #Archivo subido por el usuario.
       archivo = params[:archivo];
@@ -25,8 +26,11 @@ class ArchivosController < ApplicationController
          else
             subir_archivo = "error";
          end
+         @archivo = Archivo.create(nombreArchivo: nombre)
+         @tarea.archivos << @archivo
+         @servicio = Servicio.find(@tarea.servicio_id)
          #Redirige al controlador "archivos", a la acción "lista_archivos" y con la variable de tipo GET "subir_archivos" con el valor "ok" si se subió el archivo y "error" si no se pudo.
-         redirect_to :controller => "servicios", :action => "index", :subir_archivo => subir_archivo;
+         redirect_to servicio_path(@servicio), :subir_archivo => subir_archivo;
       else
          @formato_erroneo = true;
       end

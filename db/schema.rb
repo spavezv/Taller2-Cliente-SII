@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141214194611) do
+ActiveRecord::Schema.define(version: 20141217010950) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "archivos", force: true do |t|
+    t.integer  "tarea_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "nombreArchivo"
+  end
 
   create_table "empresas", force: true do |t|
     t.string   "nombre_fantasia"
@@ -30,8 +37,9 @@ ActiveRecord::Schema.define(version: 20141214194611) do
     t.datetime "updated_at"
   end
 
-  create_table "empresas_usuarios", primary_key: "empresa_id", force: true do |t|
-    t.integer "usuario_id", null: false
+  create_table "empresas_usuarios", id: false, force: true do |t|
+    t.integer "empresa_id"
+    t.integer "usuario_id"
   end
 
   create_table "notificacions", force: true do |t|
@@ -91,5 +99,12 @@ ActiveRecord::Schema.define(version: 20141214194611) do
 
   add_index "usuarios", ["email"], name: "index_usuarios_on_email", unique: true, using: :btree
   add_index "usuarios", ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true, using: :btree
+
+  create_table "usuraio_empresas", force: true do |t|
+    t.integer  "id_cliente"
+    t.integer  "id_empresa"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

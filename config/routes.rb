@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :notificacions
 
-  get 'archivos/subir_archivos'
+  get 'archivos/subir_archivos/:id_tarea' => "archivos#subir_archivos"
   get 'archivos/listar_archivos'
 
   get 'archivos/borrar_archivos'
@@ -39,8 +39,7 @@ Rails.application.routes.draw do
   post "administrador/index" => "administrador#index"
   get "super_administrador/index" => "super_administrador#index"
   get "super_administrador/filtrarUsuarios/:id" => "super_administrador#filtrarUsuarios"
-  get "archivos/subir_archivos"
-  post "archivos/subir_archivos"
+  post "archivos/subir_archivos/:id_tarea"  => "archivos#subir_archivos"
   get "archivos/listar_archivos"
   post "archivos/borrar_archivos"
   get "archivos/guardar_comentarios"

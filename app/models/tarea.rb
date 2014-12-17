@@ -1,6 +1,7 @@
 class Tarea < ActiveRecord::Base
 	belongs_to :servicio
 	belongs_to :tareas_asignadas, :class_name => "Usuario"
+	has_many :archivos
 	after_update :cambio_estado
 	after_create :tarea_creada
 	has_many :notificacions
