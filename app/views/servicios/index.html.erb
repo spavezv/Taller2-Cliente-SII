@@ -53,11 +53,15 @@
           <small  class="pull-right text-muted"><%= (servicio.tareas_terminadas*100)/(servicio.tareas_cantidad.nonzero? || 1) %>%
           </small>
         </td>
+        <% if current_usuario.tipo_de_usuario == 4 %>
+        <td > <%= link_to '<i class="fa fa-eye fa-lg"></i>'.html_safe, servicio_path(servicio) %>
+        <% else %>
         <td > <%= link_to '<i class="fa fa-eye fa-lg"></i>'.html_safe, servicio_path(servicio) %>
          <%= link_to '<i class="fa fa-edit fa-lg "></i>'.html_safe, edit_servicio_path(servicio) %>
          <%= link_to '<i class="fa fa-trash-o fa-lg"></i>'.html_safe,servicio, method: :delete %>
         <!-- <%= link_to '<i class="fa fa-plus fa-lg"></i>'.html_safe, new_tarea_path %> -->
        </td>
+       <% end %>
       </tr>
       <% end %>
     </tbody>

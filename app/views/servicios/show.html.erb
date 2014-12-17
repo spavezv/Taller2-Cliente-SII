@@ -116,10 +116,14 @@
               <td><%= Usuario.find_by(id: tarea.ejecutante).nombre %></td>
               <% end %>
               <td><%= tarea.termino %></td>
+              <% if current_usuario.tipo_de_usuario == 4 %>
+              <td><%= link_to '<i class="fa fa-eye fa-lg"></i>'.html_safe, tarea_path(tarea) %>
+              <% else %>
               <td><%= link_to '<i class="fa fa-eye fa-lg"></i>'.html_safe, tarea_path(tarea) %>
               <%= link_to '<i class="fa fa-edit fa-lg "></i>'.html_safe, edit_tarea_path(tarea) %>
               <%= link_to '<i class="fa fa-file-o fa-lg "></i>'.html_safe, "/archivos/subir_archivos/"+tarea.id.to_s %>
               </td>
+              <% end %>
             </tr>
             <% end %>
 
