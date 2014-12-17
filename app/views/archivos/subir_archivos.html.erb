@@ -10,7 +10,7 @@
   				<td><%= submit_tag "Subir archivo" %></td>
 			</tr>
 			<tr>
-				<td> <a href="/servicios" class="btn btn-warning"> <i class="fa fa-chevron-left"></i> Volver </a> </td>
+				<td> <a href="/servicios/<%= @tarea.servicio_id%>" class="btn btn-warning"> <i class="fa fa-chevron-left"></i> Volver </a> </td>
 				<td> <a href="/archivos/listar_archivos" class="btn btn-success"> Lista de Archivos </a> </td>
 			</tr>
       	</table>
@@ -23,8 +23,3 @@
      <p> El formato ingresado es incorrecto. Usted sólo puede subir archivos del tipo .pdf, .txt, .docx, .xlsx, .jpg, .png </p>
   </div>
 <% end %>
-
-
-
-<!--<p> <%= link_to "Servicios", :controller => "servicios", :action => "index" %> </p> -->
-<!--<p> <%= link_to "Lista de Archivos", :controller => "archivos", :action => "listar_archivos" %> </p>  -->

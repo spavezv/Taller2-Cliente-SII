@@ -102,7 +102,6 @@
             <th>Estado</th>
             <th>Ejecutante</th>
             <th>Fecha término</th>
-            <th>Archivos</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -117,7 +116,6 @@
               <td><%= Usuario.find_by(id: tarea.ejecutante).nombre %></td>
               <% end %>
               <td><%= tarea.termino %></td>
-              <td><%= tarea.nombreArchivo %></td>
               <td><%= link_to '<i class="fa fa-eye fa-lg"></i>'.html_safe, tarea_path(tarea) %>
               <%= link_to '<i class="fa fa-edit fa-lg "></i>'.html_safe, edit_tarea_path(tarea) %>
               <%= link_to '<i class="fa fa-file-o fa-lg "></i>'.html_safe, "/archivos/subir_archivos/"+tarea.id.to_s %>
