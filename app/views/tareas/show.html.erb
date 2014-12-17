@@ -60,7 +60,8 @@
           <% @tarea.archivos.each do |archivo| %>
             <tr>
               <td><%= archivo.nombreArchivo %></td>
-              <td><%= link_to '<i class="fa fa-eye fa-lg"></i>'.html_safe, tarea_path %>
+              <td><%= link_to '<i class="fa fa-eye fa-lg"></i>'.html_safe, "/app/views/public/archivos/"+archivo.nombreArchivo %>
+              <!--<%= link_to '<i class="fa fa-trash-o fa-lg"></i>'.html_safe, {:controller => "archivos", :action => "borrar_archivos", :archivo_a_borrar => archivo.nombreArchivo}, {:method => "post", :confirm => "Seguro?"} %> -->
               </td>
             </tr>
             <% end %>
