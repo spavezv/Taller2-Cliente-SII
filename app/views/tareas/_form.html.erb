@@ -1,7 +1,22 @@
+<%
+estados = [
+        "En ejecución",
+        "Completada",
+        "Cancelada"
+        ]
+
+    @ejecutantes = Usuario.where(:id => 0)
+    @empresas = current_usuario.empresas
+    @empresas.each do |empresa|
+      @ejecutantes += empresa.usuarios.where(:tipo_de_usuario => 3)
+    end
+%>
+
+
 <%= form_for(@tarea, html: {class:"form-horizontal form-border no-margin"}) do |f| %>
   <% if @tarea.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@tarea.errors.count, "error") %> prohibited this tarea from being saved:</h2>
+      <h2><%= pluralize(@tarea.errors.count, "Error") %> no permite crear la tarea:</h2>
 
       <ul>
       <% @tarea.errors.full_messages.each do |message| %>
@@ -30,10 +45,12 @@
                 
         <div class="col-lg-6">
           <select type="text" class="form-control chzn-select" id="tarea_estado" name="tarea[estado]" required>
-                      <option> </option>
-                      <option>En ejecución</option>
-                      <option>Completada</option>
-                      <option>Cancelada</option>
+            <% estados.each do |estado|%>
+            <option <% if @tarea.estado == estado%>
+                      <%= "selected" %>
+                      <% end %>
+                      ><%=estado%></option>
+            <%end %>
           </select> 
         </div><!-- /.col -->
     </div><!-- /form-group -->

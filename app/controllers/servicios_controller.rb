@@ -28,6 +28,7 @@ class ServiciosController < ApplicationController
     @empresas.each do |empresa|
       @clientes += empresa.usuarios.where(:tipo_de_usuario => 4)
     end
+    ##@clientes = @clientes.uniq
     respond_with(@servicio,@clientes)
 
   end

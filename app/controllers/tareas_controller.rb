@@ -22,12 +22,7 @@ class TareasController < ApplicationController
 
   def new
     @tarea = Tarea.new
-    @ejecutantes = Usuario.where(:id => 0)
-    @empresas = current_usuario.empresas
-    @empresas.each do |empresa|
-      @ejecutantes += empresa.usuarios.where(:tipo_de_usuario => 3)
-    end
-    respond_with(@tarea,@ejecutantes)
+    respond_with(@tarea)
   end
 
   def edit
@@ -41,8 +36,14 @@ class TareasController < ApplicationController
 
   def create
     @tarea = Tarea.new(tarea_params)
-    @tarea.save
-    respond_with(@tarea)
+     if @tarea.save
+      respond_with(@tarea)
+     else
+        respond_to do |format|  ## Add this
+        format.html { render  "new" }
+        format.json { render json: @tarea.errors, status: :unprocessable_entity }
+        end
+      end
   end
 
   def update

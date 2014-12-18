@@ -5,6 +5,15 @@ class Tarea < ActiveRecord::Base
 	after_update :cambio_estado
 	after_create :tarea_creada
 	has_many :notificacions
+	validate :start_date_before_end_date
+	validate :creacion
+	validate :termino
+
+	def start_date_before_end_date 
+		if creacion > termino
+			errors.add(:creacion, ": debe ser menor a la fecha de termino")
+		end
+	end
 
 	def cambio_estado		
 		if estado_changed? && estado == "Completada"
